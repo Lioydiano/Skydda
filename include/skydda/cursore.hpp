@@ -12,10 +12,9 @@ namespace skydda {
     }
 
     struct Cursore {
-        int y;
-        int x;
+        Coordinate coordinate;
 
-        Cursore() : y(0), x(0) {
+        Cursore() : coordinate() {
             pulisciSchermo();
             nascondi(); // Nascondi il cursore
         }
@@ -34,13 +33,14 @@ namespace skydda {
     
         // https://stackoverflow.com/questions/69597466/move-cursor-escape-sequence
         // https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html
-        void posiziona(int y_, int x_) {
-            this->y = y_;
-            this->x = x_;
-            std::cout << CSI << y << ";" << x << "H"; // Se tu vuoi spostare il cursore in (5, 10), allora il codice ANSI sarà "\x1b5;100H"
+        void posiziona(unsigned short y_, unsigned short x_) {
+            coordinate.y = y_;
+            coordinate.x = x_;
+            std::cout << CSI << y_ << ";" << x_ << "H"; // Se tu vuoi spostare il cursore in (5, 10), allora il codice ANSI sarà "\x1b5;100H"
         }
         void posiziona(Coordinate& coordinata) {
-            posiziona(coordinata.y, coordinata.x); // Chiamiamo la funzione sopra
+            coordinate = coordinata;
+            std::cout << CSI << coordinata.y << ";" << coordinata.x << "H";
         }
     };
 }
