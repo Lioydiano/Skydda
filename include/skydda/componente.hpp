@@ -5,8 +5,7 @@
 
 namespace skydda {
     // https://www.ibm.com/docs/en/zos/2.4.0?topic=only-abstract-classes-c (Classi astratte pure)
-    // Classe astratta di base dalla quale ereditano tutti gli altri componenti
-    class Componente {
+    class Componente { // Classe astratta di base dalla quale ereditano tutti gli altri componenti
     protected:
         char carattere;
         Coordinate coordinata;

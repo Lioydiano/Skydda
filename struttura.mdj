@@ -2808,7 +2808,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFYo76kxAGL+w="
 							},
-							"name": "coloreTesto"
+							"name": "coloreTesto",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2816,7 +2817,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFYo76kxAGL+w="
 							},
-							"name": "coloreSfondo"
+							"name": "coloreSfondo",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2824,7 +2826,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFYo76kxAGL+w="
 							},
-							"name": "attributo"
+							"name": "attributo",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -2850,7 +2853,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGFYqh3uhIRaUA="
 									},
-									"name": "ColoreTesto"
+									"name": "ColoreTesto",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -2858,7 +2862,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGFYqh3uhIRaUA="
 									},
-									"name": "ColoreSfondo"
+									"name": "ColoreSfondo",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -2895,7 +2900,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFYp+exxEeBH4="
 							},
-							"name": "y"
+							"name": "y",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2903,7 +2909,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFYp+exxEeBH4="
 							},
-							"name": "x"
+							"name": "x",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -3000,7 +3007,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFYsc0VSKsFQ4="
 							},
-							"name": "Coordinate"
+							"name": "Coordinate",
+							"type": ""
 						}
 					],
 					"operations": [
