@@ -23,6 +23,6 @@ namespace skydda {
         ANSI::Stile getStile() const;
         void setStile(ANSI::Stile);
 
-        void stampa();
+        virtual void stampa();
     };
 };
