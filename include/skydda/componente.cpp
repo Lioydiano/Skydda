@@ -5,21 +5,25 @@ namespace skydda {
     Componente::Componente() : carattere(), coordinate(), stile() {}
     Componente::Componente(char carattere_, Coordinate coordinata_, ANSI::Stile stile_) : carattere(carattere_), coordinate(coordinata_), stile(stile_) {}
     char Componente::getCarattere() const {
-        return carattere;
+        return this->carattere;
     }
     void Componente::setCarattere(char carattere_) {
-        carattere = carattere_;
+        this->carattere = carattere_;
     }
     Coordinate Componente::getCoordinate() const {
-        return coordinate;
+        return this->coordinate;
     }
     void Componente::setCoordinate(Coordinate coordinate_) {
-        coordinate = coordinate_;
+        this->coordinate = coordinate_;
     }
     ANSI::Stile Componente::getStile() const {
-        return stile;
+        return this->stile;
     }
     void Componente::setStile(ANSI::Stile stile_) {
-         stile = stile_;
+        this->stile = stile_;
+    }
+    void Componente::stampa() {
+        this->stile.applica();
+        std::cout << this->carattere << '\n';
     }
 }

@@ -22,5 +22,7 @@ namespace skydda {
         void setCoordinate(Coordinate);
         ANSI::Stile getStile() const;
         void setStile(ANSI::Stile);
+
+        void stampa();
     };
 };
