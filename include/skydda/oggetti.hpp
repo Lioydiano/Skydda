@@ -103,4 +103,40 @@ namespace skydda {
 
         void stampa() override;
     };
+
+    class Mappa {
+    private:
+        std::vector<std::vector<Componente*>> mappa;
+        std::vector<Componente*> componenti; // Componenti presenti nella mappa (ridondante, ma utile per la gestione della memoria)
+        int altezza;
+        int larghezza;
+
+    public:
+        Mappa();
+        Mappa(int, int);
+        ~Mappa();
+
+        int getAltezza() const;
+        int getLarghezza() const;
+
+        Componente* getComponente(Coordinate&) const;
+
+        // Immissione bruta di un Componente in una posizione (senza controlli)
+        void immettiComponente(Componente*, Coordinate&);
+        void immettiComponente(Componente*);
+        // Rimozione bruta di un Componente in una posizione
+        void rimuoviComponente(Coordinate&);
+        void rimuoviComponente(Componente*);
+
+        // Immissione grafica di un Componente nel terminale (senza controlli, che si suppone vengano dall'alto)
+        void stampaComponente(Coordinate&) const;
+        void stampaComponente(Componente*) const;
+        // Ripristino grafico di una cella nel terminale (senza controlli, che si suppone vengano dall'alto)
+        void cancellaComponente(Coordinate&);
+        void cancellaComponente(Componente*);
+
+        void spostaComponente(Coordinate&, Coordinate&); // Questa è la funzione complessa: sposta un componente da una posizione ad un'altra, ma in questo deve anche saper gestire gli impatti con gli altri componenti
+
+        void stampa() const;
+    };
 };
