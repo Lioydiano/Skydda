@@ -36,8 +36,8 @@ namespace skydda {
         void operator+(const ProiettileDifensore*); // Gestire lo scontro con un proiettile del difensore
         void operator+(const ProiettileNemico&); // Gestire lo scontro con un proiettile nemico
         void operator+(const ProiettileNemico*); // Gestire lo scontro con un proiettile nemico
-        void operator+=(const Nemico&); // Gestire lo scontro con un nemico
-        void operator+=(const Nemico*);
+        void operator+(const Nemico&); // Gestire lo scontro con un nemico
+        void operator+(const Nemico*);
     };
 
     class Difensore : public Componente {
