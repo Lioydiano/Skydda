@@ -136,6 +136,7 @@ namespace skydda {
         void cancellaComponente(Componente*);
 
         void spostaComponente(Coordinate&, Coordinate&); // Questa è la funzione complessa: sposta un componente da una posizione ad un'altra, ma in questo deve anche saper gestire gli impatti con gli altri componenti
+        void spostaComponente(Componente*, Coordinate&);
 
         void stampa() const;
     };
