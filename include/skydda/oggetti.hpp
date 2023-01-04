@@ -29,8 +29,8 @@ namespace skydda {
         Nemico(char, Coordinate, short int);
         ~Nemico() override;
 
-        int getVita() const;
-        void setVita(int);
+        short int getVita() const;
+        void setVita(short int);
 
         void operator+(const ProiettileDifensore&); // Gestire lo scontro con un proiettile del difensore
         void operator+(const ProiettileDifensore*); // Gestire lo scontro con un proiettile del difensore
