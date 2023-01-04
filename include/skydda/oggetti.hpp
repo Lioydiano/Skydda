@@ -22,11 +22,11 @@ namespace skydda {
 
     class Nemico : public Componente {
     private:
-        int vita;
+        short int vita;
     
     public:
         Nemico();
-        Nemico(char, Coordinate);
+        Nemico(char, Coordinate, short int);
         ~Nemico() override;
 
         int getVita() const;
