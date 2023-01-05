@@ -1,5 +1,6 @@
 #pragma once
 
+#include <queue>
 #include <vector>
 #include <unordered_map>
 #include "componente.hpp"
@@ -38,6 +39,8 @@ namespace skydda {
         void operator+(const ProiettileNemico*); // Gestire lo scontro con un proiettile nemico
         void operator+(const Nemico&); // Gestire lo scontro con un nemico
         void operator+(const Nemico*);
+
+        void stampa() override;
     };
 
     class Difensore : public Componente {
@@ -70,11 +73,16 @@ namespace skydda {
     };
 
     class ProiettileDifensore : public Proiettile {
+    private:
+        bool sopraTerreno;
     public:
         ProiettileDifensore();
         ProiettileDifensore(Coordinate, Direzione, int);
         ProiettileDifensore(char, Coordinate, Direzione, int);
         ~ProiettileDifensore() override;
+
+        bool getSopraTerreno() const;
+        void setSopraTerreno(bool);
     };
 
     class ProiettileNemico : public Proiettile {
@@ -108,7 +116,7 @@ namespace skydda {
     private:
         Cursore cursore;
         std::vector<std::vector<Componente*>> mappa;
-        std::vector<Componente*> componenti; // Componenti presenti nella mappa (ridondante, ma utile per la gestione della memoria)
+        std::queue<Effimera*> effimere; // Effimere presenti nella mappa, da rimuovere dopo un frame
         std::vector<Proiettile*> proiettili; // Proiettili presenti nella mappa (ridondante, ma necessario per individuarli velocemente)
         std::vector<Nemico*> nemici; // Nemici presenti nella mappa
         short int altezza;

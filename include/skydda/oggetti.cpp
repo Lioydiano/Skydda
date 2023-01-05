@@ -49,6 +49,10 @@ namespace skydda {
     short int Nemico::getVita() const {
         return vita;
     }
+    void Nemico::stampa() {
+        stile.applica();
+        std::cout << vita;
+    }
 
     ANSI::Stile stileDifensore(
         ANSI::ColoreTesto::VERDE,
@@ -146,6 +150,160 @@ namespace skydda {
         cursore.posiziona(componente->getCoordinate());
         ANSI::reimposta();
         std::cout << ' ';
+    }
+    void Mappa::spostaComponente(Coordinate& partenza, Coordinate& arrivo) {
+        if (mappa[arrivo.y][arrivo.x] == nullptr) {
+            mappa[arrivo.y][arrivo.x] = mappa[partenza.y][partenza.x];
+            mappa[partenza.y][partenza.x] = nullptr;
+        } else {
+            switch (mappa[partenza.y][partenza.x]->getTipo()) {
+                case TipoComponente::DIFENSORE: { // Collisione Difensore - ???
+                    switch (mappa[arrivo.y][arrivo.x]->getTipo()) {
+                        case TipoComponente::PROIETTILE_NEMICO: { // Collisione Difensore - Proiettile nemico
+                            // Morte del Difensore
+                            mappa[arrivo.y][arrivo.x] = mappa[partenza.y][partenza.x];
+                            mappa[partenza.y][partenza.x] = nullptr;
+                            cancellaComponente(partenza);
+                            stampaComponente(arrivo);
+                            exit(0); // Fine del gioco
+                        }
+                        case TipoComponente::TERRENO: case TipoComponente::EFFIMERA: { // Collisione Difensore - Terreno | Effimera
+                            immettiComponente(mappa[partenza.y][partenza.x], arrivo);
+                            immettiComponente(new Terreno(partenza), partenza);
+                            stampaComponente(partenza);
+                            stampaComponente(arrivo);
+                        }
+                    }
+                    break;
+                }
+                case TipoComponente::NEMICO: { // Collisione Nemico - ???
+                    switch (mappa[arrivo.y][arrivo.x]->getTipo()) {
+                        case TipoComponente::PROIETTILE_DIFENSORE: { // Collisione Nemico - Proiettile difensore
+                            // Decremento del Nemico
+                            delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile
+                            Nemico* nemico = (Nemico*)mappa[partenza.y][partenza.x];
+                            immettiComponente(nemico, arrivo);
+                            nemico->setVita(std::max(nemico->getVita() - 1, 9));
+                            nemico->setCoordinate(arrivo);
+                            mappa[partenza.y][partenza.x] = nullptr;
+                            cancellaComponente(partenza);
+                            stampaComponente(arrivo);
+                        }
+                        case TipoComponente::PROIETTILE_NEMICO: { // Collisione Nemico - Proiettile nemico
+                            // Incremento del Nemico
+                            delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile
+                            Nemico* nemico = (Nemico*)mappa[partenza.y][partenza.x];
+                            immettiComponente(nemico, arrivo);
+                            nemico->setVita(std::max(nemico->getVita() + 1, 9));
+                            nemico->setCoordinate(arrivo);
+                            mappa[partenza.y][partenza.x] = nullptr;
+                            cancellaComponente(partenza);
+                            stampaComponente(arrivo);
+                        }
+                        case TipoComponente::NEMICO: { // Collisione Nemico - Nemico
+                            // Somma dei due Nemici
+                            Nemico* nemico1 = (Nemico*)mappa[partenza.y][partenza.x];
+                            Nemico* nemico2 = (Nemico*)mappa[arrivo.y][arrivo.x];
+                            immettiComponente(nemico1, arrivo);
+                            nemico1->setVita(std::max(nemico1->getVita() + nemico2->getVita(), 9));
+                            nemico1->setCoordinate(arrivo);
+                            mappa[partenza.y][partenza.x] = nullptr;
+                            cancellaComponente(partenza);
+                            stampaComponente(arrivo);
+                            delete nemico2; // Deallocazione della memoria del nemico
+                        }
+                        case TipoComponente::EFFIMERA: { // Collisione Nemico - Effimera
+                            // Morte del Nemico
+                            delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria dell'effimera
+                            mappa[arrivo.y][arrivo.x] = mappa[partenza.y][partenza.x];
+                            mappa[partenza.y][partenza.x] = nullptr;
+                            cancellaComponente(partenza);
+                            stampaComponente(arrivo);
+                        }
+                    }
+                    break;
+                }
+                case TipoComponente::PROIETTILE_DIFENSORE: { // Collisione Proiettile difensore - ???
+                    switch (mappa[arrivo.y][arrivo.x]->getTipo()) {
+                        case TipoComponente::NEMICO: { // Collisione Proiettile difensore - Nemico
+                            // Decremento del Nemico
+                            ProiettileDifensore* proiettile = (ProiettileDifensore*)mappa[partenza.y][partenza.x];
+                            Nemico* nemico = (Nemico*)mappa[arrivo.y][arrivo.x];
+                            nemico->setVita(std::max(nemico->getVita() - 1, 9));
+                            if (proiettile->getSopraTerreno()) {
+                                // Il proiettile si trova sull'isola, quindi sul Terreno che va ripristinato
+                                immettiComponente(new Terreno(partenza), partenza);
+                            }
+                            delete proiettile; // Deallocazione della memoria del proiettile
+                            stampaComponente(arrivo);
+                            stampaComponente(partenza);
+                        }
+                        case TipoComponente::PROIETTILE_NEMICO: { // Collisione Proiettile difensore - Proiettile nemico
+                            // Distruzione dei due proiettili e creazione dell'effimera
+                            delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile nemico
+                            delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile difensore
+                            immettiComponente(new Effimera(arrivo), arrivo);
+                            effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
+                            stampaComponente(arrivo);
+                            cancellaComponente(partenza);
+                        }
+                        case TipoComponente::TERRENO: { // Collisione Proiettile difensore - Terreno
+                            // Spostamento del proiettile sul Terreno
+                            ProiettileDifensore* proiettile = (ProiettileDifensore*)mappa[partenza.y][partenza.x];
+                            if (proiettile->getSopraTerreno()) {
+                                // Il proiettile si trova sull'isola, quindi sul Terreno che va ripristinato
+                                immettiComponente(new Terreno(partenza), partenza);
+                                proiettile->setSopraTerreno(false);
+                            } else {
+                                mappa[partenza.y][partenza.x] = nullptr;
+                            }
+                            delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del terreno
+                            immettiComponente(proiettile, arrivo);
+                            cancellaComponente(partenza);
+                            stampaComponente(arrivo);
+                            proiettile->setSopraTerreno(true);
+                        }
+                        break;
+                    }
+                    case TipoComponente::PROIETTILE_NEMICO: { // Collisione Proiettile nemico - ???
+                        switch (mappa[arrivo.y][arrivo.x]->getTipo()) {
+                            case TipoComponente::TERRENO: { // Collisione Proiettile nemico - Terreno
+                                // Spostamento del proiettile sul Terreno
+                                delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del terreno
+                                delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
+                                mappa[partenza.y][partenza.x] = nullptr;
+                                immettiComponente(new Effimera(arrivo), arrivo);
+                                effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
+                                cancellaComponente(partenza);
+                                stampaComponente(arrivo);
+                            }
+                            case TipoComponente::PROIETTILE_DIFENSORE: { // Collisione Proiettile nemico - Proiettile difensore
+                                // Distruzione dei due proiettili e creazione dell'effimera
+                                delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile difensore
+                                delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
+                                immettiComponente(new Effimera(arrivo), arrivo);
+                                effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
+                                stampaComponente(arrivo);
+                                cancellaComponente(partenza);
+                            }
+                            case TipoComponente::NEMICO: { // Collisione Proiettile nemico - Nemico
+                                // Incremento del Nemico
+                                delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
+                                mappa[partenza.y][partenza.x] = nullptr;
+                                Nemico* nemico = (Nemico*)mappa[arrivo.y][arrivo.x];
+                                nemico->setVita(std::max(nemico->getVita() + 1, 9));
+                                stampaComponente(arrivo);
+                                cancellaComponente(partenza);
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    void Mappa::spostaComponente(Componente* componente, Coordinate& arrivo) {
+        spostaComponente(componente->getCoordinate(), arrivo);
     }
     ANSI::Stile stileBordo(
         ANSI::ColoreTesto::BIANCO,
