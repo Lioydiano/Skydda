@@ -4,7 +4,15 @@
 
 
 namespace skydda {
-    enum TipoComponente;
+    enum TipoComponente {
+        __IGNOTO__,
+        DIFENSORE,
+        NEMICO,
+        PROIETTILE_DIFENSORE,
+        PROIETTILE_NEMICO,
+        TERRENO,
+        EFFIMERA
+    };
 
     // https://www.ibm.com/docs/en/zos/2.4.0?topic=only-abstract-classes-c (Classi astratte pure)
     class Componente { // Classe astratta di base dalla quale ereditano tutti gli altri componenti

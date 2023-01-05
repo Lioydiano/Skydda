@@ -7,8 +7,8 @@
 
 
 namespace skydda {
-    enum Direzione;
-    enum TipoProiettile;
+    enum Direzione { NORD, EST, SUD, OVEST };
+    enum TipoProiettile { DIFENSORE, NEMICO };
     std::unordered_map<Direzione, Coordinate> direzioni;
     std::unordered_map<Direzione, char> direzioneCarattere;
 

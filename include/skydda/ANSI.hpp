@@ -12,9 +12,36 @@
 
 // https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
 namespace ANSI { // Standard per gestire i colori e gli attributi del terminale
-    enum ColoreTesto;
-    enum ColoreSfondo;
-    enum Attributo;
+    enum ColoreTesto {
+        NERO = 30,
+        ROSSO = 31,
+        VERDE = 32,
+        GIALLO = 33,
+        BLU = 34,
+        MAGENTA = 35,
+        CIANO = 36,
+        BIANCO = 37
+    };
+    enum ColoreSfondo {
+        S_NERO = 40,
+        S_ROSSO = 41,
+        S_VERDE = 42,
+        S_GIALLO = 43,
+        S_BLU = 44,
+        S_MAGENTA = 45,
+        S_CIANO = 46,
+        S_BIANCO = 47
+    };
+    enum Attributo {
+        RIPRISTINO = 0,
+        LUMINOSO = 1,
+        FLEBILE = 2,
+        CORSIVO = 3,
+        SOTTOLINEATO = 4,
+        LAMPEGGIA = 5,
+        REVERSE = 6,
+        NASCOSTO = 7
+    };
 
     // https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
     void impostaColoreTesto(ColoreTesto);

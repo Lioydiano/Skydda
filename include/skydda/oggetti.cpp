@@ -6,8 +6,6 @@
 
 
 namespace skydda {
-    enum Direzione { NORD, EST, SUD, OVEST };
-    enum TipoProiettile { DIFENSORE, NEMICO };
     std::unordered_map<Direzione, Coordinate> direzioni = {
         {NORD, Coordinate(0, -1)},
         {EST, Coordinate(1, 0)},
@@ -22,22 +20,22 @@ namespace skydda {
     };
     ANSI::Stile stileProiettileDifensore(
         ANSI::ColoreTesto::MAGENTA,
-        ANSI::ColoreSfondo::ROSSO,
+        ANSI::ColoreSfondo::S_ROSSO,
         ANSI::Attributo::LUMINOSO
     );
     ANSI::Stile stileProiettileNemico(
         ANSI::ColoreTesto::CIANO,
-        ANSI::ColoreSfondo::NERO,
+        ANSI::ColoreSfondo::S_NERO,
         ANSI::Attributo::LUMINOSO
     );
     std::unordered_map<TipoProiettile, ANSI::Stile> stiliProiettile = {
-        {DIFENSORE, stileProiettileDifensore},
-        {NEMICO, stileProiettileNemico}
+        {TipoProiettile::DIFENSORE, stileProiettileDifensore},
+        {TipoProiettile::NEMICO, stileProiettileNemico}
     };
 
     ANSI::Stile stileNemico(
         ANSI::ColoreTesto::BLU,
-        ANSI::ColoreSfondo::NERO,
+        ANSI::ColoreSfondo::S_NERO,
         ANSI::Attributo::LUMINOSO
     );
     Nemico::Nemico() : Componente('1', Coordinate(0, 0), stileNemico, TipoComponente::NEMICO), vita(1) {} 
@@ -56,7 +54,7 @@ namespace skydda {
 
     ANSI::Stile stileDifensore(
         ANSI::ColoreTesto::VERDE,
-        ANSI::ColoreSfondo::NERO,
+        ANSI::ColoreSfondo::S_NERO,
         ANSI::Attributo::LUMINOSO
     );
     Difensore::Difensore(): Componente('1', Coordinate(0, 0), stileDifensore, TipoComponente::DIFENSORE) {} 
@@ -65,13 +63,13 @@ namespace skydda {
         std::cout << u8"安";
     }
 
-    Proiettile::Proiettile() : Componente(direzioneCarattere[EST], Coordinate(0, 0), stileProiettileDifensore, TipoComponente::PROIETTILE_DIFENSORE), origine(DIFENSORE), direzione(EST), velocita(1) {}
+    Proiettile::Proiettile() : Componente(direzioneCarattere[EST], Coordinate(0, 0), stileProiettileDifensore, TipoComponente::PROIETTILE_DIFENSORE), origine(TipoProiettile::DIFENSORE), direzione(EST), velocita(1) {}
     Proiettile::Proiettile(Coordinate coordinate_, TipoProiettile tipo_, Direzione direzione_, int velocita_) : Componente(direzioneCarattere[direzione_], coordinate_, stiliProiettile[tipo_], TipoComponente::PROIETTILE_DIFENSORE), origine(tipo_), direzione(direzione_), velocita(velocita_) {}
     Proiettile::~Proiettile() {}
 
     ANSI::Stile stileTerreno(
         ANSI::ColoreTesto::ROSSO,
-        ANSI::ColoreSfondo::ROSSO,
+        ANSI::ColoreSfondo::S_ROSSO,
         ANSI::Attributo::FLEBILE
     );
     Terreno::Terreno() : Componente(' ', Coordinate(0, 0), stileTerreno, TipoComponente::TERRENO) {}
@@ -80,7 +78,7 @@ namespace skydda {
 
     ANSI::Stile stileEffimera(
         ANSI::ColoreTesto::BIANCO,
-        ANSI::ColoreSfondo::NERO,
+        ANSI::ColoreSfondo::S_NERO,
         ANSI::Attributo::FLEBILE
     );
     Effimera::Effimera() : Componente(' ', Coordinate(0, 0), stileEffimera, TipoComponente::EFFIMERA) {}
@@ -307,7 +305,7 @@ namespace skydda {
     }
     ANSI::Stile stileBordo(
         ANSI::ColoreTesto::BIANCO,
-        ANSI::ColoreSfondo::GIALLO,
+        ANSI::ColoreSfondo::S_GIALLO,
         ANSI::Attributo::LUMINOSO
     );
     void Mappa::stampa() const {

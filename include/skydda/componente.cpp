@@ -2,16 +2,6 @@
 #include "componente.hpp"
 
 namespace skydda {
-    enum TipoComponente {
-        __IGNOTO__,
-        DIFENSORE,
-        NEMICO,
-        PROIETTILE_DIFENSORE,
-        PROIETTILE_NEMICO,
-        TERRENO,
-        EFFIMERA
-    };
-
     Componente::Componente() : carattere(), coordinate(), stile(), tipo(__IGNOTO__) {}
     Componente::Componente(char carattere_, Coordinate coordinata_, ANSI::Stile stile_, TipoComponente tipo_) : carattere(carattere_), coordinate(coordinata_), stile(stile_), tipo(tipo_) {}
     TipoComponente Componente::getTipo() const {
