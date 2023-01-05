@@ -1,5 +1,7 @@
 #pragma once
 #include "ANSI.cpp"
+#include "cursore.cpp"
+#include "componente.cpp"
 #include "oggetti.hpp"
 
 
@@ -38,8 +40,8 @@ namespace skydda {
         ANSI::ColoreSfondo::NERO,
         ANSI::Attributo::LUMINOSO
     );
-    Nemico::Nemico() : Componente('1', Coordinate(0, 0), stileNemico), vita(1) {} 
-    Nemico::Nemico(char carattere_, Coordinate coordinate_, short int vita_) : Componente(carattere_, coordinate_, stileNemico), vita(vita_) {}
+    Nemico::Nemico() : Componente('1', Coordinate(0, 0), stileNemico, TipoComponente::NEMICO), vita(1) {} 
+    Nemico::Nemico(char carattere_, Coordinate coordinate_, short int vita_) : Componente(carattere_, coordinate_, stileNemico, TipoComponente::NEMICO), vita(vita_) {}
     Nemico::~Nemico() {}
     void Nemico::setVita(short int vita_) {
         vita = vita_;
@@ -53,14 +55,14 @@ namespace skydda {
         ANSI::ColoreSfondo::NERO,
         ANSI::Attributo::LUMINOSO
     );
-    Difensore::Difensore(): Componente('1', Coordinate(0, 0), stileDifensore) {} 
+    Difensore::Difensore(): Componente('1', Coordinate(0, 0), stileDifensore, TipoComponente::DIFENSORE) {} 
     Difensore::~Difensore() {}
     void Difensore::stampa() {
         std::cout << u8"安";
     }
 
-    Proiettile::Proiettile() : Componente(direzioneCarattere[EST], Coordinate(0, 0), stileProiettileDifensore), origine(DIFENSORE), direzione(EST), velocita(1) {}
-    Proiettile::Proiettile(Coordinate coordinate_, TipoProiettile tipo_, Direzione direzione_, int velocita_) : Componente(direzioneCarattere[direzione_], coordinate_, stiliProiettile[tipo_]), origine(tipo_), direzione(direzione_), velocita(velocita_) {}
+    Proiettile::Proiettile() : Componente(direzioneCarattere[EST], Coordinate(0, 0), stileProiettileDifensore, TipoComponente::PROIETTILE_DIFENSORE), origine(DIFENSORE), direzione(EST), velocita(1) {}
+    Proiettile::Proiettile(Coordinate coordinate_, TipoProiettile tipo_, Direzione direzione_, int velocita_) : Componente(direzioneCarattere[direzione_], coordinate_, stiliProiettile[tipo_], TipoComponente::PROIETTILE_DIFENSORE), origine(tipo_), direzione(direzione_), velocita(velocita_) {}
     Proiettile::~Proiettile() {}
 
     ANSI::Stile stileTerreno(
@@ -68,8 +70,8 @@ namespace skydda {
         ANSI::ColoreSfondo::ROSSO,
         ANSI::Attributo::FLEBILE
     );
-    Terreno::Terreno() : Componente(' ', Coordinate(0, 0), stileTerreno) {}
-    Terreno::Terreno(Coordinate coordinate_) : Componente(' ', coordinate_, stileTerreno) {}
+    Terreno::Terreno() : Componente(' ', Coordinate(0, 0), stileTerreno, TipoComponente::TERRENO) {}
+    Terreno::Terreno(Coordinate coordinate_) : Componente(' ', coordinate_, stileTerreno, TipoComponente::TERRENO) {}
     Terreno::~Terreno() {}
 
     ANSI::Stile stileEffimera(
@@ -77,8 +79,8 @@ namespace skydda {
         ANSI::ColoreSfondo::NERO,
         ANSI::Attributo::FLEBILE
     );
-    Effimera::Effimera() : Componente(' ', Coordinate(0, 0), stileEffimera) {}
-    Effimera::Effimera(Coordinate coordinate_) : Componente(' ', coordinate_, stileEffimera) {}
+    Effimera::Effimera() : Componente(' ', Coordinate(0, 0), stileEffimera, TipoComponente::EFFIMERA) {}
+    Effimera::Effimera(Coordinate coordinate_) : Componente(' ', coordinate_, stileEffimera, TipoComponente::EFFIMERA) {}
     Effimera::~Effimera() {}
     void Effimera::stampa() {
         std::cout << u8"💥";
