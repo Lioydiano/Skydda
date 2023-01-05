@@ -108,6 +108,8 @@ namespace skydda {
     private:
         std::vector<std::vector<Componente*>> mappa;
         std::vector<Componente*> componenti; // Componenti presenti nella mappa (ridondante, ma utile per la gestione della memoria)
+        std::vector<Proiettile*> proiettili; // Proiettili presenti nella mappa (ridondante, ma necessario per individuarli velocemente)
+        std::vector<Nemico*> nemici; // Nemici presenti nella mappa
         int altezza;
         int larghezza;
 
