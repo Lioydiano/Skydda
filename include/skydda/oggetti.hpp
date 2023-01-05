@@ -8,9 +8,7 @@
 
 namespace skydda {
     enum Direzione { NORD, EST, SUD, OVEST };
-    enum TipoProiettile { DIFENSORE, NEMICO };
-    std::unordered_map<Direzione, Coordinate> direzioni;
-    std::unordered_map<Direzione, char> direzioneCarattere;
+    enum TipoProiettile { P_DIFENSORE, P_NEMICO };
 
     class Difensore;
     class Nemico;
@@ -136,7 +134,6 @@ namespace skydda {
         void cancellaComponente(Componente*);
 
         void spostaComponente(Coordinate&, Coordinate&); // Questa è la funzione complessa: sposta un componente da una posizione ad un'altra, ma in questo deve anche saper gestire gli impatti con gli altri componenti
-        void spostaComponente(Componente*, Coordinate&);
 
         void stampa() const;
     };

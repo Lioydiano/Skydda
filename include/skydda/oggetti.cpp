@@ -29,8 +29,8 @@ namespace skydda {
         ANSI::Attributo::LUMINOSO
     );
     std::unordered_map<TipoProiettile, ANSI::Stile> stiliProiettile = {
-        {TipoProiettile::DIFENSORE, stileProiettileDifensore},
-        {TipoProiettile::NEMICO, stileProiettileNemico}
+        {TipoProiettile::P_DIFENSORE, stileProiettileDifensore},
+        {TipoProiettile::P_NEMICO, stileProiettileNemico}
     };
 
     ANSI::Stile stileNemico(
@@ -63,7 +63,7 @@ namespace skydda {
         std::cout << u8"安";
     }
 
-    Proiettile::Proiettile() : Componente(direzioneCarattere[EST], Coordinate(0, 0), stileProiettileDifensore, TipoComponente::PROIETTILE_DIFENSORE), origine(TipoProiettile::DIFENSORE), direzione(EST), velocita(1) {}
+    Proiettile::Proiettile() : Componente(direzioneCarattere[EST], Coordinate(0, 0), stileProiettileDifensore, TipoComponente::PROIETTILE_DIFENSORE), origine(TipoProiettile::P_DIFENSORE), direzione(EST), velocita(1) {}
     Proiettile::Proiettile(Coordinate coordinate_, TipoProiettile tipo_, Direzione direzione_, int velocita_) : Componente(direzioneCarattere[direzione_], coordinate_, stiliProiettile[tipo_], TipoComponente::PROIETTILE_DIFENSORE), origine(tipo_), direzione(direzione_), velocita(velocita_) {}
     Proiettile::~Proiettile() {}
 
@@ -299,9 +299,6 @@ namespace skydda {
                 }
             }
         }
-    }
-    void Mappa::spostaComponente(Componente* componente, Coordinate& arrivo) {
-        spostaComponente(componente->getCoordinate(), arrivo);
     }
     ANSI::Stile stileBordo(
         ANSI::ColoreTesto::BIANCO,
