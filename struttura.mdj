@@ -1050,7 +1050,7 @@
 												"$ref": "AAAAAAGFYo76lBAJXBQ="
 											},
 											"font": "Courier New;13;0",
-											"left": 5,
+											"left": 29,
 											"top": 317,
 											"width": 343.255859375,
 											"height": 13,
@@ -1063,7 +1063,7 @@
 												"$ref": "AAAAAAGFYo76lBAJXBQ="
 											},
 											"font": "Courier New;13;1",
-											"left": 5,
+											"left": 29,
 											"top": 332,
 											"width": 343.255859375,
 											"height": 13,
@@ -1077,7 +1077,7 @@
 											},
 											"visible": false,
 											"font": "Courier New;13;0",
-											"left": -112,
+											"left": -64,
 											"top": 176,
 											"width": 93.615234375,
 											"height": 13,
@@ -1091,13 +1091,14 @@
 											},
 											"visible": false,
 											"font": "Courier New;13;0",
-											"left": -112,
+											"left": -64,
 											"top": 176,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Courier New;13;0",
+									"left": 24,
 									"top": 312,
 									"width": 353.255859375,
 									"height": 38,
@@ -1134,7 +1135,7 @@
 												"$ref": "AAAAAAGFYo8r7xAxRic="
 											},
 											"font": "Courier New;13;0",
-											"left": 5,
+											"left": 29,
 											"top": 355,
 											"width": 343.255859375,
 											"height": 13,
@@ -1151,7 +1152,7 @@
 												"$ref": "AAAAAAGFYo9l8BA4uzs="
 											},
 											"font": "Courier New;13;0",
-											"left": 5,
+											"left": 29,
 											"top": 370,
 											"width": 343.255859375,
 											"height": 13,
@@ -1168,7 +1169,7 @@
 												"$ref": "AAAAAAGFYo94gBA/ZVE="
 											},
 											"font": "Courier New;13;0",
-											"left": 5,
+											"left": 29,
 											"top": 385,
 											"width": 343.255859375,
 											"height": 13,
@@ -1177,6 +1178,7 @@
 										}
 									],
 									"font": "Courier New;13;0",
+									"left": 24,
 									"top": 350,
 									"width": 353.255859375,
 									"height": 53
@@ -1201,7 +1203,7 @@
 												"$ref": "AAAAAAGFYqg/LhIJzPw="
 											},
 											"font": "Courier New;13;0",
-											"left": 5,
+											"left": 29,
 											"top": 408,
 											"width": 343.255859375,
 											"height": 13,
@@ -1218,7 +1220,7 @@
 												"$ref": "AAAAAAGFYqh3uhIRaUA="
 											},
 											"font": "Courier New;13;0",
-											"left": 5,
+											"left": 29,
 											"top": 423,
 											"width": 343.255859375,
 											"height": 13,
@@ -1235,7 +1237,7 @@
 												"$ref": "AAAAAAGFYo+cahBHimA="
 											},
 											"font": "Courier New;13;0",
-											"left": 5,
+											"left": 29,
 											"top": 438,
 											"width": 343.255859375,
 											"height": 13,
@@ -1244,6 +1246,7 @@
 										}
 									],
 									"font": "Courier New;13;0",
+									"left": 24,
 									"top": 403,
 									"width": 353.255859375,
 									"height": 53
@@ -1258,6 +1261,7 @@
 										"$ref": "AAAAAAGFYo76kxAGL+w="
 									},
 									"font": "Courier New;13;0",
+									"left": 24,
 									"top": 456,
 									"width": 353.255859375,
 									"height": 10
@@ -1273,7 +1277,7 @@
 									},
 									"visible": false,
 									"font": "Courier New;13;0",
-									"left": -40,
+									"left": -16,
 									"top": 184,
 									"width": 10,
 									"height": 10
@@ -1281,6 +1285,7 @@
 							],
 							"font": "Courier New;13;0",
 							"containerChangeable": true,
+							"left": 24,
 							"top": 312,
 							"width": 353.255859375,
 							"height": 154,
@@ -1619,7 +1624,7 @@
 								"$ref": "AAAAAAFF+qBtyKM79qY="
 							},
 							"font": "Arial;13;0",
-							"left": 376,
+							"left": 392,
 							"top": 312,
 							"width": 53.95361328125,
 							"height": 25,
@@ -1639,7 +1644,7 @@
 								"$ref": "AAAAAAGFYo76lBAIjzo="
 							},
 							"lineStyle": 1,
-							"points": "353:338;375:332"
+							"points": "377:336;391:332"
 						},
 						{
 							"_type": "UMLAssociationView",

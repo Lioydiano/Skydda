@@ -14,6 +14,9 @@ namespace skydda {
 
     Componente::Componente() : carattere(), coordinate(), stile(), tipo(__IGNOTO__) {}
     Componente::Componente(char carattere_, Coordinate coordinata_, ANSI::Stile stile_, TipoComponente tipo_) : carattere(carattere_), coordinate(coordinata_), stile(stile_), tipo(tipo_) {}
+    TipoComponente Componente::getTipo() const {
+        return this->tipo;
+    }
     char Componente::getCarattere() const {
         return this->carattere;
     }
