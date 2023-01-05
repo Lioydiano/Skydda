@@ -33,13 +33,6 @@ namespace skydda {
         short int getVita() const;
         void setVita(short int);
 
-        void operator+(const ProiettileDifensore&); // Gestire lo scontro con un proiettile del difensore
-        void operator+(const ProiettileDifensore*); // Gestire lo scontro con un proiettile del difensore
-        void operator+(const ProiettileNemico&); // Gestire lo scontro con un proiettile nemico
-        void operator+(const ProiettileNemico*); // Gestire lo scontro con un proiettile nemico
-        void operator+(const Nemico&); // Gestire lo scontro con un nemico
-        void operator+(const Nemico*);
-
         void stampa() override;
     };
 
@@ -67,9 +60,6 @@ namespace skydda {
         TipoProiettile getOrigine() const;
         Direzione getDirezione() const;
         int getVelocita() const;
-
-        Proiettile operator+(const Proiettile&); // Gestire lo scontro
-        Proiettile operator+(const Proiettile*); // Gestire lo scontro
     };
 
     class ProiettileDifensore : public Proiettile {
@@ -91,9 +81,6 @@ namespace skydda {
         ProiettileNemico(Coordinate, Direzione, int);
         ProiettileNemico(char, Coordinate, Direzione, int);
         ~ProiettileNemico() override;
-
-        Effimera* operator+(ProiettileDifensore&); // Gestire lo scontro
-        Effimera* operator+(ProiettileDifensore*); // Gestire lo scontro
     };
 
     class Terreno : public Componente {
