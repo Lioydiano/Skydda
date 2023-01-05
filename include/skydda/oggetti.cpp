@@ -48,7 +48,6 @@ namespace skydda {
         return vita;
     }
 
-
     ANSI::Stile stileDifensore(
         ANSI::ColoreTesto::VERDE,
         ANSI::ColoreSfondo::NERO,
@@ -83,5 +82,36 @@ namespace skydda {
     Effimera::~Effimera() {}
     void Effimera::stampa() {
         std::cout << u8"💥";
+    }
+
+    ANSI::Stile stileBordo(
+        ANSI::ColoreTesto::BIANCO,
+        ANSI::ColoreSfondo::GIALLO,
+        ANSI::Attributo::LUMINOSO
+    );
+    void Mappa::stampa() const {
+        stileBordo.applica();
+        for (int i = 0; i < altezza; i++) {
+            bool spazioPrecedente = false; // Serve per evitare di ripristinare lo stile ANSI ogni volta che si stampa uno spazio
+            std::cout << '@';
+            for (int j = 0; j < larghezza; j++) {
+                if (mappa[i][j] != nullptr) {
+                    spazioPrecedente = false;
+                    mappa[i][j]->stampa();
+                } else {
+                    if (spazioPrecedente) {
+                        std::cout << ' ';
+                    } else {
+                        spazioPrecedente = true;
+                        std::cout << ' ';
+                    }
+                }
+            }
+            stileBordo.applica();
+            std::cout << '@';
+            std::cout << '\n';
+        }
+        ANSI::reimposta();
+        std::flush(std::cout);
     }
 };
