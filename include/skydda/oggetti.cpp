@@ -86,12 +86,74 @@ namespace skydda {
         std::cout << u8"💥";
     }
 
+    Mappa::Mappa() : larghezza(0), altezza(0) {}
+    Mappa::Mappa(short int larghezza_, short int altezza_) : larghezza(larghezza_), altezza(altezza_) {
+        mappa.resize(altezza);
+        for (int i = 0; i < altezza; i++) {
+            mappa[i].resize(larghezza);
+        }
+    }
+    Mappa::~Mappa() {
+        for (int i = 0; i < altezza; i++) {
+            for (int j = 0; j < larghezza; j++) {
+                if (mappa[i][j] != nullptr)
+                    delete mappa[i][j]; // Deallocazione della memoria
+            }
+        }
+    }
+    short int Mappa::getAltezza() const {
+        return altezza;
+    }
+    short int Mappa::getLarghezza() const {
+        return larghezza;
+    }
+    Componente* Mappa::getComponente(Coordinate& coordinate) const {
+        return mappa[coordinate.y][coordinate.x];
+    }
+    void Mappa::immettiComponente(Componente* componente, Coordinate& coordinate) {
+        mappa[coordinate.y][coordinate.x] = componente;
+    }
+    void Mappa::immettiComponente(Componente* componente) {
+        mappa[componente->getCoordinate().y][componente->getCoordinate().x] = componente;
+    }
+    void Mappa::rimuoviComponente(Coordinate& coordinate) {
+        delete mappa[coordinate.y][coordinate.x];
+        mappa[coordinate.y][coordinate.x] = nullptr;
+    }
+    void Mappa::rimuoviComponente(Componente* componente) {
+        mappa[componente->getCoordinate().y][componente->getCoordinate().x] = nullptr;
+    }
+    void Mappa::stampaComponente(Coordinate& coordinate) {
+        cursore.posiziona(coordinate);
+        if (mappa[coordinate.y][coordinate.x] != nullptr)
+            mappa[coordinate.y][coordinate.x]->stampa();
+        else
+            std::cout << ' ';
+    }
+    void Mappa::stampaComponente(Componente* componente) {
+        cursore.posiziona(componente->getCoordinate());
+        if (componente != nullptr)
+            componente->stampa();
+        else
+            std::cout << ' ';
+    }
+    void Mappa::cancellaComponente(Coordinate& coordinate) {
+        cursore.posiziona(coordinate);
+        ANSI::reimposta();
+        std::cout << ' ';
+    }
+    void Mappa::cancellaComponente(Componente* componente) {
+        cursore.posiziona(componente->getCoordinate());
+        ANSI::reimposta();
+        std::cout << ' ';
+    }
     ANSI::Stile stileBordo(
         ANSI::ColoreTesto::BIANCO,
         ANSI::ColoreSfondo::GIALLO,
         ANSI::Attributo::LUMINOSO
     );
     void Mappa::stampa() const {
+        pulisciSchermo();
         stileBordo.applica();
         for (int i = 0; i < altezza; i++) {
             bool spazioPrecedente = false; // Serve per evitare di ripristinare lo stile ANSI ogni volta che si stampa uno spazio

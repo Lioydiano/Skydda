@@ -106,21 +106,24 @@ namespace skydda {
 
     class Mappa {
     private:
+        Cursore cursore;
         std::vector<std::vector<Componente*>> mappa;
         std::vector<Componente*> componenti; // Componenti presenti nella mappa (ridondante, ma utile per la gestione della memoria)
         std::vector<Proiettile*> proiettili; // Proiettili presenti nella mappa (ridondante, ma necessario per individuarli velocemente)
         std::vector<Nemico*> nemici; // Nemici presenti nella mappa
-        int altezza;
-        int larghezza;
+        short int altezza;
+        short int larghezza;
 
     public:
         Mappa();
-        Mappa(int, int);
+        Mappa(short int, short int);
         ~Mappa();
 
-        int getAltezza() const;
-        int getLarghezza() const;
+        // Questi due metodi sono inutilissimi, ma li lascio per comodità
+        short int getAltezza() const;
+        short int getLarghezza() const;
 
+        // Restituisce il puntatore al Componente in una posizione
         Componente* getComponente(Coordinate&) const;
 
         // Immissione bruta di un Componente in una posizione (senza controlli)
@@ -131,8 +134,8 @@ namespace skydda {
         void rimuoviComponente(Componente*);
 
         // Immissione grafica di un Componente nel terminale (senza controlli, che si suppone vengano dall'alto)
-        void stampaComponente(Coordinate&) const;
-        void stampaComponente(Componente*) const;
+        void stampaComponente(Coordinate&);
+        void stampaComponente(Componente*);
         // Ripristino grafico di una cella nel terminale (senza controlli, che si suppone vengano dall'alto)
         void cancellaComponente(Coordinate&);
         void cancellaComponente(Componente*);
