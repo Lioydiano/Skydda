@@ -95,6 +95,7 @@ namespace skydda {
     }
     void ProiettileDifensore::setSopraTerreno(bool sopraTerreno_) {
         sopraTerreno = sopraTerreno_;
+        stile.coloreSfondo = sopraTerreno ? ANSI::ColoreSfondo::S_NERO : ANSI::ColoreSfondo::S_ROSSO;
     }
 
     ProiettileNemico::ProiettileNemico() : Proiettile() {}
