@@ -142,6 +142,18 @@ namespace skydda {
     Componente* Mappa::getComponente(Coordinate& coordinate) const {
         return mappa[coordinate.y][coordinate.x];
     }
+    void Mappa::registraComponente(Effimera* effimera) {
+        effimere.push(effimera);
+        immettiComponente(effimera);
+    }
+    void Mappa::registraComponente(Proiettile* proiettile) {
+        proiettili.push_back(proiettile);
+        immettiComponente(proiettile);
+    }
+    void Mappa::registraComponente(Nemico* nemico) {
+        nemici.push_back(nemico);
+        immettiComponente(nemico);
+    }
     void Mappa::immettiComponente(Componente* componente, Coordinate& coordinate) {
         mappa[coordinate.y][coordinate.x] = componente;
     }

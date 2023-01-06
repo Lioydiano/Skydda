@@ -120,6 +120,11 @@ namespace skydda {
         // Restituisce il puntatore al Componente in una posizione
         Componente* getComponente(Coordinate&) const;
 
+        // Immette un Componente nella mappa registrandolo in tutte le strutture dati necessarie
+        void registraComponente(Effimera*);
+        void registraComponente(Proiettile*);
+        void registraComponente(Nemico*);
+
         // Immissione bruta di un Componente in una posizione (senza controlli)
         void immettiComponente(Componente*, Coordinate&);
         void immettiComponente(Componente*);
