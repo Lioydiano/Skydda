@@ -51,13 +51,14 @@ namespace skydda {
     public:
         Proiettile();
         Proiettile(Coordinate, TipoProiettile, Direzione, int);
-        Proiettile(char, Coordinate, TipoProiettile, Direzione);
         Proiettile(char, Coordinate, TipoProiettile, Direzione, int);
         ~Proiettile() override;
 
         TipoProiettile getOrigine() const;
         Direzione getDirezione() const;
         int getVelocita() const;
+
+        Coordinate calcolaProssimaPosizione() const; // Calcola la prossima posizione del proiettile
     };
 
     class ProiettileDifensore : public Proiettile {

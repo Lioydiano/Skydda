@@ -9,7 +9,8 @@ namespace skydda {
         Coordinate();
         Coordinate(unsigned short int, unsigned short int);
 
-        Coordinate operator+(const Coordinate& coordinate) const; // Coordinate + coordinate
-        bool operator==(const Coordinate& coordinate) const;
+        Coordinate operator+(const Coordinate&) const; // Coordinate + coordinate
+        Coordinate operator*(int) const; // Coordinate * intero
+        bool operator==(const Coordinate&) const;
     }; // matrice[y][x] - matrice[riga][colonna]
 };
