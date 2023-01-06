@@ -352,6 +352,25 @@ namespace skydda {
             }
         }
     }
+    void Mappa::muoviProiettili() {
+        std::vector<Proiettile*>::iterator it = proiettili.begin();
+        Proiettile* proiettile = nullptr;
+        Coordinate partenza, arrivo;
+        for (; it != proiettili.end(); it++) {
+            proiettile = *it;
+            partenza = proiettile->getCoordinate();
+            try {
+                partenza.valida(altezza, larghezza);
+            } catch (std::runtime_error& e) {
+                // Il proiettile è uscito dalla mappa, quindi viene eliminato
+                proiettili.erase(it);
+                delete proiettile;
+                continue;
+            }
+            arrivo = proiettile->calcolaProssimaPosizione();
+            spostaComponente(partenza, arrivo);
+        }
+    }
     ANSI::Stile stileBordo(
         ANSI::ColoreTesto::BIANCO,
         ANSI::ColoreSfondo::S_GIALLO,
