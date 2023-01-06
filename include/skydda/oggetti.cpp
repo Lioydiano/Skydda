@@ -197,9 +197,13 @@ namespace skydda {
         std::cout << ' ';
     }
     void Mappa::spostaComponente(Coordinate& partenza, Coordinate& arrivo) {
+        arrivo.valida(larghezza, altezza);
         if (mappa[arrivo.y][arrivo.x] == nullptr) {
             mappa[arrivo.y][arrivo.x] = mappa[partenza.y][partenza.x];
             mappa[partenza.y][partenza.x] = nullptr;
+            mappa[arrivo.y][arrivo.x]->setCoordinate(arrivo);
+            cancellaComponente(partenza);
+            stampaComponente(arrivo);
         } else {
             switch (mappa[partenza.y][partenza.x]->getTipo()) {
                 case TipoComponente::DIFENSORE: { // Collisione Difensore - ???
@@ -207,6 +211,7 @@ namespace skydda {
                         case TipoComponente::PROIETTILE_NEMICO: { // Collisione Difensore - Proiettile nemico
                             // Morte del Difensore
                             mappa[arrivo.y][arrivo.x] = mappa[partenza.y][partenza.x];
+                            mappa[arrivo.y][arrivo.x]->setCoordinate(arrivo);
                             mappa[partenza.y][partenza.x] = nullptr;
                             cancellaComponente(partenza);
                             stampaComponente(arrivo);
