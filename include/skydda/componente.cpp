@@ -27,6 +27,6 @@ namespace skydda {
     }
     void Componente::stampa() {
         this->stile.applica();
-        std::cout << this->carattere << '\n';
+        std::cout << this->carattere;
     }
 }
