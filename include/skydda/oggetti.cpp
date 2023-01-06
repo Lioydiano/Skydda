@@ -7,10 +7,10 @@
 
 namespace skydda {
     std::unordered_map<Direzione, Coordinate> direzioni = {
-        {NORD, Coordinate(0, -1)},
-        {EST, Coordinate(1, 0)},
-        {SUD, Coordinate(0, 1)},
-        {OVEST, Coordinate(-1, 0)}
+        {NORD, Coordinate(-1, 0)},
+        {EST, Coordinate(0, 1)},
+        {SUD, Coordinate(1, 0)},
+        {OVEST, Coordinate(0, -1)}
     };
     std::unordered_map<Direzione, char> direzioneCarattere = {
         {NORD, '^'},
