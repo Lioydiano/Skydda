@@ -80,6 +80,22 @@ namespace skydda {
         return coordinate + direzioni[direzione] * velocita;
     }
 
+    ProiettileDifensore::ProiettileDifensore() : Proiettile() {}
+    ProiettileDifensore::ProiettileDifensore(Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_) {}
+    ProiettileDifensore::ProiettileDifensore(char carattere_, Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(carattere_, coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_) {}
+    ProiettileDifensore::~ProiettileDifensore() {}
+    bool ProiettileDifensore::getSopraTerreno() const {
+        return sopraTerreno;
+    }
+    void ProiettileDifensore::setSopraTerreno(bool sopraTerreno_) {
+        sopraTerreno = sopraTerreno_;
+    }
+
+    ProiettileNemico::ProiettileNemico() : Proiettile() {}
+    ProiettileNemico::ProiettileNemico(Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(coordinate_, TipoProiettile::P_NEMICO, direzione_, velocita_) {}
+    ProiettileNemico::ProiettileNemico(char carattere_, Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(carattere_, coordinate_, TipoProiettile::P_NEMICO, direzione_, velocita_) {}
+    ProiettileNemico::~ProiettileNemico() {}
+
     ANSI::Stile stileTerreno(
         ANSI::ColoreTesto::ROSSO,
         ANSI::ColoreSfondo::S_ROSSO,
@@ -331,6 +347,10 @@ namespace skydda {
     void Mappa::stampa() const {
         pulisciSchermo();
         stileBordo.applica();
+        for (int i = 0; i < larghezza + 2; i++) {
+            std::cout << '@';
+        }
+        std::cout << '\n';
         for (int i = 0; i < altezza; i++) {
             bool spazioPrecedente = false; // Serve per evitare di ripristinare lo stile ANSI ogni volta che si stampa uno spazio
             std::cout << '@';
@@ -343,6 +363,7 @@ namespace skydda {
                         std::cout << ' ';
                     } else {
                         spazioPrecedente = true;
+                        ANSI::reimposta();
                         std::cout << ' ';
                     }
                 }
@@ -350,6 +371,9 @@ namespace skydda {
             stileBordo.applica();
             std::cout << '@';
             std::cout << '\n';
+        }
+        for (int i = 0; i < larghezza + 2; i++) {
+            std::cout << '@';
         }
         ANSI::reimposta();
         std::flush(std::cout);
