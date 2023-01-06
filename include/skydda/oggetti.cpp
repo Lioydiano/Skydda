@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include "ANSI.cpp"
 #include "cursore.cpp"
 #include "componente.cpp"
@@ -288,6 +289,18 @@ namespace skydda {
                         }
                         case TipoComponente::PROIETTILE_NEMICO: { // Collisione Proiettile difensore - Proiettile nemico
                             // Distruzione dei due proiettili e creazione dell'effimera
+                            proiettili.erase(
+                                std::find_if(
+                                    proiettili.begin(),
+                                    proiettili.end(),
+                                    [partenza, arrivo](Proiettile* p) {
+                                        return (
+                                            p->getCoordinate() == partenza
+                                            || p->getCoordinate() == arrivo
+                                        );
+                                    }
+                                )
+                            );
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile nemico
                             delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile difensore
                             immettiComponente(new Effimera(arrivo), arrivo);
@@ -306,6 +319,7 @@ namespace skydda {
                                 mappa[partenza.y][partenza.x] = nullptr;
                             }
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del terreno
+                            proiettile->setCoordinate(arrivo);
                             immettiComponente(proiettile, arrivo);
                             cancellaComponente(partenza);
                             stampaComponente(arrivo);
@@ -321,6 +335,15 @@ namespace skydda {
                         case TipoComponente::TERRENO: { // Collisione Proiettile nemico - Terreno
                             // Spostamento del proiettile sul Terreno
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del terreno
+                            proiettili.erase(
+                                std::find_if(
+                                    proiettili.begin(),
+                                    proiettili.end(),
+                                    [&](Proiettile* p) {
+                                        return p->getCoordinate() == partenza;
+                                    }
+                                )
+                            );
                             delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
                             mappa[partenza.y][partenza.x] = nullptr;
                             immettiComponente(new Effimera(arrivo), arrivo);
@@ -331,6 +354,15 @@ namespace skydda {
                         case TipoComponente::PROIETTILE_DIFENSORE: { // Collisione Proiettile nemico - Proiettile difensore
                             // Distruzione dei due proiettili e creazione dell'effimera
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile difensore
+                            proiettili.erase(
+                                std::find_if(
+                                    proiettili.begin(),
+                                    proiettili.end(),
+                                    [&](Proiettile* p) {
+                                        return p->getCoordinate() == partenza;
+                                    }
+                                )
+                            );
                             delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
                             immettiComponente(new Effimera(arrivo), arrivo);
                             effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
@@ -339,12 +371,28 @@ namespace skydda {
                         }
                         case TipoComponente::NEMICO: { // Collisione Proiettile nemico - Nemico
                             // Incremento del Nemico
+                            proiettili.erase(
+                                std::find_if(
+                                    proiettili.begin(),
+                                    proiettili.end(),
+                                    [&](Proiettile* p) {
+                                        return p->getCoordinate() == partenza;
+                                    }
+                                )
+                            );
                             delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
                             mappa[partenza.y][partenza.x] = nullptr;
                             Nemico* nemico = (Nemico*)mappa[arrivo.y][arrivo.x];
                             nemico->setVita(std::max(nemico->getVita() + 1, 9));
                             stampaComponente(arrivo);
                             cancellaComponente(partenza);
+                        }
+                        case TipoComponente::DIFENSORE: { // Collisione Proiettile nemico - Difensore
+                            // Morte del Difensore
+                            delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
+                            mappa[partenza.y][partenza.x] = nullptr;
+                            cancellaComponente(partenza);
+                            exit(0);
                         }
                         default:
                             break;
