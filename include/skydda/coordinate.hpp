@@ -9,6 +9,8 @@ namespace skydda {
         Coordinate();
         Coordinate(unsigned short int, unsigned short int);
 
+        void valida(short int, short int); // Controlla che le coordinate siano valide
+
         Coordinate operator+(const Coordinate&) const; // Coordinate + coordinate
         Coordinate operator*(int) const; // Coordinate * intero
         bool operator==(const Coordinate&) const;
