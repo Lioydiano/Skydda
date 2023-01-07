@@ -87,8 +87,8 @@ namespace skydda {
     }
 
     ProiettileDifensore::ProiettileDifensore() : Proiettile() {}
-    ProiettileDifensore::ProiettileDifensore(Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_) {}
-    ProiettileDifensore::ProiettileDifensore(char carattere_, Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(carattere_, coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_) {}
+    ProiettileDifensore::ProiettileDifensore(Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_), sopraTerreno(true) {}
+    ProiettileDifensore::ProiettileDifensore(char carattere_, Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(carattere_, coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_), sopraTerreno(true) {}
     ProiettileDifensore::~ProiettileDifensore() {}
     bool ProiettileDifensore::getSopraTerreno() const {
         return sopraTerreno;
