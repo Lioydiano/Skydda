@@ -296,6 +296,11 @@ namespace skydda {
                         }
                         case TipoComponente::PROIETTILE_NEMICO: { // Collisione Proiettile difensore - Proiettile nemico
                             // Distruzione dei due proiettili e creazione dell'effimera
+                            ProiettileDifensore* proiettile = (ProiettileDifensore*)mappa[partenza.y][partenza.x];
+                            if (proiettile->getSopraTerreno()) {
+                                // Il proiettile si trova sull'isola, quindi sul Terreno che va ripristinato
+                                immettiComponente(new Terreno(partenza), partenza);
+                            }
                             proiettili.erase(
                                 std::find_if(
                                     proiettili.begin(),
