@@ -141,8 +141,11 @@ namespace skydda {
 
         void spostaComponente(Coordinate&, Coordinate&); // Questa è la funzione complessa: sposta un componente da una posizione ad un'altra, ma in questo deve anche saper gestire gli impatti con gli altri componenti
 
+        void generaProiettile(Coordinate&, TipoProiettile, Direzione, int); // Genera un proiettile in una posizione (con controlli)
+
         void muoviProiettili(); // Muove tutti i proiettili nella mappa
         void rimuoviEffimere(); // Rimuove tutte le effimere nella mappa
+        void azionaNemici(); // Fai compiere dei movimenti e sparare dei proiettili ai nemici
 
         void stampa() const;
     };
