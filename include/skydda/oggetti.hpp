@@ -56,6 +56,7 @@ namespace skydda {
 
         TipoProiettile getOrigine() const;
         Direzione getDirezione() const;
+        void setDirezione(Direzione);
         int getVelocita() const;
 
         Coordinate calcolaProssimaPosizione() const; // Calcola la prossima posizione del proiettile

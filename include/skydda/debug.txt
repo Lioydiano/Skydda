@@ -1,0 +1,40 @@
+Muovi 1 proiettili
+Muovi proiettile da (17, 19) a (17, 18)
+Muovi 1 proiettili
+Muovi proiettile da (17, 18) a (17, 17)
+Muovi 1 proiettili
+Muovi proiettile da (17, 17) a (17, 16)
+Muovi 1 proiettili
+Muovi proiettile da (17, 16) a (17, 15)
+Muovi 1 proiettili
+Muovi proiettile da (17, 15) a (17, 14)
+Muovi 1 proiettili
+Muovi proiettile da (17, 14) a (17, 13)
+Muovi 1 proiettili
+Muovi proiettile da (17, 13) a (17, 12)
+Muovi 1 proiettili
+Muovi proiettile da (17, 12) a (17, 11)
+Muovi 1 proiettili
+Muovi proiettile da (17, 11) a (17, 10)
+Muovi 1 proiettili
+Muovi proiettile da (17, 10) a (17, 9)
+Muovi 1 proiettili
+Muovi proiettile da (17, 9) a (17, 8)
+Muovi 1 proiettili
+Muovi proiettile da (17, 8) a (17, 7)
+Muovi 1 proiettili
+Muovi proiettile da (17, 7) a (17, 6)
+Muovi 1 proiettili
+Muovi proiettile da (17, 6) a (17, 5)
+Muovi 1 proiettili
+Muovi proiettile da (17, 5) a (17, 4)
+Muovi 1 proiettili
+Muovi proiettile da (17, 4) a (17, 3)
+Muovi 1 proiettili
+Muovi proiettile da (17, 3) a (17, 2)
+Muovi 1 proiettili
+Muovi proiettile da (17, 2) a (17, 1)
+Muovi 1 proiettili
+Muovi proiettile da (17, 1) a (17, 0)
+Muovi 1 proiettili
+Muovi proiettile da (17, 0) a (17, 65535)

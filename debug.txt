@@ -1,0 +1,1844 @@
+Mappa::muoviProiettili() 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 19)
+spostamento: (0, 65535)
+Sposto 4 da (17, 19) a (17, 18)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 3)
+spostamento: (1, 0)
+Sposto 3 da (2, 3) a (3, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 4)
+spostamento: (0, 1)
+Sposto 3 da (2, 4) a (2, 5)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 18)
+spostamento: (0, 65535)
+Sposto 4 da (17, 18) a (17, 17)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (3, 3)
+spostamento: (1, 0)
+Sposto 3 da (3, 3) a (4, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 5)
+spostamento: (0, 1)
+Sposto 3 da (2, 5) a (2, 6)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 17)
+spostamento: (0, 65535)
+Sposto 4 da (17, 17) a (17, 16)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (4, 3)
+spostamento: (1, 0)
+Sposto 3 da (4, 3) a (5, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 6)
+spostamento: (0, 1)
+Sposto 3 da (2, 6) a (2, 7)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 16)
+spostamento: (0, 65535)
+Sposto 4 da (17, 16) a (17, 15)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (5, 3)
+spostamento: (1, 0)
+Sposto 3 da (5, 3) a (6, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 7)
+spostamento: (0, 1)
+Sposto 3 da (2, 7) a (2, 8)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 15)
+spostamento: (0, 65535)
+Sposto 4 da (17, 15) a (17, 14)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (6, 3)
+spostamento: (1, 0)
+Sposto 3 da (6, 3) a (7, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 8)
+spostamento: (0, 1)
+Sposto 3 da (2, 8) a (2, 9)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 14)
+spostamento: (0, 65535)
+Sposto 4 da (17, 14) a (17, 13)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (7, 3)
+spostamento: (1, 0)
+Sposto 3 da (7, 3) a (8, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 9)
+spostamento: (0, 1)
+Sposto 3 da (2, 9) a (2, 10)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+Mappa::rimuoviEffimere() 0
+Mappa::generaProiettile() [(0, 1), 0, 1, 1]
+Mappa::generaProiettile() [(0, 48), 1, 3, 1]
+Mappa::muoviProiettili() 5
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 13)
+spostamento: (0, 65535)
+Sposto 4 da (17, 13) a (17, 12)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (8, 3)
+spostamento: (1, 0)
+Sposto 3 da (8, 3) a (9, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 10)
+spostamento: (0, 1)
+Sposto 3 da (2, 10) a (2, 11)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 1)
+spostamento: (0, 1)
+Sposto 3 da (0, 1) a (0, 2)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 48)
+spostamento: (0, 65535)
+Sposto 4 da (0, 48) a (0, 47)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 5
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 12)
+spostamento: (0, 65535)
+Sposto 4 da (17, 12) a (17, 11)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (9, 3)
+spostamento: (1, 0)
+Sposto 3 da (9, 3) a (10, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 11)
+spostamento: (0, 1)
+Sposto 3 da (2, 11) a (2, 12)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 2)
+spostamento: (0, 1)
+Sposto 3 da (0, 2) a (0, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 47)
+spostamento: (0, 65535)
+Sposto 4 da (0, 47) a (0, 46)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 5
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 11)
+spostamento: (0, 65535)
+Sposto 4 da (17, 11) a (17, 10)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (10, 3)
+spostamento: (1, 0)
+Sposto 3 da (10, 3) a (11, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 12)
+spostamento: (0, 1)
+Sposto 3 da (2, 12) a (2, 13)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 3)
+spostamento: (0, 1)
+Sposto 3 da (0, 3) a (0, 4)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 46)
+spostamento: (0, 65535)
+Sposto 4 da (0, 46) a (0, 45)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 5
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 10)
+spostamento: (0, 65535)
+Sposto 4 da (17, 10) a (17, 9)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (11, 3)
+spostamento: (1, 0)
+Sposto 3 da (11, 3) a (12, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 13)
+spostamento: (0, 1)
+Sposto 3 da (2, 13) a (2, 14)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 4)
+spostamento: (0, 1)
+Sposto 3 da (0, 4) a (0, 5)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 45)
+spostamento: (0, 65535)
+Sposto 4 da (0, 45) a (0, 44)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 5
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 9)
+spostamento: (0, 65535)
+Sposto 4 da (17, 9) a (17, 8)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (12, 3)
+spostamento: (1, 0)
+Sposto 3 da (12, 3) a (13, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 14)
+spostamento: (0, 1)
+Sposto 3 da (2, 14) a (2, 15)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 5)
+spostamento: (0, 1)
+Sposto 3 da (0, 5) a (0, 6)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 44)
+spostamento: (0, 65535)
+Sposto 4 da (0, 44) a (0, 43)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 5
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 8)
+spostamento: (0, 65535)
+Sposto 4 da (17, 8) a (17, 7)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (13, 3)
+spostamento: (1, 0)
+Sposto 3 da (13, 3) a (14, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 15)
+spostamento: (0, 1)
+Sposto 3 da (2, 15) a (2, 16)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 1)
+Sposto 3 da (0, 6) a (0, 7)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 65535)
+Sposto 4 da (0, 43) a (0, 42)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::generaProiettile() [(0, 2), 0, 1, 2]
+Mappa::generaProiettile() [(0, 47), 1, 3, 2]
+Mappa::muoviProiettili() 7
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 7)
+spostamento: (0, 65535)
+Sposto 4 da (17, 7) a (17, 6)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (14, 3)
+spostamento: (1, 0)
+Sposto 3 da (14, 3) a (15, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 16)
+spostamento: (0, 1)
+Sposto 3 da (2, 16) a (2, 17)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 7)
+spostamento: (0, 1)
+Sposto 3 da (0, 7) a (0, 8)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 42)
+spostamento: (0, 65535)
+Sposto 4 da (0, 42) a (0, 41)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 2)
+spostamento: (0, 2)
+Sposto 3 da (0, 2) a (0, 4)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 47)
+spostamento: (0, 131070)
+Sposto 4 da (0, 47) a (0, 45)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 7
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 6)
+spostamento: (0, 65535)
+Sposto 4 da (17, 6) a (17, 5)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (15, 3)
+spostamento: (1, 0)
+Sposto 3 da (15, 3) a (16, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 17)
+spostamento: (0, 1)
+Sposto 3 da (2, 17) a (2, 18)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 8)
+spostamento: (0, 1)
+Sposto 3 da (0, 8) a (0, 9)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 41)
+spostamento: (0, 65535)
+Sposto 4 da (0, 41) a (0, 40)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 4)
+spostamento: (0, 2)
+Sposto 3 da (0, 4) a (0, 6)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 45)
+spostamento: (0, 131070)
+Sposto 4 da (0, 45) a (0, 43)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 7
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 5)
+spostamento: (0, 65535)
+Sposto 4 da (17, 5) a (17, 4)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (16, 3)
+spostamento: (1, 0)
+Sposto 3 da (16, 3) a (17, 3)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 18)
+spostamento: (0, 1)
+Sposto 3 da (2, 18) a (2, 19)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 9)
+spostamento: (0, 1)
+Sposto 3 da (0, 9) a (0, 10)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 40)
+spostamento: (0, 65535)
+Sposto 4 da (0, 40) a (0, 39)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 2)
+Sposto 3 da (0, 6) a (0, 8)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 131070)
+Sposto 4 da (0, 43) a (0, 41)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 7
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (17, 4)
+spostamento: (0, 65535)
+Sposto 4 da (17, 4) a (17, 3)
+Impatto 4 con 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 10)
+spostamento: (0, 1)
+Sposto 3 da (0, 10) a (0, 11)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 39)
+spostamento: (0, 65535)
+Sposto 4 da (0, 39) a (0, 38)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 8)
+spostamento: (0, 2)
+Sposto 3 da (0, 8) a (0, 10)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 41)
+spostamento: (0, 131070)
+Sposto 4 da (0, 41) a (0, 39)
+Sposto 4
+Mappa::rimuoviEffimere() 1
+Mappa::generaProiettile() [(0, 1), 0, 1, 1]
+Mappa::generaProiettile() [(0, 48), 1, 3, 1]
+Mappa::muoviProiettili() 7
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 19)
+spostamento: (0, 1)
+Sposto 3 da (2, 19) a (2, 20)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 11)
+spostamento: (0, 1)
+Sposto 3 da (0, 11) a (0, 12)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 38)
+spostamento: (0, 65535)
+Sposto 4 da (0, 38) a (0, 37)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 10)
+spostamento: (0, 2)
+Sposto 3 da (0, 10) a (0, 12)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 39)
+spostamento: (0, 131070)
+Sposto 4 da (0, 39) a (0, 37)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 1)
+spostamento: (0, 1)
+Sposto 3 da (0, 1) a (0, 2)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 48)
+spostamento: (0, 65535)
+Sposto 4 da (0, 48) a (0, 47)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::generaProiettile() [(0, 1), 0, 1, 1]
+Mappa::generaProiettile() [(0, 48), 1, 3, 1]
+Mappa::muoviProiettili() 9
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 20)
+spostamento: (0, 1)
+Sposto 3 da (2, 20) a (2, 21)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 12)
+spostamento: (0, 1)
+Sposto 3 da (0, 12) a (0, 13)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 37)
+spostamento: (0, 65535)
+Sposto 4 da (0, 37) a (0, 36)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 10)
+spostamento: (0, 2)
+Sposto 3 da (0, 10) a (0, 12)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 39)
+spostamento: (0, 131070)
+Sposto 4 da (0, 39) a (0, 37)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 2)
+spostamento: (0, 1)
+Sposto 3 da (0, 2) a (0, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 47)
+spostamento: (0, 65535)
+Sposto 4 da (0, 47) a (0, 46)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 1)
+spostamento: (0, 1)
+Sposto 3 da (0, 1) a (0, 2)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 48)
+spostamento: (0, 65535)
+Sposto 4 da (0, 48) a (0, 47)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 9
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 21)
+spostamento: (0, 1)
+Sposto 3 da (2, 21) a (2, 22)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 13)
+spostamento: (0, 1)
+Sposto 3 da (0, 13) a (0, 14)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 36)
+spostamento: (0, 65535)
+Sposto 4 da (0, 36) a (0, 35)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 12)
+spostamento: (0, 2)
+Sposto 3 da (0, 12) a (0, 14)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 37)
+spostamento: (0, 131070)
+Sposto 4 da (0, 37) a (0, 35)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 3)
+spostamento: (0, 1)
+Sposto 3 da (0, 3) a (0, 4)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 46)
+spostamento: (0, 65535)
+Sposto 4 da (0, 46) a (0, 45)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 2)
+spostamento: (0, 1)
+Sposto 3 da (0, 2) a (0, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 47)
+spostamento: (0, 65535)
+Sposto 4 da (0, 47) a (0, 46)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::generaProiettile() [(0, 2), 0, 1, 2]
+Mappa::generaProiettile() [(0, 47), 1, 3, 2]
+Mappa::muoviProiettili() 11
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 22)
+spostamento: (0, 1)
+Sposto 3 da (2, 22) a (2, 23)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 14)
+spostamento: (0, 1)
+Sposto 3 da (0, 14) a (0, 15)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 35)
+spostamento: (0, 65535)
+Sposto 4 da (0, 35) a (0, 34)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 12)
+spostamento: (0, 2)
+Sposto 3 da (0, 12) a (0, 14)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 37)
+spostamento: (0, 131070)
+Sposto 4 da (0, 37) a (0, 35)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 4)
+spostamento: (0, 1)
+Sposto 3 da (0, 4) a (0, 5)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 45)
+spostamento: (0, 65535)
+Sposto 4 da (0, 45) a (0, 44)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 3)
+spostamento: (0, 1)
+Sposto 3 da (0, 3) a (0, 4)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 46)
+spostamento: (0, 65535)
+Sposto 4 da (0, 46) a (0, 45)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 2)
+spostamento: (0, 2)
+Sposto 3 da (0, 2) a (0, 4)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 47)
+spostamento: (0, 131070)
+Sposto 4 da (0, 47) a (0, 45)
+Impatto 4 con 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 11
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 23)
+spostamento: (0, 1)
+Sposto 3 da (2, 23) a (2, 24)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 15)
+spostamento: (0, 1)
+Sposto 3 da (0, 15) a (0, 16)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 34)
+spostamento: (0, 65535)
+Sposto 4 da (0, 34) a (0, 33)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 14)
+spostamento: (0, 2)
+Sposto 3 da (0, 14) a (0, 16)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 35)
+spostamento: (0, 131070)
+Sposto 4 da (0, 35) a (0, 33)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 5)
+spostamento: (0, 1)
+Sposto 3 da (0, 5) a (0, 6)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 44)
+spostamento: (0, 65535)
+Sposto 4 da (0, 44) a (0, 43)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 4)
+spostamento: (0, 1)
+Sposto 3 da (0, 4) a (0, 5)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 45)
+spostamento: (0, 65535)
+Sposto 4 da (0, 45) a (0, 44)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 2)
+spostamento: (0, 2)
+Sposto 3 da (0, 2) a (0, 4)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 47)
+spostamento: (0, 131070)
+Sposto 4 da (0, 47) a (0, 45)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::generaProiettile() [(0, 3), 0, 1, 3]
+Mappa::generaProiettile() [(0, 46), 1, 3, 3]
+Mappa::muoviProiettili() 13
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 24)
+spostamento: (0, 1)
+Sposto 3 da (2, 24) a (2, 25)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 16)
+spostamento: (0, 1)
+Sposto 3 da (0, 16) a (0, 17)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 33)
+spostamento: (0, 65535)
+Sposto 4 da (0, 33) a (0, 32)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 14)
+spostamento: (0, 2)
+Sposto 3 da (0, 14) a (0, 16)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 35)
+spostamento: (0, 131070)
+Sposto 4 da (0, 35) a (0, 33)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 1)
+Sposto 3 da (0, 6) a (0, 7)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 65535)
+Sposto 4 da (0, 43) a (0, 42)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 5)
+spostamento: (0, 1)
+Sposto 3 da (0, 5) a (0, 6)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 44)
+spostamento: (0, 65535)
+Sposto 4 da (0, 44) a (0, 43)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 4)
+spostamento: (0, 2)
+Sposto 3 da (0, 4) a (0, 6)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 45)
+spostamento: (0, 131070)
+Sposto 4 da (0, 45) a (0, 43)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 3)
+spostamento: (0, 3)
+Sposto 3 da (0, 3) a (0, 6)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 46)
+spostamento: (0, 196605)
+Sposto 4 da (0, 46) a (0, 43)
+Impatto 4 con 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 13
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 25)
+spostamento: (0, 1)
+Sposto 3 da (2, 25) a (2, 26)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 17)
+spostamento: (0, 1)
+Sposto 3 da (0, 17) a (0, 18)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 32)
+spostamento: (0, 65535)
+Sposto 4 da (0, 32) a (0, 31)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 16)
+spostamento: (0, 2)
+Sposto 3 da (0, 16) a (0, 18)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 33)
+spostamento: (0, 131070)
+Sposto 4 da (0, 33) a (0, 31)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 7)
+spostamento: (0, 1)
+Sposto 3 da (0, 7) a (0, 8)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 42)
+spostamento: (0, 65535)
+Sposto 4 da (0, 42) a (0, 41)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 1)
+Sposto 3 da (0, 6) a (0, 7)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 65535)
+Sposto 4 da (0, 43) a (0, 42)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 4)
+spostamento: (0, 2)
+Sposto 3 da (0, 4) a (0, 6)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 45)
+spostamento: (0, 131070)
+Sposto 4 da (0, 45) a (0, 43)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 3)
+spostamento: (0, 3)
+Sposto 3 da (0, 3) a (0, 6)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 46)
+spostamento: (0, 196605)
+Sposto 4 da (0, 46) a (0, 43)
+Impatto 4 con 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 13
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 26)
+spostamento: (0, 1)
+Sposto 3 da (2, 26) a (2, 27)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 18)
+spostamento: (0, 1)
+Sposto 3 da (0, 18) a (0, 19)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 31)
+spostamento: (0, 65535)
+Sposto 4 da (0, 31) a (0, 30)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 16)
+spostamento: (0, 2)
+Sposto 3 da (0, 16) a (0, 18)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 33)
+spostamento: (0, 131070)
+Sposto 4 da (0, 33) a (0, 31)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 8)
+spostamento: (0, 1)
+Sposto 3 da (0, 8) a (0, 9)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 41)
+spostamento: (0, 65535)
+Sposto 4 da (0, 41) a (0, 40)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 7)
+spostamento: (0, 1)
+Sposto 3 da (0, 7) a (0, 8)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 42)
+spostamento: (0, 65535)
+Sposto 4 da (0, 42) a (0, 41)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 2)
+Sposto 3 da (0, 6) a (0, 8)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 131070)
+Sposto 4 da (0, 43) a (0, 41)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 3)
+spostamento: (0, 3)
+Sposto 3 da (0, 3) a (0, 6)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 46)
+spostamento: (0, 196605)
+Sposto 4 da (0, 46) a (0, 43)
+Impatto 4 con 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 13
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 27)
+spostamento: (0, 1)
+Sposto 3 da (2, 27) a (2, 28)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 19)
+spostamento: (0, 1)
+Sposto 3 da (0, 19) a (0, 20)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 30)
+spostamento: (0, 65535)
+Sposto 4 da (0, 30) a (0, 29)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 18)
+spostamento: (0, 2)
+Sposto 3 da (0, 18) a (0, 20)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 31)
+spostamento: (0, 131070)
+Sposto 4 da (0, 31) a (0, 29)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 9)
+spostamento: (0, 1)
+Sposto 3 da (0, 9) a (0, 10)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 40)
+spostamento: (0, 65535)
+Sposto 4 da (0, 40) a (0, 39)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 8)
+spostamento: (0, 1)
+Sposto 3 da (0, 8) a (0, 9)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 41)
+spostamento: (0, 65535)
+Sposto 4 da (0, 41) a (0, 40)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 2)
+Sposto 3 da (0, 6) a (0, 8)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 131070)
+Sposto 4 da (0, 43) a (0, 41)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 3)
+spostamento: (0, 3)
+Sposto 3 da (0, 3) a (0, 6)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 46)
+spostamento: (0, 196605)
+Sposto 4 da (0, 46) a (0, 43)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::generaProiettile() [(0, 3), 0, 1, 3]
+Mappa::generaProiettile() [(0, 46), 1, 3, 3]
+Mappa::muoviProiettili() 15
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 28)
+spostamento: (0, 1)
+Sposto 3 da (2, 28) a (2, 29)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 20)
+spostamento: (0, 1)
+Sposto 3 da (0, 20) a (0, 21)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 29)
+spostamento: (0, 65535)
+Sposto 4 da (0, 29) a (0, 28)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 18)
+spostamento: (0, 2)
+Sposto 3 da (0, 18) a (0, 20)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 31)
+spostamento: (0, 131070)
+Sposto 4 da (0, 31) a (0, 29)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 10)
+spostamento: (0, 1)
+Sposto 3 da (0, 10) a (0, 11)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 39)
+spostamento: (0, 65535)
+Sposto 4 da (0, 39) a (0, 38)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 9)
+spostamento: (0, 1)
+Sposto 3 da (0, 9) a (0, 10)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 40)
+spostamento: (0, 65535)
+Sposto 4 da (0, 40) a (0, 39)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 8)
+spostamento: (0, 2)
+Sposto 3 da (0, 8) a (0, 10)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 41)
+spostamento: (0, 131070)
+Sposto 4 da (0, 41) a (0, 39)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 3)
+Sposto 3 da (0, 6) a (0, 9)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 196605)
+Sposto 4 da (0, 43) a (0, 40)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 3)
+spostamento: (0, 3)
+Sposto 3 da (0, 3) a (0, 6)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 46)
+spostamento: (0, 196605)
+Sposto 4 da (0, 46) a (0, 43)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::generaProiettile() [(0, 1), 0, 1, 1]
+Mappa::generaProiettile() [(0, 48), 1, 3, 1]
+Mappa::muoviProiettili() 17
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 29)
+spostamento: (0, 1)
+Sposto 3 da (2, 29) a (2, 30)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 21)
+spostamento: (0, 1)
+Sposto 3 da (0, 21) a (0, 22)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 28)
+spostamento: (0, 65535)
+Sposto 4 da (0, 28) a (0, 27)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 20)
+spostamento: (0, 2)
+Sposto 3 da (0, 20) a (0, 22)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 29)
+spostamento: (0, 131070)
+Sposto 4 da (0, 29) a (0, 27)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 11)
+spostamento: (0, 1)
+Sposto 3 da (0, 11) a (0, 12)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 38)
+spostamento: (0, 65535)
+Sposto 4 da (0, 38) a (0, 37)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 10)
+spostamento: (0, 1)
+Sposto 3 da (0, 10) a (0, 11)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 39)
+spostamento: (0, 65535)
+Sposto 4 da (0, 39) a (0, 38)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 8)
+spostamento: (0, 2)
+Sposto 3 da (0, 8) a (0, 10)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 41)
+spostamento: (0, 131070)
+Sposto 4 da (0, 41) a (0, 39)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 9)
+spostamento: (0, 3)
+Sposto 3 da (0, 9) a (0, 12)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 40)
+spostamento: (0, 196605)
+Sposto 4 da (0, 40) a (0, 37)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 3)
+Sposto 3 da (0, 6) a (0, 9)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 196605)
+Sposto 4 da (0, 43) a (0, 40)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 1)
+spostamento: (0, 1)
+Sposto 3 da (0, 1) a (0, 2)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 48)
+spostamento: (0, 65535)
+Sposto 4 da (0, 48) a (0, 47)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 17
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 30)
+spostamento: (0, 1)
+Sposto 3 da (2, 30) a (2, 31)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 22)
+spostamento: (0, 1)
+Sposto 3 da (0, 22) a (0, 23)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 27)
+spostamento: (0, 65535)
+Sposto 4 da (0, 27) a (0, 26)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 20)
+spostamento: (0, 2)
+Sposto 3 da (0, 20) a (0, 22)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 29)
+spostamento: (0, 131070)
+Sposto 4 da (0, 29) a (0, 27)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 12)
+spostamento: (0, 1)
+Sposto 3 da (0, 12) a (0, 13)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 37)
+spostamento: (0, 65535)
+Sposto 4 da (0, 37) a (0, 36)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 11)
+spostamento: (0, 1)
+Sposto 3 da (0, 11) a (0, 12)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 38)
+spostamento: (0, 65535)
+Sposto 4 da (0, 38) a (0, 37)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 10)
+spostamento: (0, 2)
+Sposto 3 da (0, 10) a (0, 12)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 39)
+spostamento: (0, 131070)
+Sposto 4 da (0, 39) a (0, 37)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 9)
+spostamento: (0, 3)
+Sposto 3 da (0, 9) a (0, 12)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 40)
+spostamento: (0, 196605)
+Sposto 4 da (0, 40) a (0, 37)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 3)
+Sposto 3 da (0, 6) a (0, 9)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 196605)
+Sposto 4 da (0, 43) a (0, 40)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 2)
+spostamento: (0, 1)
+Sposto 3 da (0, 2) a (0, 3)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 47)
+spostamento: (0, 65535)
+Sposto 4 da (0, 47) a (0, 46)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 17
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 31)
+spostamento: (0, 1)
+Sposto 3 da (2, 31) a (2, 32)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 23)
+spostamento: (0, 1)
+Sposto 3 da (0, 23) a (0, 24)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 26)
+spostamento: (0, 65535)
+Sposto 4 da (0, 26) a (0, 25)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 22)
+spostamento: (0, 2)
+Sposto 3 da (0, 22) a (0, 24)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 27)
+spostamento: (0, 131070)
+Sposto 4 da (0, 27) a (0, 25)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 13)
+spostamento: (0, 1)
+Sposto 3 da (0, 13) a (0, 14)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 36)
+spostamento: (0, 65535)
+Sposto 4 da (0, 36) a (0, 35)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 12)
+spostamento: (0, 1)
+Sposto 3 da (0, 12) a (0, 13)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 37)
+spostamento: (0, 65535)
+Sposto 4 da (0, 37) a (0, 36)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 10)
+spostamento: (0, 2)
+Sposto 3 da (0, 10) a (0, 12)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 39)
+spostamento: (0, 131070)
+Sposto 4 da (0, 39) a (0, 37)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 9)
+spostamento: (0, 3)
+Sposto 3 da (0, 9) a (0, 12)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 40)
+spostamento: (0, 196605)
+Sposto 4 da (0, 40) a (0, 37)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 3)
+Sposto 3 da (0, 6) a (0, 9)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 196605)
+Sposto 4 da (0, 43) a (0, 40)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 3)
+spostamento: (0, 1)
+Sposto 3 da (0, 3) a (0, 4)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 46)
+spostamento: (0, 65535)
+Sposto 4 da (0, 46) a (0, 45)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::muoviProiettili() 17
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 32)
+spostamento: (0, 1)
+Sposto 3 da (2, 32) a (2, 33)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 24)
+spostamento: (0, 1)
+Sposto 3 da (0, 24) a (0, 25)
+Impatto 3 con 4
+Collisione Proiettile difensore - Proiettile nemico
+	Eliminazione dei proiettili dal vettore effettuata
+	Eliminazione dei proiettili dalla memoria effettuata
+	Inserimento dell'effimera nella coda effettuata
+	Stampa dell'effimera effettuata
+	Cancellazione della cella di partenza effettuata
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 27)
+spostamento: (0, 131070)
+Sposto 4 da (0, 27) a (0, 25)
+Impatto 4 con 6
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 14)
+spostamento: (0, 1)
+Sposto 3 da (0, 14) a (0, 15)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 35)
+spostamento: (0, 65535)
+Sposto 4 da (0, 35) a (0, 34)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 13)
+spostamento: (0, 1)
+Sposto 3 da (0, 13) a (0, 14)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 36)
+spostamento: (0, 65535)
+Sposto 4 da (0, 36) a (0, 35)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 12)
+spostamento: (0, 2)
+Sposto 3 da (0, 12) a (0, 14)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 37)
+spostamento: (0, 131070)
+Sposto 4 da (0, 37) a (0, 35)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 9)
+spostamento: (0, 3)
+Sposto 3 da (0, 9) a (0, 12)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 40)
+spostamento: (0, 196605)
+Sposto 4 da (0, 40) a (0, 37)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 3)
+Sposto 3 da (0, 6) a (0, 9)
+Impatto 3 con 3
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 196605)
+Sposto 4 da (0, 43) a (0, 40)
+Impatto 4 con 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 4)
+spostamento: (0, 1)
+Sposto 3 da (0, 4) a (0, 5)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 45)
+spostamento: (0, 65535)
+Sposto 4 da (0, 45) a (0, 44)
+Sposto 4
+Mappa::rimuoviEffimere() 1
+Mappa::muoviProiettili() 15
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 33)
+spostamento: (0, 1)
+Sposto 3 da (2, 33) a (2, 34)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 22)
+spostamento: (0, 2)
+Sposto 3 da (0, 22) a (0, 24)
+Impatto 3 con -1442202256
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 27)
+spostamento: (0, 131070)
+Sposto 4 da (0, 27) a (0, 25)
+Impatto 4 con 6
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 15)
+spostamento: (0, 1)
+Sposto 3 da (0, 15) a (0, 16)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 34)
+spostamento: (0, 65535)
+Sposto 4 da (0, 34) a (0, 33)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 14)
+spostamento: (0, 1)
+Sposto 3 da (0, 14) a (0, 15)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 35)
+spostamento: (0, 65535)
+Sposto 4 da (0, 35) a (0, 34)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 12)
+spostamento: (0, 2)
+Sposto 3 da (0, 12) a (0, 14)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 37)
+spostamento: (0, 131070)
+Sposto 4 da (0, 37) a (0, 35)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 9)
+spostamento: (0, 3)
+Sposto 3 da (0, 9) a (0, 12)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 40)
+spostamento: (0, 196605)
+Sposto 4 da (0, 40) a (0, 37)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 6)
+spostamento: (0, 3)
+Sposto 3 da (0, 6) a (0, 9)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 43)
+spostamento: (0, 196605)
+Sposto 4 da (0, 43) a (0, 40)
+Sposto 4
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 5)
+spostamento: (0, 1)
+Sposto 3 da (0, 5) a (0, 6)
+Impatto 3 con 5
+Collisione ProiettileDifensore - Terreno
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 44)
+spostamento: (0, 65535)
+Sposto 4 da (0, 44) a (0, 43)
+Sposto 4
+Mappa::rimuoviEffimere() 0
+Mappa::generaProiettile() [(0, 3), 0, 1, 3]
+Mappa::generaProiettile() [(0, 46), 1, 3, 3]
+Mappa::muoviProiettili() 17
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (2, 34)
+spostamento: (0, 1)
+Sposto 3 da (2, 34) a (2, 35)
+Sposto 3
+Ripristino Terreno dietro al Proiettile Difensore di tipo 3
+	Muovendo Proiettile 3
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 22)
+spostamento: (0, 2)
+Sposto 3 da (0, 22) a (0, 24)
+Impatto 3 con -1442202256
+	Muovendo Proiettile 4
+Proiettile::calcolaProssimaPosizione()
+coordinate: (0, 27)
+spostamento: (0, 131070)
+Sposto 4 da (0, 27) a (0, 25)
+Impatto 4 con 5
+Collisione ProiettileNemico - Terreno

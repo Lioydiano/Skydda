@@ -1,0 +1,8 @@
+#include "ANSI.hpp"
+#include "ANSI.cpp"
+#include "coordinate.hpp"
+#include "coordinate.cpp"
+#include "cursore.hpp"
+#include "cursore.cpp"
+#include "oggetti.hpp"
+#include "oggetti.cpp"
