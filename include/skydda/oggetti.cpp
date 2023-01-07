@@ -205,6 +205,13 @@ namespace skydda {
             mappa[partenza.y][partenza.x] = nullptr;
             mappa[arrivo.y][arrivo.x]->setCoordinate(arrivo);
             cancellaComponente(partenza);
+            if (mappa[arrivo.y][arrivo.x]->getTipo() == TipoComponente::PROIETTILE_DIFENSORE) {
+                if (((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->getSopraTerreno()) {
+                    immettiComponente(new Terreno(partenza), partenza);
+                    ((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->setSopraTerreno(false);
+                }
+                stampaComponente(partenza);
+            }
             stampaComponente(arrivo);
         } else {
             switch (mappa[partenza.y][partenza.x]->getTipo()) {
@@ -313,12 +320,12 @@ namespace skydda {
                                     }
                                 )
                             );
+                            delete proiettile; // Deallocazione della memoria del proiettile difensore
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile nemico
-                            delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile difensore
                             immettiComponente(new Effimera(arrivo), arrivo);
                             effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
                             stampaComponente(arrivo);
-                            cancellaComponente(partenza);
+                            stampaComponente(partenza);
                         }
                         case TipoComponente::TERRENO: { // Collisione Proiettile difensore - Terreno
                             // Spostamento del proiettile sul Terreno
@@ -333,7 +340,7 @@ namespace skydda {
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del terreno
                             proiettile->setCoordinate(arrivo);
                             immettiComponente(proiettile, arrivo);
-                            cancellaComponente(partenza);
+                            stampaComponente(partenza);
                             stampaComponente(arrivo);
                             proiettile->setSopraTerreno(true);
                         }
