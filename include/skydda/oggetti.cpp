@@ -217,6 +217,8 @@ namespace skydda {
                 case TipoComponente::NEMICO: case TipoComponente::DIFENSORE: {
                     break;
                 }
+                default:
+                    break;
             }
         }
         if (mappa[arrivo.y][arrivo.x] == nullptr) {
