@@ -95,7 +95,7 @@ namespace skydda {
     }
     void ProiettileDifensore::setSopraTerreno(bool sopraTerreno_) {
         sopraTerreno = sopraTerreno_;
-        stile.coloreSfondo = sopraTerreno ? ANSI::ColoreSfondo::S_NERO : ANSI::ColoreSfondo::S_ROSSO;
+        stile.coloreSfondo = !sopraTerreno ? ANSI::ColoreSfondo::S_NERO : ANSI::ColoreSfondo::S_ROSSO;
     }
 
     ProiettileNemico::ProiettileNemico() : Proiettile() {}
@@ -339,10 +339,10 @@ namespace skydda {
                             }
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del terreno
                             proiettile->setCoordinate(arrivo);
+                            proiettile->setSopraTerreno(true);
                             immettiComponente(proiettile, arrivo);
                             stampaComponente(partenza);
                             stampaComponente(arrivo);
-                            proiettile->setSopraTerreno(true);
                         }
                         default:
                             break;
