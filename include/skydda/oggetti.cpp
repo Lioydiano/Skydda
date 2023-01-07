@@ -83,6 +83,9 @@ namespace skydda {
         return velocita;
     }
     Coordinate Proiettile::calcolaProssimaPosizione() const {
+        debug << "Proiettile::calcolaProssimaPosizione()" << std::endl;
+        debug << "coordinate: (" << coordinate.y << ", " << coordinate.x << ")" << std::endl;
+        debug << "spostamento: (" << direzioni[direzione].y << ", " << direzioni[direzione].x << ")" << std::endl;
         return coordinate + direzioni[direzione] * velocita;
     }
 
@@ -199,7 +202,23 @@ namespace skydda {
         std::cout << ' ';
     }
     void Mappa::spostaComponente(Coordinate& partenza, Coordinate& arrivo) {
-        arrivo.valida(larghezza, altezza);
+        debug << "Sposto " << mappa[partenza.y][partenza.x]->getTipo() << " da (" << partenza.y << ", " << partenza.x << ") a (" << arrivo.y << ", " << arrivo.x << ")" << std::endl;
+        try {
+            arrivo.valida(altezza, larghezza);
+        } catch (std::runtime_error& e) {
+            switch (mappa[partenza.y][partenza.x]->getTipo()) {
+                case TipoComponente::PROIETTILE_DIFENSORE: case TipoComponente::PROIETTILE_NEMICO: {
+                    debug << "Rimuovo proiettile" << std::endl;
+                    proiettili.erase(std::find(proiettili.begin(), proiettili.end(), mappa[partenza.y][partenza.x]));
+                    rimuoviComponente(partenza);
+                    cancellaComponente(partenza);
+                    break;
+                }
+                case TipoComponente::NEMICO: case TipoComponente::DIFENSORE: {
+                    break;
+                }
+            }
+        }
         if (mappa[arrivo.y][arrivo.x] == nullptr) {
             mappa[arrivo.y][arrivo.x] = mappa[partenza.y][partenza.x];
             mappa[partenza.y][partenza.x] = nullptr;
@@ -369,6 +388,7 @@ namespace skydda {
                             effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
                             cancellaComponente(partenza);
                             stampaComponente(arrivo);
+                            break;
                         }
                         case TipoComponente::PROIETTILE_DIFENSORE: { // Collisione Proiettile nemico - Proiettile difensore
                             // Distruzione dei due proiettili e creazione dell'effimera
@@ -387,6 +407,7 @@ namespace skydda {
                             effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
                             stampaComponente(arrivo);
                             cancellaComponente(partenza);
+                            break;
                         }
                         case TipoComponente::NEMICO: { // Collisione Proiettile nemico - Nemico
                             // Incremento del Nemico
@@ -405,6 +426,7 @@ namespace skydda {
                             nemico->setVita(std::max(nemico->getVita() + 1, 9));
                             stampaComponente(arrivo);
                             cancellaComponente(partenza);
+                            break;
                         }
                         case TipoComponente::DIFENSORE: { // Collisione Proiettile nemico - Difensore
                             // Morte del Difensore
