@@ -121,6 +121,7 @@ namespace skydda {
     Effimera::Effimera(Coordinate coordinate_) : Componente(' ', coordinate_, stileEffimera, TipoComponente::EFFIMERA) {}
     Effimera::~Effimera() {}
     void Effimera::stampa() {
+        stile.applica();
         std::cout << u8"*";
     }
 
