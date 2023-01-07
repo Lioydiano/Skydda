@@ -464,6 +464,17 @@ namespace skydda {
             spostaComponente(partenza, arrivo);
         }
     }
+    void Mappa::rimuoviEffimere() {
+        std::queue<Effimera*> coda;
+        Coordinate coordinate;
+        while (!effimere.empty()) {
+            Effimera* effimera = effimere.front();
+            effimere.pop();
+            coordinate = effimera->getCoordinate();
+            cancellaComponente(coordinate);
+            delete effimera;
+        }
+    }
     ANSI::Stile stileBordo(
         ANSI::ColoreTesto::BIANCO,
         ANSI::ColoreSfondo::S_GIALLO,
