@@ -265,7 +265,7 @@ namespace skydda {
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile
                             Nemico* nemico = (Nemico*)mappa[partenza.y][partenza.x];
                             immettiComponente(nemico, arrivo);
-                            nemico->setVita(std::max(nemico->getVita() - 1, 9));
+                            nemico->setVita(std::min(nemico->getVita() - 1, 9));
                             nemico->setCoordinate(arrivo);
                             mappa[partenza.y][partenza.x] = nullptr;
                             cancellaComponente(partenza);
@@ -276,7 +276,7 @@ namespace skydda {
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile
                             Nemico* nemico = (Nemico*)mappa[partenza.y][partenza.x];
                             immettiComponente(nemico, arrivo);
-                            nemico->setVita(std::max(nemico->getVita() + 1, 9));
+                            nemico->setVita(std::min(nemico->getVita() + 1, 9));
                             nemico->setCoordinate(arrivo);
                             mappa[partenza.y][partenza.x] = nullptr;
                             cancellaComponente(partenza);
@@ -287,7 +287,7 @@ namespace skydda {
                             Nemico* nemico1 = (Nemico*)mappa[partenza.y][partenza.x];
                             Nemico* nemico2 = (Nemico*)mappa[arrivo.y][arrivo.x];
                             immettiComponente(nemico1, arrivo);
-                            nemico1->setVita(std::max(nemico1->getVita() + nemico2->getVita(), 9));
+                            nemico1->setVita(std::min(nemico1->getVita() + nemico2->getVita(), 9));
                             nemico1->setCoordinate(arrivo);
                             mappa[partenza.y][partenza.x] = nullptr;
                             cancellaComponente(partenza);
@@ -313,7 +313,7 @@ namespace skydda {
                             // Decremento del Nemico
                             ProiettileDifensore* proiettile = (ProiettileDifensore*)mappa[partenza.y][partenza.x];
                             Nemico* nemico = (Nemico*)mappa[arrivo.y][arrivo.x];
-                            nemico->setVita(std::max(nemico->getVita() - 1, 9));
+                            nemico->setVita(std::min(nemico->getVita() - 1, 9));
                             if (proiettile->getSopraTerreno()) {
                                 // Il proiettile si trova sull'isola, quindi sul Terreno che va ripristinato
                                 immettiComponente(new Terreno(partenza), partenza);
@@ -394,7 +394,7 @@ namespace skydda {
                             delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
                             mappa[partenza.y][partenza.x] = nullptr;
                             Nemico* nemico = (Nemico*)mappa[arrivo.y][arrivo.x];
-                            nemico->setVita(std::max(nemico->getVita() + 1, 9));
+                            nemico->setVita(std::min(nemico->getVita() + 1, 9));
                             stampaComponente(arrivo);
                             cancellaComponente(partenza);
                             break;
