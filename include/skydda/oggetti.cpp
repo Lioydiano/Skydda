@@ -5,6 +5,8 @@
 #include "componente.cpp"
 #include "oggetti.hpp"
 
+#include <fstream>
+std::ofstream debug("debug.txt", std::ios::out);
 
 namespace skydda {
     std::unordered_map<Direzione, Coordinate> direzioni = {
@@ -79,19 +81,23 @@ namespace skydda {
     Direzione Proiettile::getDirezione() const {
         return direzione;
     }
+    void Proiettile::setDirezione(Direzione direzione_) {
+        direzione = direzione_;
+        carattere = direzioneCarattere[direzione];
+    }
     int Proiettile::getVelocita() const {
         return velocita;
     }
     Coordinate Proiettile::calcolaProssimaPosizione() const {
-        debug << "Proiettile::calcolaProssimaPosizione()" << std::endl;
-        debug << "coordinate: (" << coordinate.y << ", " << coordinate.x << ")" << std::endl;
-        debug << "spostamento: (" << direzioni[direzione].y << ", " << direzioni[direzione].x << ")" << std::endl;
+        // debug << "Proiettile::calcolaProssimaPosizione()" << std::endl;
+        // debug << "coordinate: (" << coordinate.y << ", " << coordinate.x << ")" << std::endl;
+        // debug << "spostamento: (" << direzioni[direzione].y << ", " << direzioni[direzione].x << ")" << std::endl;
         return coordinate + direzioni[direzione] * velocita;
     }
 
     ProiettileDifensore::ProiettileDifensore() : Proiettile() {}
-    ProiettileDifensore::ProiettileDifensore(Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_), sopraTerreno(true) {}
-    ProiettileDifensore::ProiettileDifensore(char carattere_, Coordinate coordinate_, Direzione direzione_, int velocita_) : Proiettile(carattere_, coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_), sopraTerreno(true) {}
+    ProiettileDifensore::ProiettileDifensore(Coordinate coordinate_, Direzione direzione_, int velocita_, bool sopraTerreno_=true) : Proiettile(coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_), sopraTerreno(sopraTerreno_) {}
+    ProiettileDifensore::ProiettileDifensore(char carattere_, Coordinate coordinate_, Direzione direzione_, int velocita_, bool sopraTerreno_=true) : Proiettile(carattere_, coordinate_, TipoProiettile::P_DIFENSORE, direzione_, velocita_), sopraTerreno(sopraTerreno_) {}
     ProiettileDifensore::~ProiettileDifensore() {}
     bool ProiettileDifensore::getSopraTerreno() const {
         return sopraTerreno;
@@ -208,7 +214,7 @@ namespace skydda {
         } catch (std::runtime_error& e) {
             switch (mappa[partenza.y][partenza.x]->getTipo()) {
                 case TipoComponente::PROIETTILE_DIFENSORE: case TipoComponente::PROIETTILE_NEMICO: {
-                    debug << "Rimuovo proiettile" << std::endl;
+                    // debug << "Rimuovo proiettile" << std::endl;
                     proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
                     rimuoviComponente(partenza);
                     cancellaComponente(partenza);
@@ -250,6 +256,7 @@ namespace skydda {
                         case TipoComponente::TERRENO: case TipoComponente::EFFIMERA: { // Collisione Difensore - Terreno | Effimera
                             immettiComponente(mappa[partenza.y][partenza.x], arrivo);
                             immettiComponente(new Terreno(partenza), partenza);
+                            mappa[arrivo.y][arrivo.x]->setCoordinate(arrivo);
                             stampaComponente(partenza);
                             stampaComponente(arrivo);
                         }
@@ -365,9 +372,9 @@ namespace skydda {
                         case TipoComponente::TERRENO: { // Collisione Proiettile nemico - Terreno
                             // Spostamento del proiettile sul Terreno
                             delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del terreno
-                            debug << "\tTerreno distrutto" << std::endl;
+                            // debug << "\tTerreno distrutto" << std::endl;
                             proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
-                            debug << "\tProiettile eliminato dal vettore" << std::endl;
+                            // debug << "\tProiettile eliminato dal vettore" << std::endl;
                             delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
                             mappa[partenza.y][partenza.x] = nullptr;
                             immettiComponente(new Effimera(arrivo), arrivo);
@@ -445,6 +452,83 @@ namespace skydda {
             cancellaComponente(coordinate);
             delete effimera;
         }
+    }
+    void Mappa::generaProiettile(Coordinate& coordinate_, TipoProiettile tipoProiettile_, Direzione direzione_, int velocita_) {
+        debug << "\tLancio proiettile in direzione " << direzione_ << std::endl;
+        Coordinate coordinate = coordinate_ + direzioni[direzione_];
+        try {
+            coordinate.valida(altezza, larghezza);
+        } catch (std::runtime_error& e) {
+            // Il proiettile è uscito dalla mappa, quindi non viene generato
+            return;
+        }
+        debug << "\tGenerazione proiettile a (" << coordinate.y << ", " << coordinate.x << ")" << std::endl;
+        if (mappa[coordinate.y][coordinate.x] == nullptr) {
+            debug << "\t\tProiettile destinato ad una cella vuota" << std::endl;
+            if (tipoProiettile_ == TipoProiettile::P_NEMICO) {
+                debug << "\t\tProiettile da generare: nemico" << std::endl;
+                ProiettileNemico* proiettile = new ProiettileNemico(coordinate, direzione_, velocita_);
+                debug << "\t\tProiettile generato" << std::endl;
+                proiettili.push_back(proiettile);
+                debug << "\t\tProiettile inserito nella lista" << std::endl;
+                immettiComponente(proiettile, coordinate);
+                debug << "\t\tProiettile inserito nella mappa" << std::endl;
+                stampaComponente(coordinate);
+                debug << "\t\tProiettile stampato" << std::endl;
+            } else if (tipoProiettile_ == TipoProiettile::P_DIFENSORE) {
+                debug << "\t\tProiettile da generare: difensore" << std::endl;
+                ProiettileDifensore* proiettile = new ProiettileDifensore(coordinate, direzione_, velocita_, false);
+                debug << "\t\tProiettile generato" << std::endl;
+                proiettili.push_back(proiettile);
+                debug << "\t\tProiettile inserito nella lista" << std::endl;
+                immettiComponente(proiettile, coordinate);
+                debug << "\t\tProiettile inserito nella mappa" << std::endl;
+                stampaComponente(coordinate);
+                debug << "\t\tProiettile stampato" << std::endl;
+            }
+        } else {
+            debug << "\t\tProiettile destinato ad una cella occupata" << std::endl;
+            if (tipoProiettile_ == TipoProiettile::P_NEMICO) {
+                // Il proiettile nemico facciamo finta che non sia mai stato richiesto
+                debug << "\t\tProiettile da [non] generare: nemico" << std::endl;
+            } else if (tipoProiettile_ == TipoProiettile::P_DIFENSORE) {
+                // Il proiettile difensore sono costretto 
+                debug << "\t\tProiettile da generare: difensore" << std::endl;
+                switch (mappa[coordinate.y][coordinate.x]->getTipo()) {
+                    case TipoComponente::NEMICO: {
+                        // Incremento del Nemico
+                        debug << "\t\t\tCollisione [virtuale] Proiettile difensore - Nemico" << std::endl;
+                        Nemico* nemico = (Nemico*)mappa[coordinate.y][coordinate.x];
+                        nemico->setVita(std::max(nemico->getVita() - 1, 0));
+                        stampaComponente(coordinate);
+                        break;
+                    }
+                    case TipoComponente::TERRENO: {
+                        debug << "\t\t\tCollisione [virtuale] Proiettile difensore - Terreno" << std::endl;
+                        Proiettile* proiettile = new ProiettileDifensore(coordinate, direzione_, velocita_, true);
+                        debug << "\t\t\tProiettile difensore generato" << std::endl;
+                        proiettili.push_back(proiettile);
+                        debug << "\t\t\tProiettile difensore inserito nella lista" << std::endl;
+                        immettiComponente(proiettile, coordinate);
+                        debug << "\t\t\tProiettile difensore inserito nella mappa" << std::endl;
+                        stampaComponente(coordinate);
+                        debug << "\t\t\tProiettile difensore stampato" << std::endl;
+                        break;
+                    }
+                    case TipoComponente::PROIETTILE_NEMICO: {
+                        // Reindirizzamento del proiettile nemico
+                        debug << "\t\t\tCollisione [virtuale] Proiettile difensore - Proiettile nemico" << std::endl;
+                        ((Proiettile*)mappa[coordinate.y][coordinate.x])->setDirezione(direzione_);
+                        debug << "\t\t\tProiettile nemico reindirizzato" << std::endl;
+                        break;
+                    }
+                    default:
+                        debug << "\t\t\tTipo componente non gestito: " << mappa[coordinate.y][coordinate.x]->getTipo() << std::endl;
+                        break;
+                }
+            }
+        }
+        debug << "\tQuantità proiettili: " << proiettili.size() << std::endl;
     }
     ANSI::Stile stileBordo(
         ANSI::ColoreTesto::BIANCO,

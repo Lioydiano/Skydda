@@ -1,0 +1,631 @@
+Mappa stampata
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (0, 1)
+	Coordinate valide
+	Vecchie coordinate: (0, 0)
+Sposto 1 da (0, 0) a (1, 0)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 8
+Nessuna mossa
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 8
+Nessuna mossa
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (1, 1)
+	Coordinate valide
+	Vecchie coordinate: (0, 1)
+Sposto 1 da (1, 0) a (1, 1)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (2, 1)
+	Coordinate valide
+	Vecchie coordinate: (1, 1)
+Sposto 1 da (1, 1) a (1, 2)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (2, 2)
+	Coordinate valide
+	Vecchie coordinate: (2, 1)
+Sposto 1 da (1, 2) a (2, 2)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (2, 3)
+	Coordinate valide
+	Vecchie coordinate: (2, 2)
+Sposto 1 da (2, 2) a (3, 2)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (3, 3)
+	Coordinate valide
+	Vecchie coordinate: (2, 3)
+Sposto 1 da (3, 2) a (3, 3)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 0
+Muovi difensore: sinistra
+	Muovi difensore in direzione 3
+	Coordinate: (2, 3)
+	Coordinate valide
+	Vecchie coordinate: (3, 3)
+Sposto 1 da (3, 3) a (3, 2)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (2, 4)
+	Coordinate valide
+	Vecchie coordinate: (2, 3)
+Sposto 1 da (3, 2) a (4, 2)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (3, 4)
+	Coordinate valide
+	Vecchie coordinate: (2, 4)
+Sposto 1 da (4, 2) a (4, 3)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (4, 4)
+	Coordinate valide
+	Vecchie coordinate: (3, 4)
+Sposto 1 da (4, 3) a (4, 4)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (4, 5)
+	Coordinate valide
+	Vecchie coordinate: (4, 4)
+Sposto 1 da (4, 4) a (5, 4)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (5, 5)
+	Coordinate valide
+	Vecchie coordinate: (4, 5)
+Sposto 1 da (5, 4) a (5, 5)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (6, 5)
+	Coordinate valide
+	Vecchie coordinate: (5, 5)
+Sposto 1 da (5, 5) a (5, 6)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (6, 6)
+	Coordinate valide
+	Vecchie coordinate: (6, 5)
+Sposto 1 da (5, 6) a (6, 6)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (6, 7)
+	Coordinate valide
+	Vecchie coordinate: (6, 6)
+Sposto 1 da (6, 6) a (7, 6)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (7, 7)
+	Coordinate valide
+	Vecchie coordinate: (6, 7)
+Sposto 1 da (7, 6) a (7, 7)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (8, 7)
+	Coordinate valide
+	Vecchie coordinate: (7, 7)
+Sposto 1 da (7, 7) a (7, 8)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (8, 8)
+	Coordinate valide
+	Vecchie coordinate: (8, 7)
+Sposto 1 da (7, 8) a (8, 8)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (8, 9)
+	Coordinate valide
+	Vecchie coordinate: (8, 8)
+Sposto 1 da (8, 8) a (9, 8)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (9, 9)
+	Coordinate valide
+	Vecchie coordinate: (8, 9)
+Sposto 1 da (9, 8) a (9, 9)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (10, 9)
+	Coordinate valide
+	Vecchie coordinate: (9, 9)
+Sposto 1 da (9, 9) a (9, 10)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (11, 9)
+	Coordinate valide
+	Vecchie coordinate: (10, 9)
+Sposto 1 da (9, 10) a (9, 11)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (12, 9)
+	Coordinate valide
+	Vecchie coordinate: (11, 9)
+Sposto 1 da (9, 11) a (9, 12)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+	Proiettili mossi
+Mossa non pronta
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (13, 9)
+	Coordinate valide
+	Vecchie coordinate: (12, 9)
+Sposto 1 da (9, 12) a (9, 13)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa pronta: 5
+Spara difensore
+	Coordinate: (13, 9)
+	Lancio proiettile in direzione 1
+	Generazione proiettile a (9, 14)
+		Proiettile destinato ad una cella vuota
+		Proiettile da generare: difensore
+		Proiettile generato
+		Proiettile inserito nella lista
+		Proiettile inserito nella mappa
+		Proiettile stampato
+	Quantità proiettili: 1
+	Proiettile generato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 14) a (9, 15)
+	Proiettili mossi
+Mossa pronta: 5
+Spara difensore
+	Coordinate: (13, 9)
+	Lancio proiettile in direzione 1
+	Generazione proiettile a (9, 14)
+		Proiettile destinato ad una cella vuota
+		Proiettile da generare: difensore
+		Proiettile generato
+		Proiettile inserito nella lista
+		Proiettile inserito nella mappa
+		Proiettile stampato
+	Quantità proiettili: 2
+	Proiettile generato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 15) a (9, 16)
+Sposto 3 da (9, 14) a (9, 15)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 16) a (9, 17)
+Sposto 3 da (9, 15) a (9, 16)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 17) a (9, 18)
+Sposto 3 da (9, 16) a (9, 17)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 18) a (9, 19)
+Sposto 3 da (9, 17) a (9, 18)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 19) a (9, 20)
+Sposto 3 da (9, 18) a (9, 19)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 20) a (9, 21)
+Sposto 3 da (9, 19) a (9, 20)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 21) a (9, 22)
+Sposto 3 da (9, 20) a (9, 21)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 22) a (9, 23)
+Sposto 3 da (9, 21) a (9, 22)
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (13, 10)
+	Coordinate valide
+	Vecchie coordinate: (13, 9)
+Sposto 1 da (9, 13) a (10, 13)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 23) a (9, 24)
+Sposto 3 da (9, 22) a (9, 23)
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (13, 11)
+	Coordinate valide
+	Vecchie coordinate: (13, 10)
+Sposto 1 da (10, 13) a (11, 13)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 24) a (9, 25)
+Sposto 3 da (9, 23) a (9, 24)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 25) a (9, 26)
+Sposto 3 da (9, 24) a (9, 25)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 26) a (9, 27)
+Sposto 3 da (9, 25) a (9, 26)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 27) a (9, 28)
+Sposto 3 da (9, 26) a (9, 27)
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (14, 11)
+	Coordinate valide
+	Vecchie coordinate: (13, 11)
+Sposto 1 da (11, 13) a (11, 14)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 28) a (9, 29)
+Sposto 3 da (9, 27) a (9, 28)
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (15, 11)
+	Coordinate valide
+	Vecchie coordinate: (14, 11)
+Sposto 1 da (11, 14) a (11, 15)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 29) a (9, 30)
+Sposto 3 da (9, 28) a (9, 29)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 30) a (9, 31)
+Sposto 3 da (9, 29) a (9, 30)
+	Proiettili mossi
+Mossa pronta: 2
+Muovi difensore: su
+	Muovi difensore in direzione 0
+	Coordinate: (15, 10)
+	Coordinate valide
+	Vecchie coordinate: (15, 11)
+Sposto 1 da (11, 15) a (10, 15)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 31) a (9, 32)
+Sposto 3 da (9, 30) a (9, 31)
+	Proiettili mossi
+Mossa pronta: 2
+Muovi difensore: su
+	Muovi difensore in direzione 0
+	Coordinate: (15, 9)
+	Coordinate valide
+	Vecchie coordinate: (15, 10)
+Sposto 1 da (10, 15) a (9, 15)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 32) a (9, 33)
+Sposto 3 da (9, 31) a (9, 32)
+	Proiettili mossi
+Mossa pronta: 2
+Muovi difensore: su
+	Muovi difensore in direzione 0
+	Coordinate: (15, 8)
+	Coordinate valide
+	Vecchie coordinate: (15, 9)
+Sposto 1 da (9, 15) a (8, 15)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 33) a (9, 34)
+Sposto 3 da (9, 32) a (9, 33)
+	Proiettili mossi
+Mossa pronta: 0
+Muovi difensore: sinistra
+	Muovi difensore in direzione 3
+	Coordinate: (14, 8)
+	Coordinate valide
+	Vecchie coordinate: (15, 8)
+Sposto 1 da (8, 15) a (8, 14)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 34) a (9, 35)
+Sposto 3 da (9, 33) a (9, 34)
+	Proiettili mossi
+Mossa pronta: 0
+Muovi difensore: sinistra
+	Muovi difensore in direzione 3
+	Coordinate: (13, 8)
+	Coordinate valide
+	Vecchie coordinate: (14, 8)
+Sposto 1 da (8, 14) a (8, 13)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 35) a (9, 36)
+Sposto 3 da (9, 34) a (9, 35)
+	Proiettili mossi
+Mossa pronta: 0
+Muovi difensore: sinistra
+	Muovi difensore in direzione 3
+	Coordinate: (12, 8)
+	Coordinate valide
+	Vecchie coordinate: (13, 8)
+Sposto 1 da (8, 13) a (8, 12)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 36) a (9, 37)
+Sposto 3 da (9, 35) a (9, 36)
+	Proiettili mossi
+Mossa pronta: 0
+Muovi difensore: sinistra
+	Muovi difensore in direzione 3
+	Coordinate: (11, 8)
+	Coordinate valide
+	Vecchie coordinate: (12, 8)
+Sposto 1 da (8, 12) a (8, 11)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 37) a (9, 38)
+Sposto 3 da (9, 36) a (9, 37)
+	Proiettili mossi
+Mossa pronta: 0
+Muovi difensore: sinistra
+	Muovi difensore in direzione 3
+	Coordinate: (10, 8)
+	Coordinate valide
+	Vecchie coordinate: (11, 8)
+Sposto 1 da (8, 11) a (8, 10)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 38) a (9, 39)
+Sposto 3 da (9, 37) a (9, 38)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 39) a (9, 40)
+Sposto 3 da (9, 38) a (9, 39)
+	Proiettili mossi
+Mossa pronta: 3
+Muovi difensore: giu
+	Muovi difensore in direzione 2
+	Coordinate: (10, 9)
+	Coordinate valide
+	Vecchie coordinate: (10, 8)
+Sposto 1 da (8, 10) a (9, 10)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 40) a (9, 41)
+Sposto 3 da (9, 39) a (9, 40)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 41) a (9, 42)
+Sposto 3 da (9, 40) a (9, 41)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 42) a (9, 43)
+Sposto 3 da (9, 41) a (9, 42)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 43) a (9, 44)
+Sposto 3 da (9, 42) a (9, 43)
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (11, 9)
+	Coordinate valide
+	Vecchie coordinate: (10, 9)
+Sposto 1 da (9, 10) a (9, 11)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 44) a (9, 45)
+Sposto 3 da (9, 43) a (9, 44)
+	Proiettili mossi
+Mossa pronta: 1
+Muovi difensore: destra
+	Muovi difensore in direzione 1
+	Coordinate: (12, 9)
+	Coordinate valide
+	Vecchie coordinate: (11, 9)
+Sposto 1 da (9, 11) a (9, 12)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 45) a (9, 46)
+Sposto 3 da (9, 44) a (9, 45)
+	Proiettili mossi
+Mossa non pronta
+Sposto 3 da (9, 46) a (9, 47)
+Sposto 3 da (9, 45) a (9, 46)
+	Proiettili mossi
+Mossa pronta: 2
+Muovi difensore: su
+	Muovi difensore in direzione 0
+	Coordinate: (12, 8)
+	Coordinate valide
+	Vecchie coordinate: (12, 9)
+Sposto 1 da (9, 12) a (8, 12)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 47) a (9, 48)
+Sposto 3 da (9, 46) a (9, 47)
+	Proiettili mossi
+Mossa pronta: 2
+Muovi difensore: su
+	Muovi difensore in direzione 0
+	Coordinate: (12, 7)
+	Coordinate valide
+	Vecchie coordinate: (12, 8)
+Sposto 1 da (8, 12) a (7, 12)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 48) a (9, 49)
+Sposto 3 da (9, 47) a (9, 48)
+	Proiettili mossi
+Mossa pronta: 2
+Muovi difensore: su
+	Muovi difensore in direzione 0
+	Coordinate: (12, 6)
+	Coordinate valide
+	Vecchie coordinate: (12, 7)
+Sposto 1 da (7, 12) a (6, 12)
+	Componente spostato
+Funzione asincrona lanciata
+Mossa non pronta
+Sposto 3 da (9, 49) a (9, 50)
