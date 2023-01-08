@@ -90,20 +90,10 @@ namespace skydda {
         ~Terreno() override;
     };
 
-    class Effimera : public Componente {
-    public:
-        Effimera();
-        Effimera(Coordinate);
-        ~Effimera() override;
-
-        void stampa() override;
-    };
-
     class Mappa {
     private:
         Cursore cursore;
         std::vector<std::vector<Componente*>> mappa;
-        std::queue<Effimera*> effimere; // Effimere presenti nella mappa, da rimuovere dopo un frame
         std::vector<Proiettile*> proiettili; // Proiettili presenti nella mappa (ridondante, ma necessario per individuarli velocemente)
         std::vector<Nemico*> nemici; // Nemici presenti nella mappa
         short int altezza;
@@ -122,7 +112,6 @@ namespace skydda {
         Componente* getComponente(Coordinate&) const;
 
         // Immette un Componente nella mappa registrandolo in tutte le strutture dati necessarie
-        void registraComponente(Effimera*);
         void registraComponente(Proiettile*);
         void registraComponente(Nemico*);
 
@@ -145,7 +134,6 @@ namespace skydda {
         void generaProiettile(Coordinate&, TipoProiettile, Direzione, int); // Genera un proiettile in una posizione (con controlli)
 
         void muoviProiettili(); // Muove tutti i proiettili nella mappa
-        void rimuoviEffimere(); // Rimuove tutte le effimere nella mappa
         void azionaNemici(); // Fai compiere dei movimenti e sparare dei proiettili ai nemici
 
         void stampa() const;

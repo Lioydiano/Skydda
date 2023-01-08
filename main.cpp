@@ -5,9 +5,10 @@
 #include "include/skydda/skydda.cpp"
 // g++ main.cpp -o skydda -std=c++17 -Wall
 
+std::ofstream evoluzione("evoluzione.txt", std::ios::out);
 
 int main() {
-    // std::srand(time(NULL));
+    std::srand(time(NULL));
     skydda::pulisciSchermo();
     skydda::Mappa mappa(50, 20);
     skydda::Coordinate coordinate;
@@ -64,15 +65,23 @@ int main() {
     coordinate.x = 0;
     while (true) {
         if (rand() % 3 == 0) {
-            int v = std::rand() % 3 + 1;
-            coordinate.x = v;
+            int v = 1;
+            coordinate.x = rand() % 4 + 1;
             mappa.generaProiettile(coordinate, skydda::P_DIFENSORE, skydda::EST, v);
             coordinate.x = 49 - v;
             mappa.generaProiettile(coordinate, skydda::P_NEMICO, skydda::OVEST, v);
         }
         mappa.muoviProiettili();
+        for (int i = 0; i < 50; i++) {
+            skydda::Coordinate c(0, i);
+            if (mappa.getComponente(c) != nullptr) {
+                evoluzione << mappa.getComponente(c)->getTipo();
+            } else {
+                evoluzione << "-";
+            }
+        }
+        evoluzione << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        mappa.rimuoviEffimere();
     }
     std::cin.get();
 }
