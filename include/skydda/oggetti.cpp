@@ -126,11 +126,9 @@ namespace skydda {
         ANSI::ColoreSfondo::S_NERO,
         ANSI::Attributo::FLEBILE
     );
-    Effimera::Effimera() : Componente(' ', Coordinate(0, 0), stileEffimera, TipoComponente::EFFIMERA) {}
-    Effimera::Effimera(Coordinate coordinate_) : Componente(' ', coordinate_, stileEffimera, TipoComponente::EFFIMERA) {}
-    Effimera::~Effimera() {}
-    void Effimera::stampa() {
-        stile.applica();
+    void stampaEffimera(Coordinate& coordinate) {
+        std::cout << CSI << coordinate.y + 2 << ";" << coordinate.x + 2 << "H";
+        stileEffimera.applica();
         std::cout << u8"*";
     }
 
@@ -157,10 +155,6 @@ namespace skydda {
     }
     Componente* Mappa::getComponente(Coordinate& coordinate) const {
         return mappa[coordinate.y][coordinate.x];
-    }
-    void Mappa::registraComponente(Effimera* effimera) {
-        effimere.push(effimera);
-        immettiComponente(effimera);
     }
     void Mappa::registraComponente(Proiettile* proiettile) {
         proiettili.push_back(proiettile);
@@ -214,9 +208,11 @@ namespace skydda {
         } catch (std::runtime_error& e) {
             switch (mappa[partenza.y][partenza.x]->getTipo()) {
                 case TipoComponente::PROIETTILE_DIFENSORE: case TipoComponente::PROIETTILE_NEMICO: {
-                    // debug << "Rimuovo proiettile" << std::endl;
+                    debug << "Rimuovo proiettile" << std::endl;
                     proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
+                    debug << "Rimuovo componente" << std::endl;
                     rimuoviComponente(partenza);
+                    debug << "Cancello componente" << std::endl;
                     cancellaComponente(partenza);
                     break;
                 }
@@ -226,8 +222,11 @@ namespace skydda {
                 default:
                     break;
             }
+            return;
         }
+        debug << "\tCoordinate valide (" << arrivo.y << ", " << arrivo.x << ")" << std::endl;
         if (mappa[arrivo.y][arrivo.x] == nullptr) {
+            debug << "\tLuogo di arrivo vuoto" << std::endl;
             mappa[arrivo.y][arrivo.x] = mappa[partenza.y][partenza.x];
             mappa[partenza.y][partenza.x] = nullptr;
             mappa[arrivo.y][arrivo.x]->setCoordinate(arrivo);
@@ -241,6 +240,7 @@ namespace skydda {
             }
             stampaComponente(arrivo);
         } else {
+            debug << "\tLuogo di arrivo occupato da oggetto di tipo " << getComponente(arrivo)->getTipo() << std::endl;
             switch (mappa[partenza.y][partenza.x]->getTipo()) {
                 case TipoComponente::DIFENSORE: { // Collisione Difensore - ???
                     switch (mappa[arrivo.y][arrivo.x]->getTipo()) {
@@ -277,6 +277,7 @@ namespace skydda {
                             mappa[partenza.y][partenza.x] = nullptr;
                             cancellaComponente(partenza);
                             stampaComponente(arrivo);
+                            break;
                         }
                         case TipoComponente::PROIETTILE_NEMICO: { // Collisione Nemico - Proiettile nemico
                             // Incremento del Nemico
@@ -288,6 +289,7 @@ namespace skydda {
                             mappa[partenza.y][partenza.x] = nullptr;
                             cancellaComponente(partenza);
                             stampaComponente(arrivo);
+                            break;
                         }
                         case TipoComponente::NEMICO: { // Collisione Nemico - Nemico
                             // Somma dei due Nemici
@@ -300,6 +302,7 @@ namespace skydda {
                             cancellaComponente(partenza);
                             stampaComponente(arrivo);
                             delete nemico2; // Deallocazione della memoria del nemico
+                            break;
                         }
                         case TipoComponente::EFFIMERA: { // Collisione Nemico - Effimera
                             // Morte del Nemico
@@ -328,22 +331,30 @@ namespace skydda {
                             delete proiettile; // Deallocazione della memoria del proiettile
                             stampaComponente(arrivo);
                             stampaComponente(partenza);
+                            break;
                         }
                         case TipoComponente::PROIETTILE_NEMICO: { // Collisione Proiettile difensore - Proiettile nemico
                             // Distruzione dei due proiettili e creazione dell'effimera
+                            debug << "\tCollisione Proiettile difensore - Proiettile nemico" << std::endl;
                             ProiettileDifensore* proiettile = (ProiettileDifensore*)mappa[partenza.y][partenza.x];
-                            if (proiettile->getSopraTerreno()) {
-                                // Il proiettile si trova sull'isola, quindi sul Terreno che va ripristinato
-                                immettiComponente(new Terreno(partenza), partenza);
-                            }
+                            debug << "\tProiettile difensore selezionato dalla mappa" << std::endl;
+                            bool sopraTerreno_ = proiettile->getSopraTerreno();
                             proiettili.erase(std::find(proiettili.begin(), proiettili.end(), proiettile));
                             proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[arrivo.y][arrivo.x]));
                             delete proiettile; // Deallocazione della memoria del proiettile difensore
-                            delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile nemico
-                            immettiComponente(new Effimera(arrivo), arrivo);
-                            effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
-                            stampaComponente(arrivo);
+                            if (sopraTerreno_) {
+                                // Il proiettile si trova sull'isola, quindi sul Terreno che va ripristinato
+                                immettiComponente(new Terreno(partenza), partenza);
+                                debug << "\tTerreno ripristinato" << std::endl;
+                            } else {
+                                mappa[partenza.y][partenza.x] = nullptr;
+                                debug << "\tProiettile difensore [distrutto] rimosso dalla mappa" << std::endl;
+                            }
+                            rimuoviComponente(arrivo); // Deallocazione della memoria del proiettile nemico
+                            debug << "\tProiettile nemico rimosso dalla mappa" << std::endl;
                             stampaComponente(partenza);
+                            stampaEffimera(arrivo);
+                            break;
                         }
                         case TipoComponente::TERRENO: { // Collisione Proiettile difensore - Terreno
                             // Spostamento del proiettile sul Terreno
@@ -361,6 +372,7 @@ namespace skydda {
                             immettiComponente(proiettile, arrivo);
                             stampaComponente(partenza);
                             stampaComponente(arrivo);
+                            break;
                         }
                         default:
                             break;
@@ -371,35 +383,37 @@ namespace skydda {
                     switch (mappa[arrivo.y][arrivo.x]->getTipo()) {
                         case TipoComponente::TERRENO: { // Collisione Proiettile nemico - Terreno
                             // Spostamento del proiettile sul Terreno
-                            delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del terreno
-                            // debug << "\tTerreno distrutto" << std::endl;
+                            debug << "\tCollisione Proiettile nemico - Terreno" << std::endl;
+                            rimuoviComponente(arrivo); // Deallocazione della memoria del terreno
+                            debug << "\tTerreno distrutto" << std::endl;
                             proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
-                            // debug << "\tProiettile eliminato dal vettore" << std::endl;
-                            delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
-                            mappa[partenza.y][partenza.x] = nullptr;
-                            immettiComponente(new Effimera(arrivo), arrivo);
-                            effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
+                            debug << "\tProiettile eliminato dal vettore" << std::endl;
+                            rimuoviComponente(partenza); // Rimozione del proiettile dal vettore dei componenti
+                            debug << "\tProiettile rimosso dalla mappa" << std::endl;
                             cancellaComponente(partenza);
-                            stampaComponente(arrivo);
+                            debug << "\tProiettile cancellato" << std::endl;
+                            stampaEffimera(arrivo);
+                            debug << "\tEffimera stampata" << std::endl;
                             break;
                         }
                         case TipoComponente::PROIETTILE_DIFENSORE: { // Collisione Proiettile nemico - Proiettile difensore
                             // Distruzione dei due proiettili e creazione dell'effimera
+                            debug << "\tCollisione Proiettile nemico - Proiettile difensore" << std::endl;
                             proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
                             proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[arrivo.y][arrivo.x]));
-                            delete mappa[arrivo.y][arrivo.x]; // Deallocazione della memoria del proiettile difensore
-                            delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
-                            immettiComponente(new Effimera(arrivo), arrivo);
-                            effimere.push((Effimera*)mappa[arrivo.y][arrivo.x]);
-                            stampaComponente(arrivo);
+                            debug << "\tProiettili eliminati dal vettore" << std::endl;
+                            rimuoviComponente(partenza);
+                            debug << "\tProiettile nemico rimosso dalla mappa" << std::endl;
+                            rimuoviComponente(arrivo);
+                            debug << "\tProiettile difensore rimosso dalla mappa" << std::endl;
                             cancellaComponente(partenza);
+                            stampaEffimera(arrivo);
                             break;
                         }
                         case TipoComponente::NEMICO: { // Collisione Proiettile nemico - Nemico
                             // Incremento del Nemico
                             proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
-                            delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
-                            mappa[partenza.y][partenza.x] = nullptr;
+                            rimuoviComponente(partenza); // Rimozione del proiettile nemico
                             Nemico* nemico = (Nemico*)mappa[arrivo.y][arrivo.x];
                             nemico->setVita(std::min(nemico->getVita() + 1, 9));
                             stampaComponente(arrivo);
@@ -408,8 +422,7 @@ namespace skydda {
                         }
                         case TipoComponente::DIFENSORE: { // Collisione Proiettile nemico - Difensore
                             // Morte del Difensore
-                            delete mappa[partenza.y][partenza.x]; // Deallocazione della memoria del proiettile nemico
-                            mappa[partenza.y][partenza.x] = nullptr;
+                            rimuoviComponente(partenza); // Rimozione del proiettile nemico
                             cancellaComponente(partenza);
                             exit(0);
                         }
@@ -422,12 +435,13 @@ namespace skydda {
                     break;
             }
         }
+        debug << "- Fine spostamento componente -" << std::endl;
     }
     void Mappa::muoviProiettili() {
         std::vector<Proiettile*>::iterator it = proiettili.begin();
         Proiettile* proiettile = nullptr;
         Coordinate partenza, arrivo;
-        for (; it != proiettili.end(); it++) {
+        for (; it < proiettili.end(); it++) {
             proiettile = *it;
             partenza = proiettile->getCoordinate();
             try {
@@ -438,19 +452,13 @@ namespace skydda {
                 delete proiettile;
                 continue;
             }
+            debug << "Coordinate di destinazione valide" << std::endl;
             arrivo = proiettile->calcolaProssimaPosizione();
+            debug << "Prossima posizione del proiettile calcolata" << std::endl;
             spostaComponente(partenza, arrivo);
-        }
-    }
-    void Mappa::rimuoviEffimere() {
-        std::queue<Effimera*> coda;
-        Coordinate coordinate;
-        while (!effimere.empty()) {
-            Effimera* effimera = effimere.front();
-            effimere.pop();
-            coordinate = effimera->getCoordinate();
-            cancellaComponente(coordinate);
-            delete effimera;
+            if (it == proiettili.end()) {
+                break; // Il vettore potrebbe essersi accorciato durante spostaComponente()
+            }
         }
     }
     void Mappa::generaProiettile(Coordinate& coordinate_, TipoProiettile tipoProiettile_, Direzione direzione_, int velocita_) {

@@ -90,20 +90,10 @@ namespace skydda {
         ~Terreno() override;
     };
 
-    class Effimera : public Componente {
-    public:
-        Effimera();
-        Effimera(Coordinate);
-        ~Effimera() override;
-
-        void stampa() override;
-    };
-
     class Mappa {
     private:
         Cursore cursore;
         std::vector<std::vector<Componente*>> mappa;
-        std::queue<Effimera*> effimere; // Effimere presenti nella mappa, da rimuovere dopo un frame
         std::vector<Proiettile*> proiettili; // Proiettili presenti nella mappa (ridondante, ma necessario per individuarli velocemente)
         std::vector<Nemico*> nemici; // Nemici presenti nella mappa
         short int altezza;

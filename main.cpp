@@ -70,18 +70,6 @@ int generaIsola(skydda::Mappa& mappa) {
     return larghezza;
 }
 
-void generaNemico(skydda::Mappa& mappa, int larghezza) {
-    skydda::Coordinate coordinate;
-    coordinate.x = larghezza + rand() % 10;
-    coordinate.y = rand() % 20;
-    int vita = rand() % 9 + 1;
-    mappa.registraComponente(
-        new skydda::Nemico(
-            '0' + vita, coordinate, vita
-        )
-    );
-}
-
 skydda::Difensore difensore;
 
 void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione) {
@@ -107,7 +95,7 @@ int main() {
     skydda::Mappa mappa(50, 20);
 
     int larghezza = generaIsola(mappa);
-    generaNemico(mappa, larghezza);
+    // generaNemico(mappa, larghezza);
     mappa.immettiComponente(&difensore);
     mappa.stampa();
     debug << "Mappa stampata" << std::endl;
@@ -119,7 +107,11 @@ int main() {
             debug << "Mossa non pronta" << std::endl;
             mappa.muoviProiettili();
             debug << "\tProiettili mossi" << std::endl;
-            // mappa.azionaNemici();
+            skydda::Coordinate coord(20, rand() % 50);
+            mappa.generaProiettile(
+                coord, skydda::TipoProiettile::P_NEMICO,
+                skydda::Direzione::NORD, 1
+            );
         }
         Mossa m = mossa.get();
         debug << "Mossa pronta: " << m << std::endl;
