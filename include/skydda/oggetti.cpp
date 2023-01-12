@@ -227,16 +227,18 @@ namespace skydda {
         debug << "\tCoordinate valide (" << arrivo.y << ", " << arrivo.x << ")" << std::endl;
         if (mappa[arrivo.y][arrivo.x] == nullptr) {
             debug << "\tLuogo di arrivo vuoto" << std::endl;
-            mappa[arrivo.y][arrivo.x] = mappa[partenza.y][partenza.x];
+            Componente* componente = mappa[partenza.y][partenza.x];
             mappa[partenza.y][partenza.x] = nullptr;
-            mappa[arrivo.y][arrivo.x]->setCoordinate(arrivo);
-            cancellaComponente(partenza);
+            componente->setCoordinate(arrivo);
+            mappa[arrivo.y][arrivo.x] = componente;
             if (mappa[arrivo.y][arrivo.x]->getTipo() == TipoComponente::PROIETTILE_DIFENSORE) {
                 if (((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->getSopraTerreno()) {
                     immettiComponente(new Terreno(partenza), partenza);
                     ((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->setSopraTerreno(false);
                 }
                 stampaComponente(partenza);
+            } else {
+                cancellaComponente(partenza);
             }
             stampaComponente(arrivo);
         } else {
