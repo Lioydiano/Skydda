@@ -107,11 +107,13 @@ int main() {
             debug << "Mossa non pronta" << std::endl;
             mappa.muoviProiettili();
             debug << "\tProiettili mossi" << std::endl;
-            skydda::Coordinate coord(20, rand() % 50);
-            mappa.generaProiettile(
-                coord, skydda::TipoProiettile::P_NEMICO,
-                skydda::Direzione::NORD, 1
-            );
+            if (rand() % 5 == 0) {
+                skydda::Coordinate coord(20, rand() % 50);
+                mappa.generaProiettile(
+                    coord, skydda::TipoProiettile::P_NEMICO,
+                    skydda::Direzione::NORD, 1
+                );
+            }
         }
         Mossa m = mossa.get();
         debug << "Mossa pronta: " << m << std::endl;
