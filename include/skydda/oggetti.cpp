@@ -207,8 +207,24 @@ namespace skydda {
             arrivo.valida(altezza, larghezza);
         } catch (std::runtime_error& e) {
             switch (mappa[partenza.y][partenza.x]->getTipo()) {
-                case TipoComponente::PROIETTILE_DIFENSORE: case TipoComponente::PROIETTILE_NEMICO: {
-                    debug << "Rimuovo proiettile" << std::endl;
+                case TipoComponente::PROIETTILE_DIFENSORE: {
+                    debug << "Rimuovo proiettile difensore" << std::endl;
+                    proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
+                    if (((ProiettileDifensore*)mappa[partenza.y][partenza.x])->getSopraTerreno()) {
+                        debug << "Ripristino terreno" << std::endl;
+                        immettiComponente(new Terreno(partenza), partenza);
+                        debug << "Stampo terreno" << std::endl;
+                        stampaComponente(partenza);
+                    } else {
+                        debug << "Rimuovo componente" << std::endl;
+                        rimuoviComponente(partenza);
+                        debug << "Cancello componente" << std::endl;
+                        cancellaComponente(partenza);
+                    }
+                    break;
+                }
+                case TipoComponente::PROIETTILE_NEMICO: {
+                    debug << "Rimuovo proiettile nemico" << std::endl;
                     proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
                     debug << "Rimuovo componente" << std::endl;
                     rimuoviComponente(partenza);
@@ -235,8 +251,10 @@ namespace skydda {
                 if (((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->getSopraTerreno()) {
                     immettiComponente(new Terreno(partenza), partenza);
                     ((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->setSopraTerreno(false);
+                    stampaComponente(partenza);
+                } else {
+                    cancellaComponente(partenza);
                 }
-                stampaComponente(partenza);
             } else {
                 cancellaComponente(partenza);
             }
@@ -344,17 +362,18 @@ namespace skydda {
                             proiettili.erase(std::find(proiettili.begin(), proiettili.end(), proiettile));
                             proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[arrivo.y][arrivo.x]));
                             delete proiettile; // Deallocazione della memoria del proiettile difensore
+                            rimuoviComponente(arrivo); // Deallocazione della memoria del proiettile nemico
                             if (sopraTerreno_) {
                                 // Il proiettile si trova sull'isola, quindi sul Terreno che va ripristinato
                                 immettiComponente(new Terreno(partenza), partenza);
                                 debug << "\tTerreno ripristinato" << std::endl;
+                                stampaComponente(partenza);
                             } else {
                                 mappa[partenza.y][partenza.x] = nullptr;
                                 debug << "\tProiettile difensore [distrutto] rimosso dalla mappa" << std::endl;
+                                cancellaComponente(partenza);
                             }
-                            rimuoviComponente(arrivo); // Deallocazione della memoria del proiettile nemico
                             debug << "\tProiettile nemico rimosso dalla mappa" << std::endl;
-                            stampaComponente(partenza);
                             stampaEffimera(arrivo);
                             break;
                         }
