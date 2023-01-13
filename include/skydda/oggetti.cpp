@@ -602,4 +602,9 @@ namespace skydda {
         ANSI::reimposta();
         std::flush(std::cout);
     }
+    ANSI::Stile stileDestinazione(
+        ANSI::ColoreTesto::ROSSO,
+        ANSI::ColoreSfondo::S_NERO,
+        ANSI::Attributo::LAMPEGGIA
+    );
 };

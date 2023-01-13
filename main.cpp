@@ -119,6 +119,10 @@ int main() {
     int larghezza = generaIsola(mappa);
     mappa.immettiComponente(&difensore);
     mappa.stampa();
+    cursore.posiziona(obiettivo);
+    skydda::stileDestinazione.applica();
+    std::cout << "X";
+    ANSI::reimposta();
     debug << "Mappa stampata" << std::endl;
 
     const skydda::Coordinate indicazioni_destinazione(8, 70); // Coordinate del terminale dove stampare le indicazioni sulla destinazione
