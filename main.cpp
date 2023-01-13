@@ -114,11 +114,11 @@ int main() {
     std::chrono::milliseconds durata(100);
 
     skydda::Mappa mappa(50, 20);
-    skydda::Coordinate obiettivo = generaCoordinate(mappa); // Coordinate obbiettivo
 
     int larghezza = generaIsola(mappa);
     mappa.immettiComponente(&difensore);
     mappa.stampa();
+    skydda::Coordinate obiettivo = generaCoordinate(mappa); // Coordinate obbiettivo
     cursore.posiziona(obiettivo);
     skydda::stileDestinazione.applica();
     std::cout << "X";
