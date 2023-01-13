@@ -17,7 +17,8 @@ enum Mossa {
     SparaDestra,
     SparaSu,
     SparaGiu,
-    NessunaMossa
+    NessunaMossa,
+    Vinsten
 };
 
 
@@ -47,6 +48,8 @@ Mossa leggiMossa() {
             return MossaDestra;
         case 'a': case 'A':
             return MossaSinistra;
+        case 'v': case 'V':
+            return Vinsten;
         default:
             break;
     }
@@ -204,6 +207,65 @@ int main() {
             case NessunaMossa:
                 debug << "Nessuna mossa" << std::endl;
                 break;
+            case Vinsten: { // L'utente pensa di aver vinto
+                debug << "Vinsten" << std::endl;
+                skydda::Coordinate coordinate_difensore = difensore.getCoordinate();
+                mappa.immettiComponente(new skydda::Terreno(coordinate_difensore), coordinate_difensore);
+                skydda::Coordinate origine_(0, 0);
+                skydda::Componente* origine = mappa.getComponente(origine_);
+                skydda::Componente* componente = mappa.getComponente(obiettivo);
+                if (componente != nullptr && origine != nullptr) { // Se l'obiettivo non è vuoto...
+                    if (componente->getTipo() == skydda::TipoComponente::TERRENO && origine->getTipo() == skydda::TipoComponente::TERRENO) {
+                        // BFS per trovare eventuali connessioni tra obiettivo e origine
+                        std::queue<skydda::Coordinate> coda;
+                        std::vector<std::vector<bool>> visitati(mappa.getAltezza());
+                        for (int i=0; i<mappa.getAltezza(); i++) { // Per ogni riga
+                            visitati[i].resize(mappa.getLarghezza(), false); // La allargo e inizializzo a false
+                        }
+                        coda.push(obiettivo); // Parto dall'obiettivo, e tento di raggiungere l'origine
+                        skydda::Coordinate cima;
+                        skydda::Coordinate coordinate_vicino;
+                        while (!coda.empty()) {
+                            cima = coda.front(); // Prendi l'ultimo della coda
+                            coda.pop(); // Elimina l'ultimo della coda
+                            visitati[cima.y][cima.x] = true; // Segno come visitato
+                            if (cima.y == 0 && cima.x == 0)
+                                break;
+
+                            for (int i=0; i<4; i++) { // Itero sulle possibili direzioni
+                                coordinate_vicino = cima + skydda::direzioni[(skydda::Direzione)i]; // Guardiamo il blocco in quella direzione
+                                try {
+                                    coordinate_vicino.valida(mappa.getAltezza(), mappa.getLarghezza());
+                                    skydda::Componente* vicino = mappa.getComponente(coordinate_vicino);
+                                    if (vicino != nullptr) {
+                                        if (vicino->getTipo() == skydda::TipoComponente::TERRENO) {
+                                            coda.push(coordinate_vicino); // Richiedo che venga esplorata la zona del vicino
+                                        }
+                                    }
+                                } catch (std::runtime_error& e) {
+                                    continue;
+                                }
+                            }
+                        }
+                        if (visitati[0][0]) { // Abbiamo visitato l'origine
+                            skydda::Coordinate c_(0, 23);
+                            cursore.posiziona(c_);
+                            std::cout << "Hai vinto!";
+                            std::this_thread::sleep_for(durata);
+                            return 0;
+                        } else {
+                            return 0;
+                        }
+                    } else {
+                        // ...
+                        return 0;
+                    }
+                } else {
+                    // ...
+                    return 0;
+                }
+                return 0;
+            }
             default:
                 break;
         }
