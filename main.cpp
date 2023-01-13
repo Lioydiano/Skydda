@@ -236,6 +236,8 @@ int main() {
                                 coordinate_vicino = cima + skydda::direzioni[(skydda::Direzione)i]; // Guardiamo il blocco in quella direzione
                                 try {
                                     coordinate_vicino.valida(mappa.getAltezza(), mappa.getLarghezza());
+                                    if (visitati[coordinate_vicino.y][coordinate_vicino.x]) // Se è già stato visitato, non lo considero
+                                        continue;
                                     skydda::Componente* vicino = mappa.getComponente(coordinate_vicino);
                                     if (vicino != nullptr) {
                                         if (vicino->getTipo() == skydda::TipoComponente::TERRENO) {
@@ -248,20 +250,29 @@ int main() {
                             }
                         }
                         if (visitati[0][0]) { // Abbiamo visitato l'origine
-                            skydda::Coordinate c_(0, 23);
+                            skydda::Coordinate c_(22, 0);
                             cursore.posiziona(c_);
+                            ANSI::reimposta();
                             std::cout << "Hai vinto!";
-                            std::this_thread::sleep_for(durata);
+                            std::cin.get();
                             return 0;
                         } else {
                             return 0;
                         }
                     } else {
-                        // ...
+                        skydda::Coordinate c_(22, 0);
+                        cursore.posiziona(c_);
+                        ANSI::reimposta();
+                        std::cout << "Hai perso!";
+                        std::cin.get();
                         return 0;
                     }
                 } else {
-                    // ...
+                    skydda::Coordinate c_(22, 0);
+                    cursore.posiziona(c_);
+                    ANSI::reimposta();
+                    std::cout << "Hai perso!";
+                    std::cin.get();
                     return 0;
                 }
                 return 0;
