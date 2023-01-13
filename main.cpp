@@ -87,18 +87,42 @@ void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione) {
     mappa.spostaComponente(vecchie, coordinate);
     debug << "\tComponente spostato" << std::endl;
 }
+skydda::Cursore cursore; // Cursore ausiliario per stampare le indicazioni
+const skydda::Coordinate indicazioni_difensore(10, 70); // Coordinate del terminale dove stampare le indicazioni sul difensore
+void aggiornaCoordinateDifensore() {
+    cursore.posiziona(indicazioni_difensore);
+    ANSI::reimposta();
+    std::cout << "Difensore: (" << difensore.getCoordinate().y << ", " << difensore.getCoordinate().x << ")   ";
+}
+
+skydda::Coordinate generaCoordinate(skydda::Mappa& mappa) {
+    skydda::Coordinate coordinate;
+    while (true) {
+        coordinate.x = rand() % mappa.getLarghezza();
+        coordinate.y = rand() % mappa.getAltezza();
+        if (mappa.getComponente(coordinate) == nullptr)
+            break;
+    }
+    return coordinate;
+}
 
 int main() {
     srand(time(NULL));
     std::chrono::milliseconds durata(100);
 
     skydda::Mappa mappa(50, 20);
+    skydda::Coordinate obiettivo = generaCoordinate(mappa); // Coordinate obbiettivo
 
     int larghezza = generaIsola(mappa);
-    // generaNemico(mappa, larghezza);
     mappa.immettiComponente(&difensore);
     mappa.stampa();
     debug << "Mappa stampata" << std::endl;
+
+    const skydda::Coordinate indicazioni_destinazione(8, 70); // Coordinate del terminale dove stampare le indicazioni sulla destinazione
+    aggiornaCoordinateDifensore();
+    cursore.posiziona(indicazioni_destinazione);
+    ANSI::reimposta();
+    std::cout << "Obiettivo: (" << obiettivo.y << ", " << obiettivo.x << ")";
 
     while (true) {
         std::future<Mossa> mossa = std::async(std::launch::async, leggiMossa);
@@ -121,21 +145,25 @@ int main() {
             case MossaSinistra: {
                 debug << "Muovi difensore: sinistra" << std::endl;
                 muoviDifensore(mappa, skydda::Direzione::OVEST);
+                aggiornaCoordinateDifensore();
                 break;
             }
             case MossaDestra: {
                 debug << "Muovi difensore: destra" << std::endl;
                 muoviDifensore(mappa, skydda::Direzione::EST);
+                aggiornaCoordinateDifensore();
                 break;
             }
             case MossaSu: {
                 debug << "Muovi difensore: su" << std::endl;
                 muoviDifensore(mappa, skydda::Direzione::NORD);
+                aggiornaCoordinateDifensore();
                 break;
             }
             case MossaGiu: {
                 debug << "Muovi difensore: giu" << std::endl;
                 muoviDifensore(mappa, skydda::Direzione::SUD);
+                aggiornaCoordinateDifensore();
                 break;
             }
             case SparaSinistra: case SparaDestra: case SparaSu: case SparaGiu: {
