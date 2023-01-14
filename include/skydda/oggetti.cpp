@@ -1,5 +1,8 @@
 #pragma once
 #include <algorithm>
+#include <thread>
+#include <chrono>
+#include <future>
 #include "ANSI.cpp"
 #include "cursore.cpp"
 #include "componente.cpp"
@@ -184,26 +187,34 @@ namespace skydda {
     void Mappa::stampaComponente(Coordinate& coordinate) {
         cursore.posiziona(coordinate);
         if (mappa[coordinate.y][coordinate.x] != nullptr)
-            mappa[coordinate.y][coordinate.x]->stampa();
+            std::async(std::launch::async, [coordinate, this]() {
+                mappa[coordinate.y][coordinate.x]->stampa();
+            });
         else
             std::cout << ' ';
     }
     void Mappa::stampaComponente(Componente* componente) {
         cursore.posiziona(componente->getCoordinate());
         if (componente != nullptr)
-            componente->stampa();
+            std::async(std::launch::async, [componente, this]() {
+                componente->stampa();
+            });
         else
             std::cout << ' ';
     }
     void Mappa::cancellaComponente(Coordinate& coordinate) {
-        cursore.posiziona(coordinate);
-        ANSI::reimposta();
-        std::cout << ' ';
+        std::async(std::launch::async, [coordinate, this]() {
+            cursore.posiziona(coordinate);
+            ANSI::reimposta();
+            std::cout << ' ';
+        });
     }
     void Mappa::cancellaComponente(Componente* componente) {
-        cursore.posiziona(componente->getCoordinate());
-        ANSI::reimposta();
-        std::cout << ' ';
+        std::async(std::launch::async, [componente, this]() {
+            cursore.posiziona(componente->getCoordinate());
+            ANSI::reimposta();
+            std::cout << ' ';
+        });
     }
     void Mappa::spostaComponente(Coordinate& partenza, Coordinate& arrivo) {
         debug << "Sposto " << mappa[partenza.y][partenza.x]->getTipo() << " da (" << partenza.y << ", " << partenza.x << ") a (" << arrivo.y << ", " << arrivo.x << ")" << std::endl;
@@ -592,6 +603,7 @@ namespace skydda {
                     }
                 }
             }
+            ANSI::reimposta();
             stileBordo.applica();
             std::cout << '@';
             std::cout << '\n';
