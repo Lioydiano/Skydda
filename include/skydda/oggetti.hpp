@@ -11,28 +11,11 @@ namespace skydda {
     enum TipoProiettile { P_DIFENSORE, P_NEMICO };
 
     class Difensore;
-    class Nemico;
     class Proiettile;
     class ProiettileDifensore;
     class ProiettileNemico;
     class Terreno;
-    class Effimera;
     class Mappa;
-
-    class Nemico : public Componente {
-    private:
-        short int vita;
-    
-    public:
-        Nemico();
-        Nemico(char, Coordinate, short int);
-        ~Nemico() override;
-
-        short int getVita() const;
-        void setVita(short int);
-
-        void stampa() override;
-    };
 
     class Difensore : public Componente {
     public:
@@ -95,7 +78,6 @@ namespace skydda {
         Cursore cursore;
         std::vector<std::vector<Componente*>> mappa;
         std::vector<Proiettile*> proiettili; // Proiettili presenti nella mappa (ridondante, ma necessario per individuarli velocemente)
-        std::vector<Nemico*> nemici; // Nemici presenti nella mappa
         short int altezza;
         short int larghezza;
 
@@ -112,9 +94,7 @@ namespace skydda {
         Componente* getComponente(Coordinate&) const;
 
         // Immette un Componente nella mappa registrandolo in tutte le strutture dati necessarie
-        void registraComponente(Effimera*);
         void registraComponente(Proiettile*);
-        void registraComponente(Nemico*);
 
         // Immissione bruta di un Componente in una posizione (senza controlli)
         void immettiComponente(Componente*, Coordinate&);

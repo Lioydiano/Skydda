@@ -5,7 +5,7 @@
 #include <conio.h>
 #include "include/skydda/skydda.cpp"
 // cd onedrive/documenti/github/skydda
-// g++ main.cpp -o skydda -std=c++17 -Wall
+// g++ main.cpp -o skydda -std=c++17 -Wall -O3
 
 
 enum Mossa {
@@ -76,19 +76,14 @@ int generaIsola(skydda::Mappa& mappa) {
 skydda::Difensore difensore;
 
 void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione) {
-    debug << "\tMuovi difensore in direzione " << direzione << std::endl;
     skydda::Coordinate coordinate = difensore.getCoordinate() + skydda::direzioni[direzione];
-    debug << "\tCoordinate: (" << coordinate.x << ", " << coordinate.y << ")" << std::endl;
     try {
         coordinate.valida(mappa.getAltezza(), mappa.getLarghezza());
     } catch (std::runtime_error& e) {
         return;
     }
-    debug << "\tCoordinate valide" << std::endl;
     skydda::Coordinate vecchie = difensore.getCoordinate();
-    debug << "\tVecchie coordinate: (" << vecchie.x << ", " << vecchie.y << ")" << std::endl;
     mappa.spostaComponente(vecchie, coordinate);
-    debug << "\tComponente spostato" << std::endl;
 }
 skydda::Cursore cursore; // Cursore ausiliario per stampare le indicazioni
 const skydda::Coordinate indicazioni_difensore(10, 70); // Coordinate del terminale dove stampare le indicazioni sul difensore
@@ -123,7 +118,6 @@ int main() {
     skydda::stileDestinazione.applica();
     std::cout << "X";
     ANSI::reimposta();
-    debug << "Mappa stampata" << std::endl;
 
     const skydda::Coordinate indicazioni_destinazione(8, 70); // Coordinate del terminale dove stampare le indicazioni sulla destinazione
     aggiornaCoordinateDifensore();
@@ -133,11 +127,8 @@ int main() {
 
     while (true) {
         std::future<Mossa> mossa = std::async(std::launch::async, leggiMossa);
-        debug << "Funzione asincrona lanciata" << std::endl;
         while (mossa.wait_for(durata) != std::future_status::ready) {
-            debug << "Mossa non pronta" << std::endl;
             mappa.muoviProiettili();
-            debug << "\tProiettili mossi" << std::endl;
             if (rand() % 5 == 0) {
                 skydda::Coordinate coord(20, rand() % 50);
                 mappa.generaProiettile(
@@ -147,36 +138,29 @@ int main() {
             }
         }
         Mossa m = mossa.get();
-        debug << "Mossa pronta: " << m << std::endl;
         switch (m) {
             case MossaSinistra: {
-                debug << "Muovi difensore: sinistra" << std::endl;
                 muoviDifensore(mappa, skydda::Direzione::OVEST);
                 aggiornaCoordinateDifensore();
                 break;
             }
             case MossaDestra: {
-                debug << "Muovi difensore: destra" << std::endl;
                 muoviDifensore(mappa, skydda::Direzione::EST);
                 aggiornaCoordinateDifensore();
                 break;
             }
             case MossaSu: {
-                debug << "Muovi difensore: su" << std::endl;
                 muoviDifensore(mappa, skydda::Direzione::NORD);
                 aggiornaCoordinateDifensore();
                 break;
             }
             case MossaGiu: {
-                debug << "Muovi difensore: giu" << std::endl;
                 muoviDifensore(mappa, skydda::Direzione::SUD);
                 aggiornaCoordinateDifensore();
                 break;
             }
             case SparaSinistra: case SparaDestra: case SparaSu: case SparaGiu: {
-                debug << "Spara difensore" << std::endl;
                 skydda::Coordinate coordinate = difensore.getCoordinate();
-                debug << "\tCoordinate: (" << coordinate.x << ", " << coordinate.y << ")" << std::endl;
                 switch (m) {
                     case SparaSinistra:
                         mappa.generaProiettile(
@@ -205,14 +189,11 @@ int main() {
                     default:
                         break;
                 }
-                debug << "\tProiettile generato" << std::endl;
                 break;
             }
             case NessunaMossa:
-                debug << "Nessuna mossa" << std::endl;
                 break;
             case Vinsten: { // L'utente pensa di aver vinto
-                debug << "Vinsten" << std::endl;
                 skydda::Coordinate coordinate_difensore = difensore.getCoordinate();
                 mappa.immettiComponente(new skydda::Terreno(coordinate_difensore), coordinate_difensore);
                 skydda::Coordinate origine_(0, 0);
