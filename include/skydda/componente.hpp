@@ -7,11 +7,9 @@ namespace skydda {
     enum TipoComponente {
         __IGNOTO__,
         DIFENSORE,
-        NEMICO,
         PROIETTILE_DIFENSORE,
         PROIETTILE_NEMICO,
-        TERRENO,
-        EFFIMERA
+        TERRENO
     };
 
     // https://www.ibm.com/docs/en/zos/2.4.0?topic=only-abstract-classes-c (Classi astratte pure)
