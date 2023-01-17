@@ -24,7 +24,7 @@ enum Mossa {
 
 void stampaIntro() {
     std::cout << "\x1b]2;Skydda\x07"; // Questo comando cambia il titolo della finestra
-    std::cout << "\t\t\t\t     \033[035;1mSKYDDA\033[0m\n";
+    std::cout << "\t\t\t\t      \033[035;1mSKYDDA\033[0m\n";
     std::cout << "\t\t\t\033[3mCapture the goal to become the goat\033[0m\n\n";
 
     std::cout << "\t\t\t  \x1b[31;1mElissx \t\tFLAK-ZOSO\x1b[0m\n\n";
@@ -41,7 +41,7 @@ void stampaIntro() {
     std::cout << "\t\t\tYou can hit your enemy with your bullets \033[035mv\033[0m\n";
     std::cout << "\t\tYou can make the bullets bounce, but we won't tell you how\n\n";
 
-    std::cout << "\tRemember: to win you must connect the goal to the origin {0, 0} with a complete road!\033[0m\n";
+    std::cout << "     Remember: to win you must connect the goal to the origin {0, 0} with a complete road!\033[0m\n";
     getch();
 }
 
