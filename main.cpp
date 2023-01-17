@@ -22,6 +22,30 @@ enum Mossa {
 };
 
 
+void stampaIntro() {
+    std::cout << "\x1b]2;Skydda\x07"; // Questo comando cambia il titolo della finestra
+    std::cout << "\t\t\t\t     \033[035;1mSKYDDA\033[0m\n";
+    std::cout << "\t\t\t\033[3mCapture the goal to become the goat\033[0m\n\n";
+
+    std::cout << "\t\t\t  \x1b[31;1mElissx \t\tFLAK-ZOSO\x1b[0m\n\n";
+
+    std::cout << "\t\t\t- \033[035m 'v'\033[0m to try convalidating your path\n";
+    std::cout << "\t\t\t- \033[035m 'p' 'r'\033[0m to pause/resume\n";
+    std::cout << "\t\t\t- \033[035m 'w' 'a' 's' 'd'\033[0m to play\n";
+    std::cout << "\t\t\t- \033[035m ^ > v <\033[0m (arrow keys) to shoot\n\n";
+
+    std::cout << "\t\t\t\033[032m$\033[0m <---- this is you, the defender\n";
+    std::cout << "\t\t\t\033[036m^\033[0m <---- this is an enemy bullet\n";
+    std::cout << "\t\t\t\033[031mX\033[0m <---- this is the goal you need to reach\n\n";
+
+    std::cout << "\t\t\tYou can hit your enemy with your bullets \033[035mv\033[0m\n";
+    std::cout << "\t\tYou can make the bullets bounce, but we won't tell you how\n\n";
+
+    std::cout << "\tRemember: to win you must connect the goal to the origin {0, 0} with a complete road!\033[0m\n";
+    getch();
+}
+
+
 Mossa leggiMossa() {
     char carattere = getch();
     if (carattere == -32) {
@@ -105,6 +129,7 @@ skydda::Coordinate generaCoordinate(skydda::Mappa& mappa) {
 }
 
 int main() {
+    stampaIntro();
     srand(time(NULL));
     std::chrono::milliseconds durata(100);
 
