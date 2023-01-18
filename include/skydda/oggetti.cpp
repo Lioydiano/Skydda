@@ -48,7 +48,7 @@ namespace skydda {
     Difensore::~Difensore() {}
     void Difensore::stampa() {
         stile.applica();
-        std::cout << u8"$";
+        std::cout << "$";
     }
 
     Proiettile::Proiettile() : Componente(direzioneCarattere[EST], Coordinate(0, 0), stileProiettileDifensore, TipoComponente::PROIETTILE_DIFENSORE), origine(TipoProiettile::P_DIFENSORE), direzione(EST), velocita(1) {}
@@ -114,7 +114,7 @@ namespace skydda {
     void stampaEffimera(Coordinate& coordinate) {
         std::cout << CSI << coordinate.y + 2 << ";" << coordinate.x + 2 << "H";
         stileEffimera.applica();
-        std::cout << u8"*";
+        std::cout << "*";
     }
 
     Mappa::Mappa() : larghezza(0), altezza(0) {}
