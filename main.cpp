@@ -21,6 +21,7 @@ enum Mossa { // Associa una mossa ad un valore numerico per riconoscerla
     SparaGiu,
     // Altre mosse
     NessunaMossa,
+    MostraObiettivo, // Mostra l'obiettivo con una X
     Vinsten, // Tentativo di vittoria
     Abbandona, // Abbandona la partita (quando NON si è in pausa)
     Pausa, // Mette in pausa la partita
@@ -37,6 +38,7 @@ void stampaIntro() {
 
     std::cout << "\t\t\t- \033[035m 'v'\033[0m to convalidate your path\n";
     std::cout << "\t\t\t- \033[035m 'q'\033[0m to quit\n";
+    std::cout << "\t\t\t- \033[035m 'x'\033[0m show the goal with an \033[031mX\033[0m\n";
     std::cout << "\t\t\t- \033[035m 'p' 'r'\033[0m to pause/resume\n";
     std::cout << "\t\t\t- \033[035m 'w' 'a' 's' 'd'\033[0m to play\n";
     std::cout << "\t\t\t- \033[035m ^ > v <\033[0m (arrow keys) to shoot\n\n";
@@ -82,6 +84,8 @@ Mossa leggiMossa() {
             return MossaDestra;
         case 'a': case 'A':
             return MossaSinistra;
+        case 'x': case 'X':
+            return MostraObiettivo;
         case 'v': case 'V':
             return Vinsten;
         case 'q': case 'Q':
@@ -148,6 +152,14 @@ skydda::Coordinate generaCoordinate(skydda::Mappa& mappa) {
     return coordinate;
 }
 
+// Stampa l'obiettivo nel terminale con una X rossa
+void stampaObiettivo(skydda::Coordinate& obiettivo) {
+    cursore.posiziona(obiettivo); // Posiziona il cursore alle coordinate dell'obiettivo
+    skydda::stileDestinazione.applica(); // Applica lo stile della X rossa (skydda::stileDestinazione è un oggetto di tipo skydda::Stile)
+    std::cout << "X"; // Stampa la X rossa
+    ANSI::reimposta(); // Ripristina lo stile di default (per evitare che il terminale rimanga con lo stile della X rossa)
+}
+
 int main() {
     stampaIntro();
     srand(time(NULL)); // Inizializza il generatore di numeri casuali con il tempo attuale (perché se no le partite sono tutte uguali)
@@ -159,10 +171,7 @@ int main() {
     mappa.immettiComponente(&difensore);
     mappa.stampa();
     skydda::Coordinate obiettivo = generaCoordinate(mappa); // Coordinate obbiettivo
-    cursore.posiziona(obiettivo);
-    skydda::stileDestinazione.applica();
-    std::cout << "X";
-    ANSI::reimposta();
+    stampaObiettivo(obiettivo);
 
     const skydda::Coordinate indicazioni_destinazione(8, 70); // Coordinate del terminale dove stampare le indicazioni sulla destinazione
     aggiornaCoordinateDifensore();
@@ -192,6 +201,10 @@ int main() {
             }
             case Pausa: {
                 while (leggiMossa() != Riprendi); // Non fa nulla, aspetta che il gioco venga ripreso
+                break;
+            }
+            case MostraObiettivo: {
+                stampaObiettivo(obiettivo);
                 break;
             }
             case MossaSinistra: {
@@ -320,11 +333,6 @@ int main() {
             default:
                 break;
         }
-        // Ristampa il difensore
-        cursore.posiziona(obiettivo);
-        skydda::stileDestinazione.applica();
-        std::cout << "X";
-        ANSI::reimposta();
     }
 
     std::this_thread::sleep_for(durata);
