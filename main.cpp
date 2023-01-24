@@ -320,6 +320,11 @@ int main() {
             default:
                 break;
         }
+        // Ristampa il difensore
+        cursore.posiziona(obiettivo);
+        skydda::stileDestinazione.applica();
+        std::cout << "X";
+        ANSI::reimposta();
     }
 
     std::this_thread::sleep_for(durata);
