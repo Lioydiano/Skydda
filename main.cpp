@@ -1,24 +1,30 @@
-#include <thread>
-#include <chrono>
-#include <future>
-#include <random>
-#include <conio.h>
+#include <thread> // std::this_thread::sleep_for
+#include <chrono> // std::chrono::milliseconds, std::chrono::seconds
+#include <future> // std::async, std::Future
+#include <random> // mt19937, bernoulli_distribution
+#include <conio.h> // getch()
 #include "include/skydda/skydda.cpp"
 // cd onedrive/documenti/github/skydda
 // g++ main.cpp -o skydda -std=c++17 -Wall -O3
 
 
-enum Mossa {
+enum Mossa { // Associa una mossa ad un valore numerico per riconoscerla
+    // Movimenti del difensore
     MossaSinistra,
     MossaDestra,
     MossaSu,
     MossaGiu,
+    // Lancio di proiettili
     SparaSinistra,
     SparaDestra,
     SparaSu,
     SparaGiu,
+    // Altre mosse
     NessunaMossa,
-    Vinsten
+    Vinsten, // Tentativo di vittoria
+    Abbandona, // Abbandona la partita (quando NON si è in pausa)
+    Pausa, // Mette in pausa la partita
+    Riprendi // Riprende la partita (quando si è in pausa)
 };
 
 
@@ -29,7 +35,8 @@ void stampaIntro() {
 
     std::cout << "\t\t\t  \x1b[31;1mElissx \t\tFLAK-ZOSO\x1b[0m\n\n";
 
-    std::cout << "\t\t\t- \033[035m 'v'\033[0m to try convalidating your path\n";
+    std::cout << "\t\t\t- \033[035m 'v'\033[0m to convalidate your path\n";
+    std::cout << "\t\t\t- \033[035m 'q'\033[0m to quit\n";
     std::cout << "\t\t\t- \033[035m 'p' 'r'\033[0m to pause/resume\n";
     std::cout << "\t\t\t- \033[035m 'w' 'a' 's' 'd'\033[0m to play\n";
     std::cout << "\t\t\t- \033[035m ^ > v <\033[0m (arrow keys) to shoot\n\n";
@@ -41,29 +48,32 @@ void stampaIntro() {
     std::cout << "\t\t\tYou can hit your enemy with your bullets \033[035mv\033[0m\n";
     std::cout << "\t\tYou can make the bullets bounce, but we won't tell you how\n\n";
 
-    std::cout << "     Remember: to win you must connect the goal to the origin {0, 0} with a complete road!\033[0m\n";
-    getch();
+    std::cout << "     Remember: to win you must connect the goal to the origin {0, 0} with a complete road!\033[0m\n\n";
+    std::cout << "\t\t\t\t\033[3;5mPress any key to start\033[0m\n";
+    getch(); // Aspetta finché l'utente non preme un tasto (invia un carattere, char)
 }
 
 
+// Legge la mossa dell'utente, restituisce il valore numerico associato
 Mossa leggiMossa() {
-    char carattere = getch();
-    if (carattere == -32) {
-        carattere = getch(); // Eludi la [ che segue \033
+    char carattere = getch(); // Legge un carattere (invio di un tasto)
+    if (carattere == -32) { // Se il carattere è -32, allora è stato premuto un tasto freccia (Eludi la [ che segue \033)
+        // \033[ è il codice ASCII per il tasto freccia
+        carattere = getch();
         switch (carattere) {
-            case 72:
+            case 72: // '\033[A' (ovvero '\03372' perché '['+'A'=72) è il codice ASCII per il tasto freccia su
                 return SparaSu;
-            case 80:
+            case 80: // '\033[B' è il codice ASCII per il tasto freccia giù
                 return SparaGiu;
-            case 75:
+            case 75: // '\033[D' è il codice ASCII per il tasto freccia sinistra
                 return SparaSinistra;
-            case 77:
+            case 77: // '\033[C' è il codice ASCII per il tasto freccia destra
                 return SparaDestra;
             default:
                 break;
         }
     }
-    switch (carattere) {
+    switch (carattere) { // Per Muoversi
         case 'w': case 'W':
             return MossaSu;
         case 's': case 'S':
@@ -74,11 +84,18 @@ Mossa leggiMossa() {
             return MossaSinistra;
         case 'v': case 'V':
             return Vinsten;
+        case 'q': case 'Q':
+            return Abbandona;
+        case 'p': case 'P':
+            return Pausa;
+        case 'r': case 'R':
+            return Riprendi;
         default:
             break;
     }
     return NessunaMossa;
 }
+
 
 int generaIsola(skydda::Mappa& mappa) {
     int larghezza = 15 + rand() % 5;
@@ -100,17 +117,20 @@ int generaIsola(skydda::Mappa& mappa) {
 skydda::Difensore difensore;
 
 void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione) {
-    skydda::Coordinate coordinate = difensore.getCoordinate() + skydda::direzioni[direzione];
+    skydda::Coordinate coordinate = difensore.getCoordinate() + skydda::direzioni[direzione]; // Calcola le coordinate di destinazione a seconda della direzione della mossa
     try {
         coordinate.valida(mappa.getAltezza(), mappa.getLarghezza());
-    } catch (std::runtime_error& e) {
-        return;
+    } catch (std::runtime_error& e) { // Il ramo di catch è eseguito se viene lanciata un'eccezione di tipo std::runtime_error
+        return; // Se le coordinate non sono valide, non muovere il difensore, ma termina la funzione
     }
-    skydda::Coordinate vecchie = difensore.getCoordinate();
-    mappa.spostaComponente(vecchie, coordinate);
+    skydda::Coordinate vecchie = difensore.getCoordinate(); // Memorizza le vecchie coordinate del difensore
+    mappa.spostaComponente(vecchie, coordinate); // Sposta il difensore nella nuova posizione
 }
+
+
 skydda::Cursore cursore; // Cursore ausiliario per stampare le indicazioni
 const skydda::Coordinate indicazioni_difensore(10, 70); // Coordinate del terminale dove stampare le indicazioni sul difensore
+// Aggiorna le coordinate del difensore nella barra laterale di destra
 void aggiornaCoordinateDifensore() {
     cursore.posiziona(indicazioni_difensore);
     ANSI::reimposta();
@@ -130,7 +150,7 @@ skydda::Coordinate generaCoordinate(skydda::Mappa& mappa) {
 
 int main() {
     stampaIntro();
-    srand(time(NULL));
+    srand(time(NULL)); // Inizializza il generatore di numeri casuali con il tempo attuale (perché se no le partite sono tutte uguali)
     std::chrono::milliseconds durata(100);
 
     skydda::Mappa mappa(50, 20);
@@ -151,19 +171,29 @@ int main() {
     std::cout << "Obiettivo: (" << obiettivo.y << ", " << obiettivo.x << ")";
 
     while (true) {
-        std::future<Mossa> mossa = std::async(std::launch::async, leggiMossa);
-        while (mossa.wait_for(durata) != std::future_status::ready) {
+        // Lancia asincronamente la funzione leggiMossa, che attende un input da tastiera, e aspetta che sia pronta
+        std::future<Mossa> mossa = std::async(std::launch::async, leggiMossa); // Il risultato della funzione leggiMossa viene custodito nel Future mossa
+        // Nel frattempo va avanti, muove i proiettili e genera nuovi proiettili
+        while (mossa.wait_for(durata) != std::future_status::ready) { // Se il Future mossa non è pronto, aspetta 100 millisecondi e riprova (muovendo i proiettili ecc. nel frattempo), altrimenti esce dal ciclo
             mappa.muoviProiettili();
-            if (rand() % 5 == 0) {
-                skydda::Coordinate coord(20, rand() % 50);
+            if (rand() % 5 == 0) { // Se il numero casuale è divisibile per cinque, quindi con probabilità 1/5, genera un proiettile nemico
+                skydda::Coordinate coord(20, rand() % 50); // Genera una coordinata casuale sulla riga 20, quindi sul fondo della mappa
                 mappa.generaProiettile(
                     coord, skydda::TipoProiettile::P_NEMICO,
                     skydda::Direzione::NORD, 1
-                );
+                ); // Genera un proiettile nemico in quella coordinata, con direzione NORD (infatti tutti i proiettili vanno verso l'alto) e velocità 1
             }
-        }
-        Mossa m = mossa.get();
-        switch (m) {
+        } // Quando il Future mossa è pronto, esce dal ciclo e continua
+        Mossa m = mossa.get(); // Ottiene il risultato del Future mossa, che ora è pronto, tramite il metodo .get()
+        switch (m) { // Switch sul tipo di mossa
+            case Abbandona: {
+                std::cout << "Hai abbandonato la partita" << std::endl;
+                exit(0); // Termina il programma
+            }
+            case Pausa: {
+                while (leggiMossa() != Riprendi); // Non fa nulla, aspetta che il gioco venga ripreso
+                break;
+            }
             case MossaSinistra: {
                 muoviDifensore(mappa, skydda::Direzione::OVEST);
                 aggiornaCoordinateDifensore();
@@ -184,32 +214,32 @@ int main() {
                 aggiornaCoordinateDifensore();
                 break;
             }
-            case SparaSinistra: case SparaDestra: case SparaSu: case SparaGiu: {
-                skydda::Coordinate coordinate = difensore.getCoordinate();
-                switch (m) {
+            case SparaSinistra: case SparaDestra: case SparaSu: case SparaGiu: { // Se la mossa è uno dei quattro tipi di sparo
+                skydda::Coordinate coordinate = difensore.getCoordinate(); // Ottiene le coordinate del difensore (che sono le coordinate dalle quali viene sparato il proiettile)
+                switch (m) { // Switch sulla direzione dello sparo
                     case SparaSinistra:
                         mappa.generaProiettile(
                             coordinate, skydda::TipoProiettile::P_DIFENSORE, 
                             skydda::Direzione::OVEST, 1
-                        );
+                        ); // Genera un proiettile difensore in quelle coordinate, con direzione OVEST e velocità 1
                         break;
                     case SparaDestra:
                         mappa.generaProiettile(
                             coordinate, skydda::TipoProiettile::P_DIFENSORE, 
                             skydda::Direzione::EST, 1
-                        );
+                        ); // Genera un proiettile difensore in quelle coordinate, con direzione EST e velocità 1
                         break;
                     case SparaSu:
                         mappa.generaProiettile(
                             coordinate, skydda::TipoProiettile::P_DIFENSORE, 
                             skydda::Direzione::NORD, 1
-                        );
+                        ); // Genera un proiettile difensore in quelle coordinate, con direzione NORD e velocità 1
                         break;
                     case SparaGiu:
                         mappa.generaProiettile(
                             coordinate, skydda::TipoProiettile::P_DIFENSORE, 
                             skydda::Direzione::SUD, 1
-                        );
+                        ); // Genera un proiettile difensore in quelle coordinate, con direzione SUD e velocità 1
                         break;
                     default:
                         break;

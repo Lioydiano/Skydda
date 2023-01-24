@@ -11,7 +11,7 @@ namespace ANSI {
     void impostaAttributo(Attributo attributo) {
         std::cout << CSI << attributo << "m"; // Se l'attributo è 0 (Attributo::RIPRISTINO), allora il codice ANSI sarà "\x1b[0m"
     }
-    void reimposta() {
+    void reimposta() { // Ripristina lo stile di default (ColoreTesto::BIANCO, ColoreSfondo::NERO, Attributo::RIPRISTINO) nel terminale
         impostaColoreTesto(ColoreTesto::BIANCO);
         impostaColoreSfondo(ColoreSfondo::S_NERO);
         impostaAttributo(Attributo::RIPRISTINO);
