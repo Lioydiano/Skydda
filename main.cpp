@@ -3,7 +3,8 @@
 #include <future> // std::async, std::Future
 #include <random> // mt19937, bernoulli_distribution
 #include <conio.h> // getch()
-#include "include/skydda/skydda.cpp"
+
+#include "mappa.hpp"
 // cd onedrive/documenti/github/skydda
 // g++ main.cpp -o skydda -std=c++17 -Wall -O3
 
