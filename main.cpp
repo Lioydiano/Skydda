@@ -1,10 +1,9 @@
 #include <thread> // std::this_thread::sleep_for
 #include <chrono> // std::chrono::milliseconds, std::chrono::seconds
 #include <future> // std::async, std::Future
-#include <random> // mt19937, bernoulli_distribution
+#include <random> // mt19937
 #include <conio.h> // getch()
 #include "include/skydda/skydda.cpp"
-// cd onedrive/documenti/github/skydda
 // g++ main.cpp -o skydda -std=c++17 -Wall -O3
 
 
