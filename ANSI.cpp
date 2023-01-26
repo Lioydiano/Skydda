@@ -1,4 +1,3 @@
-#pragma once
 #include "ANSI.hpp"
 
 namespace ANSI {
