@@ -101,25 +101,24 @@ Mossa leggiMossa() {
 }
 
 
+// Modifica la Mappa inserendo del Terreno (l'Isola) in modo casuale
 void generaIsola(skydda::Mappa& mappa) {
-    int larghezza = 15 + rand() % 5;
+    int larghezza = 15 + rand() % 5; // Larghezza dell'Isola è compresa tra 15 e 20
     skydda::Coordinate coordinate;
     for (int i = 0; i < larghezza; i++) {
         for (int j = 0; j < larghezza - i; j++) {
             coordinate.y = j;
             coordinate.x = i;
-            mappa.immettiComponente(
+            mappa.immettiComponente( // Inserisce un Terreno nella Mappa...
                 new skydda::Terreno(
                     coordinate
-                ), coordinate
+                ), coordinate // ...in una posizione determinata dal ciclo for
             );
         }
     }
 }
 
-skydda::Difensore difensore;
-
-void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione) {
+void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione, skydda::Difensore& difensore) {
     skydda::Coordinate coordinate = difensore.getCoordinate() + skydda::direzioni[direzione]; // Calcola le coordinate di destinazione a seconda della direzione della mossa
     try {
         coordinate.valida(mappa.getAltezza(), mappa.getLarghezza());
@@ -134,7 +133,7 @@ void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione) {
 skydda::Cursore cursore; // Cursore ausiliario per stampare le indicazioni
 const skydda::Coordinate indicazioni_difensore(10, 70); // Coordinate del terminale dove stampare le indicazioni sul difensore
 // Aggiorna le coordinate del difensore nella barra laterale di destra
-void aggiornaCoordinateDifensore() {
+void aggiornaCoordinateDifensore(skydda::Difensore& difensore) {
     cursore.posiziona(indicazioni_difensore);
     ANSI::reimposta();
     std::cout << "Difensore: (" << difensore.getCoordinate().y << ", " << difensore.getCoordinate().x << ")   ";
@@ -165,6 +164,7 @@ int main() {
     std::chrono::milliseconds durata(100);
 
     skydda::Mappa mappa(50, 20);
+    skydda::Difensore difensore; // Crea un Difensore, che è un Componente della Mappa
 
     generaIsola(mappa);
     mappa.immettiComponente(&difensore);
@@ -173,7 +173,7 @@ int main() {
     stampaObiettivo(obiettivo);
 
     const skydda::Coordinate indicazioni_destinazione(8, 70); // Coordinate del terminale dove stampare le indicazioni sulla destinazione
-    aggiornaCoordinateDifensore();
+    aggiornaCoordinateDifensore(difensore);
     cursore.posiziona(indicazioni_destinazione);
     ANSI::reimposta();
     std::cout << "Obiettivo: (" << obiettivo.y << ", " << obiettivo.x << ")";
@@ -207,23 +207,23 @@ int main() {
                 break;
             }
             case MossaSinistra: {
-                muoviDifensore(mappa, skydda::Direzione::OVEST);
-                aggiornaCoordinateDifensore();
+                muoviDifensore(mappa, skydda::Direzione::OVEST, difensore);
+                aggiornaCoordinateDifensore(difensore);
                 break;
             }
             case MossaDestra: {
-                muoviDifensore(mappa, skydda::Direzione::EST);
-                aggiornaCoordinateDifensore();
+                muoviDifensore(mappa, skydda::Direzione::EST, difensore);
+                aggiornaCoordinateDifensore(difensore);
                 break;
             }
             case MossaSu: {
-                muoviDifensore(mappa, skydda::Direzione::NORD);
-                aggiornaCoordinateDifensore();
+                muoviDifensore(mappa, skydda::Direzione::NORD, difensore);
+                aggiornaCoordinateDifensore(difensore);
                 break;
             }
             case MossaGiu: {
-                muoviDifensore(mappa, skydda::Direzione::SUD);
-                aggiornaCoordinateDifensore();
+                muoviDifensore(mappa, skydda::Direzione::SUD, difensore);
+                aggiornaCoordinateDifensore(difensore);
                 break;
             }
             case SparaSinistra: case SparaDestra: case SparaSu: case SparaGiu: { // Se la mossa è uno dei quattro tipi di sparo
