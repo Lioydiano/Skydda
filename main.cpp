@@ -139,13 +139,15 @@ void aggiornaCoordinateDifensore(skydda::Difensore& difensore) {
     std::cout << "Difensore: (" << difensore.getCoordinate().y << ", " << difensore.getCoordinate().x << ")   ";
 }
 
+// Restituisce delle coordinate casuali che non sono occupate da un componente della mappa
 skydda::Coordinate generaCoordinate(skydda::Mappa& mappa) {
     skydda::Coordinate coordinate;
     while (true) {
+        // Genera delle coordinate casuali
         coordinate.x = rand() % mappa.getLarghezza();
         coordinate.y = rand() % mappa.getAltezza();
         if (mappa.getComponente(coordinate) == nullptr)
-            break;
+            break; // Se le coordinate non sono occupate, termina il ciclo
     }
     return coordinate;
 }
@@ -261,52 +263,55 @@ int main() {
             case NessunaMossa:
                 break;
             case Vinsten: { // L'utente pensa di aver vinto
-                skydda::Coordinate coordinate_difensore = difensore.getCoordinate();
-                mappa.immettiComponente(new skydda::Terreno(coordinate_difensore), coordinate_difensore);
-                skydda::Coordinate origine_(0, 0);
-                skydda::Componente* origine = mappa.getComponente(origine_);
-                skydda::Componente* componente = mappa.getComponente(obiettivo);
+                skydda::Coordinate coordinate_difensore = difensore.getCoordinate(); // Salvo le coordinate del difensore
+                mappa.immettiComponente(
+                    new skydda::Terreno(coordinate_difensore),
+                    coordinate_difensore
+                ); // Sostituisco il difensore con un Terreno, per evitare che il difensore ostruisca il percorso verso l'obiettivo
+                skydda::Coordinate origine_(0, 0); // Coordinata di origine, in alto a sinistra, dove inizia il percorso verso l'obiettivo
+                skydda::Componente* origine = mappa.getComponente(origine_); // Ottiene il Componente che si trova in origine_, se esiste, per verificare che sia un Terreno, altrimenti non ha senso controllare il percorso
+                skydda::Componente* componente = mappa.getComponente(obiettivo); // Ottiene il Componente che si trova in obiettivo, se esiste, per verificare che sia un Terreno, altrimenti non ha senso controllare il percorso
                 if (componente != nullptr && origine != nullptr) { // Se l'obiettivo non è vuoto...
-                    if (componente->getTipo() == skydda::TipoComponente::TERRENO && origine->getTipo() == skydda::TipoComponente::TERRENO) {
+                    if (componente->getTipo() == skydda::TipoComponente::TERRENO && origine->getTipo() == skydda::TipoComponente::TERRENO) { // ...e se l'obiettivo (così come l'origine) è un Terreno...
                         // BFS per trovare eventuali connessioni tra obiettivo e origine
-                        std::queue<skydda::Coordinate> coda;
-                        std::vector<std::vector<bool>> visitati(mappa.getAltezza());
+                        std::queue<skydda::Coordinate> coda; // Coda per la BFS, inizialmente vuota, che conterrà le coordinate da visitare
+                        std::vector<std::vector<bool>> visitati(mappa.getAltezza()); // Matrice di booleani che indica quali coordinate sono state visitate
                         for (int i=0; i<mappa.getAltezza(); i++) { // Per ogni riga
                             visitati[i].resize(mappa.getLarghezza(), false); // La allargo e inizializzo a false
                         }
                         coda.push(obiettivo); // Parto dall'obiettivo, e tento di raggiungere l'origine
-                        skydda::Coordinate cima;
-                        skydda::Coordinate coordinate_vicino;
-                        while (!coda.empty()) {
+                        skydda::Coordinate cima; // Coordinate della cima della coda
+                        skydda::Coordinate coordinate_vicino; // Coordinate di un vicino della cima della coda
+                        while (!coda.empty()) { // Finché la coda non è vuota...
                             cima = coda.front(); // Prendi l'ultimo della coda
                             coda.pop(); // Elimina l'ultimo della coda
-                            visitati[cima.y][cima.x] = true; // Segno come visitato
-                            if (cima.y == 0 && cima.x == 0)
-                                break;
+                            visitati[cima.y][cima.x] = true; // Segno come visitato il blocco in cima alla coda
+                            if (cima.y == 0 && cima.x == 0) // Se è l'origine, ho trovato un percorso
+                                break; // Esco dal ciclo
 
                             for (int i=0; i<4; i++) { // Itero sulle possibili direzioni
-                                coordinate_vicino = cima + skydda::direzioni[(skydda::Direzione)i]; // Guardiamo il blocco in quella direzione
+                                coordinate_vicino = cima + skydda::direzioni[(skydda::Direzione)i]; // Guardiamo il blocco in quella direzione (i=0 -> NORD, i=1 -> EST, i=2 -> SUD, i=3 -> OVEST)
                                 try {
-                                    coordinate_vicino.valida(mappa.getAltezza(), mappa.getLarghezza());
+                                    coordinate_vicino.valida(mappa.getAltezza(), mappa.getLarghezza()); // Se le coordinate non sono valide, lancia un'eccezione, che viene catturata e ignorata
                                     if (visitati[coordinate_vicino.y][coordinate_vicino.x]) // Se è già stato visitato, non lo considero
                                         continue;
-                                    skydda::Componente* vicino = mappa.getComponente(coordinate_vicino);
-                                    if (vicino != nullptr) {
-                                        if (vicino->getTipo() == skydda::TipoComponente::TERRENO) {
+                                    skydda::Componente* vicino = mappa.getComponente(coordinate_vicino); // Ottengo il Componente in coordinate_vicino, se esiste
+                                    if (vicino != nullptr) { // Se esiste...
+                                        if (vicino->getTipo() == skydda::TipoComponente::TERRENO) { // ...e se è un Terreno...
                                             coda.push(coordinate_vicino); // Richiedo che venga esplorata la zona del vicino
                                         }
                                     }
                                 } catch (std::runtime_error& e) {
-                                    continue;
+                                    continue; // Se le coordinate non sono valide, non faccio nulla, continuo
                                 }
                             }
                         }
                         if (visitati[0][0]) { // Abbiamo visitato l'origine
-                            skydda::Coordinate c_(22, 0);
-                            cursore.posiziona(c_);
-                            ANSI::reimposta();
+                            skydda::Coordinate c_(22, 0); // Coordinate in cui stampare il messaggio di vittoria
+                            cursore.posiziona(c_); // Posiziono il cursore in c_
+                            ANSI::reimposta(); // Ripristino il colore di default
                             std::cout << "Hai vinto!";
-                            std::cin.get();
+                            std::cin.get(); // Aspetto che l'utente prema un tasto, per evitare che il programma termini subito
                             return 0;
                         } else {
                             return 0;
