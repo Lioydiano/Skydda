@@ -101,7 +101,7 @@ Mossa leggiMossa() {
 }
 
 
-int generaIsola(skydda::Mappa& mappa) {
+void generaIsola(skydda::Mappa& mappa) {
     int larghezza = 15 + rand() % 5;
     skydda::Coordinate coordinate;
     for (int i = 0; i < larghezza; i++) {
@@ -115,7 +115,6 @@ int generaIsola(skydda::Mappa& mappa) {
             );
         }
     }
-    return larghezza;
 }
 
 skydda::Difensore difensore;
@@ -167,7 +166,7 @@ int main() {
 
     skydda::Mappa mappa(50, 20);
 
-    int larghezza = generaIsola(mappa);
+    generaIsola(mappa);
     mappa.immettiComponente(&difensore);
     mappa.stampa();
     skydda::Coordinate obiettivo = generaCoordinate(mappa); // Coordinate obbiettivo
