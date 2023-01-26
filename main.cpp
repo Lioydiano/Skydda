@@ -4,8 +4,16 @@
 #include <random> // mt19937, bernoulli_distribution
 #include <conio.h> // getch()
 
+#include "ANSI.hpp"
+#include "componente.hpp"
+#include "coordinate.hpp"
+#include "cursore.hpp"
+#include "difensore.hpp"
 #include "mappa.hpp"
-// cd onedrive/documenti/github/skydda
+#include "proiettile.hpp"
+#include "proiettiledifensore.hpp"
+#include "proiettilenemico.hpp"
+#include "terreno.hpp"
 // g++ main.cpp -o skydda -std=c++17 -Wall -O3
 
 
