@@ -60,5 +60,5 @@
 	
 	        void applica();
 	    };
-	};
+	}
 #endif

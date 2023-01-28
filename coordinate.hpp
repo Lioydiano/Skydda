@@ -17,5 +17,5 @@
 	        Coordinate operator*(int) const; // Coordinate * intero
 	        bool operator==(const Coordinate&) const;
 	    }; // matrice[y][x] - matrice[riga][colonna]
-	};
+	}
 #endif
