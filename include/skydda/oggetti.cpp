@@ -345,7 +345,7 @@ namespace skydda {
             try {
                 partenza.valida(altezza, larghezza);
             } catch (std::runtime_error& e) {
-                // Il proiettile è uscito dalla mappa, quindi viene eliminato
+                // Il proiettile Ã¨ uscito dalla mappa, quindi viene eliminato
                 proiettili.erase(it);
                 delete proiettile;
                 continue;
@@ -362,7 +362,7 @@ namespace skydda {
         try {
             coordinate.valida(altezza, larghezza);
         } catch (std::runtime_error& e) {
-            // Il proiettile è uscito dalla mappa, quindi non viene generato
+            // Il proiettile Ã¨ uscito dalla mappa, quindi non viene generato
             return;
         }
         if (mappa[coordinate.y][coordinate.x] == nullptr) {
@@ -445,4 +445,4 @@ namespace skydda {
         ANSI::ColoreSfondo::S_NERO,
         ANSI::Attributo::LAMPEGGIA
     );
-};
+}

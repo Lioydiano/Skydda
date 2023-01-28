@@ -32,4 +32,4 @@ namespace ANSI {
         impostaColoreSfondo(coloreSfondo);
         impostaAttributo(attributo);
     }
-};
+}

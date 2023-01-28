@@ -59,4 +59,4 @@ namespace ANSI { // Standard per gestire i colori e gli attributi del terminale
 
         void applica();
     };
-};
+}

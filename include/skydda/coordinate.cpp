@@ -19,4 +19,4 @@ namespace skydda {
     bool Coordinate::operator==(const Coordinate& coordinate) const {
         return this->y == coordinate.y && this->x == coordinate.x;
     }
-};
+}

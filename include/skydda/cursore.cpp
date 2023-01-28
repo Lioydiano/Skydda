@@ -38,4 +38,4 @@ namespace skydda {
         coordinate.x += 2;
         std::cout << CSI << coordinate.y << ";" << coordinate.x << "H"; // Se tu vuoi spostare il cursore in (5, 10), allora il codice ANSI sarà "\x1b5;100H"
     }
-};
+}
