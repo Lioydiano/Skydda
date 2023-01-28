@@ -3,7 +3,7 @@
 #include "ANSI.cpp"
 #include "cursore.cpp"
 #include "componente.cpp"
-#include "oggetti.hpp"
+#include "oggetti.h"
 
 namespace skydda {
     std::unordered_map<Direzione, Coordinate> direzioni = {
