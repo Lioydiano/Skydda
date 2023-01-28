@@ -196,7 +196,10 @@ int main() {
         Mossa m = mossa.get(); // Ottiene il risultato del Future mossa, che ora è pronto, tramite il metodo .get()
         switch (m) { // Switch sul tipo di mossa
             case Abbandona: {
-                std::cout << "Hai abbandonato la partita" << std::endl;
+            	skydda::Coordinate c_(22, 0); // Coordinate dove comunicare l'abbandono...
+                cursore.posiziona(c_); // ...ci porto il cursore...
+                ANSI::reimposta(); // ...ripristino lo stile...
+                std::cout << "Hai abbandonato la partita" << std::endl; // ...comunico l'abbandono
                 exit(0); // Termina il programma
             }
             case Pausa: {
