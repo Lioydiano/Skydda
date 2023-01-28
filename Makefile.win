@@ -4,8 +4,8 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = main.o ANSI.o coordinate.o cursore.o componente.o difensore.o proiettile.o proiettiledifensore.o proiettilenemico.o terreno.o mappa.o
-LINKOBJ  = main.o ANSI.o coordinate.o cursore.o componente.o difensore.o proiettile.o proiettiledifensore.o proiettilenemico.o terreno.o mappa.o
+OBJ      = ANSI.o componente.o coordinate.o cursore.o difensore.o main.o mappa.o proiettile.o proiettiledifensore.o proiettilenemico.o terreno.o
+LINKOBJ  = ANSI.o componente.o coordinate.o cursore.o difensore.o main.o mappa.o proiettile.o proiettiledifensore.o proiettilenemico.o terreno.o
 LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -g3
 INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
 CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
@@ -24,11 +24,11 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-main.o: main.cpp
-	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
-
 ANSI.o: ANSI.cpp
 	$(CPP) -c ANSI.cpp -o ANSI.o $(CXXFLAGS)
+
+componente.o: componente.cpp
+	$(CPP) -c componente.cpp -o componente.o $(CXXFLAGS)
 
 coordinate.o: coordinate.cpp
 	$(CPP) -c coordinate.cpp -o coordinate.o $(CXXFLAGS)
@@ -36,11 +36,14 @@ coordinate.o: coordinate.cpp
 cursore.o: cursore.cpp
 	$(CPP) -c cursore.cpp -o cursore.o $(CXXFLAGS)
 
-componente.o: componente.cpp
-	$(CPP) -c componente.cpp -o componente.o $(CXXFLAGS)
-
 difensore.o: difensore.cpp
 	$(CPP) -c difensore.cpp -o difensore.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+mappa.o: mappa.cpp
+	$(CPP) -c mappa.cpp -o mappa.o $(CXXFLAGS)
 
 proiettile.o: proiettile.cpp
 	$(CPP) -c proiettile.cpp -o proiettile.o $(CXXFLAGS)
@@ -53,6 +56,3 @@ proiettilenemico.o: proiettilenemico.cpp
 
 terreno.o: terreno.cpp
 	$(CPP) -c terreno.cpp -o terreno.o $(CXXFLAGS)
-
-mappa.o: mappa.cpp
-	$(CPP) -c mappa.cpp -o mappa.o $(CXXFLAGS)

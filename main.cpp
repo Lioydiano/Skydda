@@ -3,6 +3,7 @@
 #include <future> // std::async, std::Future
 #include <random> // mt19937, bernoulli_distribution
 #include <conio.h> // getch()
+#include <algorithm>
 
 #include "ANSI.hpp"
 #include "componente.hpp"

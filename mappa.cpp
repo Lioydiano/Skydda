@@ -1,4 +1,6 @@
 #include "mappa.hpp"
+#include <algorithm>
+
 
 namespace skydda {
 	void stampaEffimera(Coordinate& coordinate) {
