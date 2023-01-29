@@ -297,7 +297,7 @@ namespace skydda {
     void Mappa::stampa() const {
         pulisciSchermo();
         stileBordo.applica();
-        for (int i = 0; i < larghezza + 2; i++) {
+        for (int i = 0; i < larghezza + 2; i++) { // Stampa la prima riga di bordo
             std::cout << '@';
         }
         std::cout << '\n';
@@ -305,15 +305,15 @@ namespace skydda {
             bool spazioPrecedente = false; // Serve per evitare di ripristinare lo stile ANSI ogni volta che si stampa uno spazio
             std::cout << '@';
             for (int j = 0; j < larghezza; j++) {
-                if (mappa[i][j] != nullptr) {
-                    spazioPrecedente = false;
-                    mappa[i][j]->stampa();
+                if (mappa[i][j] != nullptr) { // Se la cella non è vuota
+                    spazioPrecedente = false; // Significa che ora sarà applicato dello stile, e la prossima volta sarà necessario ripristinarlo
+                    mappa[i][j]->stampa(); // Stampa il Componente (il metodo stampa() è virtuale e quindi sovrascritto tramite overriding dalle classi figlie)
                 } else {
-                    if (spazioPrecedente) {
-                        std::cout << ' ';
-                    } else {
-                        spazioPrecedente = true;
-                        ANSI::reimposta();
+                    if (spazioPrecedente) { // Se il carattere precedente era uno spazio, non è necessario ripristinare lo stile ANSI
+                        std::cout << ' '; // Stampa uno spazio (non è necessario reimpostare lo stile ANSI)
+                    } else { // Altrimenti...
+                        spazioPrecedente = true; // ...significa che era stato applicato uno stile...
+                        ANSI::reimposta(); // ...quindi è necessario reimpostarlo
                         std::cout << ' ';
                     }
                 }
