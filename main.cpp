@@ -1,7 +1,7 @@
 #include <thread> // std::this_thread::sleep_for
 #include <chrono> // std::chrono::milliseconds, std::chrono::seconds
 #include <future> // std::async, std::Future
-#include <random> // mt19937, bernoulli_distribution
+#include <random> // rand()
 #include <conio.h> // getch()
 
 #include "ANSI.hpp"
@@ -70,7 +70,7 @@ Mossa leggiMossa() {
     char carattere = getch(); // Legge un carattere (invio di un tasto)
     if (carattere == -32) { // Se il carattere è -32, allora è stato premuto un tasto freccia (Eludi la [ che segue \033)
         // \033[ è il codice ASCII per il tasto freccia
-        carattere = getch();
+        carattere = getch(); // Allora pesco la vera lettera...
         switch (carattere) {
             case 72: // '\033[A' (ovvero '\03372' perché '['+'A'=72) è il codice ASCII per il tasto freccia su
                 return SparaSu;
@@ -84,7 +84,8 @@ Mossa leggiMossa() {
                 break;
         }
     }
-    switch (carattere) { // Per Muoversi
+    // Altrimenti significa che si vuole muovere oppure sparare...
+    switch (carattere) {
         case 'w': case 'W':
             return MossaSu;
         case 's': case 'S':
@@ -105,29 +106,31 @@ Mossa leggiMossa() {
             return Riprendi;
         default:
             break;
-    }
-    return NessunaMossa;
+    } // ...ritorna la mossa scelta dal giocatore
+    return NessunaMossa; // Se non è stata scelta nessuna mossa, ritorna NessunaMossa, che farà ripetere il ciclo
 }
 
 
-int generaIsola(skydda::Mappa& mappa) {
-    int larghezza = 15 + rand() % 5;
-    skydda::Coordinate coordinate;
+// Genera un'isola di Terreno in mappa
+void generaIsola(skydda::Mappa& mappa) {
+    int larghezza = 15 + rand() % 5; // Genera un numero casuale tra 15 e 20, che sarà la larghezza dell'isola
+    skydda::Coordinate coordinate; // Crea un oggetto Coordinate, che servirà per passare per riferimento le coordinate dove inserire i Terreno
     for (int i = 0; i < larghezza; i++) {
         for (int j = 0; j < larghezza - i; j++) {
+            // Per ogni coordinata {i, j} (i < larghezza, j < larghezza - i)...
             coordinate.y = j;
             coordinate.x = i;
-            mappa.immettiComponente(
-                new skydda::Terreno(
+            mappa.immettiComponente( // ...inserisce un Terreno in mappa alla posizione coordinate
+                new skydda::Terreno( // Crea un nuovo Terreno
                     coordinate
-                ), coordinate
+                ), coordinate // Passa per riferimento le coordinate
             );
         }
     }
-    return larghezza;
 }
 
 
+// Traduce la direzione della mossa dell'utente in un effettivo spostamento del difensore, controllando se le coordinate sono valide e se non ci sono ostacoli
 void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione, skydda::Difensore& difensore) {
     skydda::Coordinate coordinate = difensore.getCoordinate() + skydda::direzioni[direzione]; // Calcola le coordinate di destinazione a seconda della direzione della mossa
     try {
@@ -149,15 +152,16 @@ void aggiornaCoordinateDifensore(skydda::Difensore& difensore) {
     std::cout << "Difensore: (" << difensore.getCoordinate().y << ", " << difensore.getCoordinate().x << ")   ";
 }
 
+// Genera le coordinate di un obiettivo casuale, controllando che non ci siano ostacoli
 skydda::Coordinate generaCoordinate(skydda::Mappa& mappa) {
     skydda::Coordinate coordinate;
     while (true) {
         coordinate.x = rand() % mappa.getLarghezza();
         coordinate.y = rand() % mappa.getAltezza();
-        if (mappa.getComponente(coordinate) == nullptr)
+        if (mappa.getComponente(coordinate) == nullptr) // Il componente alla posizione coordinate è nullptr, quindi non ci sono ostacoli
             break;
     }
-    return coordinate;
+    return coordinate; // Se le coordinate sono "vuote" allora viene impostato l'obiettivo 
 }
 
 // Stampa l'obiettivo nel terminale con una X rossa
@@ -171,10 +175,10 @@ void stampaObiettivo(skydda::Coordinate& obiettivo) {
 int main() {
     stampaIntro();
     srand(time(NULL)); // Inizializza il generatore di numeri casuali con il tempo attuale (perché se no le partite sono tutte uguali)
-    std::chrono::milliseconds durata(100);
+    std::chrono::milliseconds durata(100); // Durata in millisecondi di un frame
 
-    skydda::Mappa mappa(50, 20);
-	skydda::Difensore difensore;
+    skydda::Mappa mappa(50, 20); // Mappa di gioco per l'intera partita
+	skydda::Difensore difensore; // Difensore dell'isola per la durata della partita
 
     generaIsola(mappa);
     mappa.immettiComponente(&difensore);
@@ -195,7 +199,7 @@ int main() {
         while (mossa.wait_for(durata) != std::future_status::ready) { // Se il Future mossa non è pronto, aspetta 100 millisecondi e riprova (muovendo i proiettili ecc. nel frattempo), altrimenti esce dal ciclo
             mappa.muoviProiettili();
             if (rand() % 5 == 0) { // Se il numero casuale è divisibile per cinque, quindi con probabilità 1/5, genera un proiettile nemico
-                skydda::Coordinate coord(20, rand() % 50); // Genera una coordinata casuale sulla riga 20, quindi sul fondo della mappa
+                skydda::Coordinate coord(20, rand() % 50); // Genera una coordinata casuale sulla riga 20, quindi sul fondo della mappa (da dove partono i proiettili nemici)
                 mappa.generaProiettile(
                     coord, skydda::TipoProiettile::P_NEMICO,
                     skydda::Direzione::NORD, 1
