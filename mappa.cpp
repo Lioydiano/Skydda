@@ -75,53 +75,54 @@ namespace skydda {
         std::cout << ' ';
     }
     void Mappa::spostaComponente(Coordinate& partenza, Coordinate& arrivo) {
-        try {
+        try { // Controllo che le coordinate siano valide
             arrivo.valida(altezza, larghezza);
-        } catch (std::runtime_error& e) {
-            switch (mappa[partenza.y][partenza.x]->getTipo()) {
-                case TipoComponente::PROIETTILE_DIFENSORE: {
-                    proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
-                    if (((ProiettileDifensore*)mappa[partenza.y][partenza.x])->getSopraTerreno()) {
-                        immettiComponente(new Terreno(partenza), partenza);
-                        stampaComponente(partenza);
+        } catch (std::runtime_error& e) { // Se non lo sono, lancia un'eccezione, che verrà gestita dal ramo catch
+            switch (mappa[partenza.y][partenza.x]->getTipo()) { // Controllo quale tipo di Componente è andata a sbattere contro un muro
+                case TipoComponente::PROIETTILE_DIFENSORE: { // Se è un ProiettileDifensore, lo elimino e lo sostituisco con un Terreno (se sopraTerreno è true)
+                    proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x])); // Rimuovo il ProiettileDifensore* dalla lista dei proiettili
+                    if (((ProiettileDifensore*)mappa[partenza.y][partenza.x])->getSopraTerreno()) { // Se sopraTerreno è true, sostituisco il ProiettileDifensore con un Terreno
+                        immettiComponente(new Terreno(partenza), partenza); // Creo un nuovo Terreno e lo immetto nella mappa
+                        stampaComponente(partenza); // Stampo il Terreno nella mappa
                     } else {
-                        rimuoviComponente(partenza);
-                        cancellaComponente(partenza);
+                        rimuoviComponente(partenza); // Altrimenti, semplicemente lo elimino
+                        cancellaComponente(partenza); // Cancello il ProiettileDifensore dalla mappa
                     }
                     break;
                 }
-                case TipoComponente::PROIETTILE_NEMICO: {
-                    proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x]));
+                case TipoComponente::PROIETTILE_NEMICO: { // Se è un ProiettileNemico, lo elimino e basta, non c'è bisogno di sostituirlo con un Terreno
+                    proiettili.erase(std::find(proiettili.begin(), proiettili.end(), (Proiettile*)mappa[partenza.y][partenza.x])); // Rimuovo il ProiettileNemico* dalla lista dei proiettili
                     rimuoviComponente(partenza);
                     cancellaComponente(partenza);
                     break;
                 }
-                case TipoComponente::DIFENSORE: {
+                case TipoComponente::DIFENSORE: { // Se è un Difensore che prova ad andare fuori dalla mappa, gli impedisco di farlo ignorando la sua richiesta
                     break;
                 }
                 default:
                     break;
             }
-            return;
+            return; // Ritorno, in modo da non eseguire il resto del metodo
         }
-        if (mappa[arrivo.y][arrivo.x] == nullptr) {
-            Componente* componente = mappa[partenza.y][partenza.x];
-            mappa[partenza.y][partenza.x] = nullptr;
-            componente->setCoordinate(arrivo);
-            mappa[arrivo.y][arrivo.x] = componente;
-            if (mappa[arrivo.y][arrivo.x]->getTipo() == TipoComponente::PROIETTILE_DIFENSORE) {
-                if (((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->getSopraTerreno()) {
-                    immettiComponente(new Terreno(partenza), partenza);
-                    ((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->setSopraTerreno(false);
-                    stampaComponente(partenza);
+        // Se le coordinate invece sono valide...
+        if (mappa[arrivo.y][arrivo.x] == nullptr) { // ...e la casella di arrivo è vuota, sposto il Componente
+            Componente* componente = mappa[partenza.y][partenza.x]; // Salvo il Componente* nella variabile componente
+            mappa[partenza.y][partenza.x] = nullptr; // Svuoto la casella di partenza della mappa
+            componente->setCoordinate(arrivo); // Aggiorno le coordinate del Componente (deve sapere dove si trova)
+            mappa[arrivo.y][arrivo.x] = componente; // Aggiorno la casella di arrivo della mappa inserendo il Componente*
+            if (mappa[arrivo.y][arrivo.x]->getTipo() == TipoComponente::PROIETTILE_DIFENSORE) { // Se il Componente* è un ProiettileDifensore...
+                if (((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->getSopraTerreno()) { // ...e sopraTerreno è true, sostituisco il ProiettileDifensore con un Terreno
+                    immettiComponente(new Terreno(partenza), partenza); // Creo un nuovo Terreno e lo immetto nella mappa
+                    ((ProiettileDifensore*)mappa[arrivo.y][arrivo.x])->setSopraTerreno(false); // Imposto sopraTerreno a false (perché la casella di arrivo era vuota e quindi non c'è più un Terreno sotto il ProiettileDifensore)
+                    stampaComponente(partenza); // Stampo il contenuto della casella di arrivo, che ora è il ProiettileDifensore
                 } else {
-                    cancellaComponente(partenza);
+                    cancellaComponente(partenza); // Altrimenti, semplicemente cancello il contenuto della casella di partenza
                 }
             } else {
-                cancellaComponente(partenza);
+                cancellaComponente(partenza); // Se il Componente* non è un ProiettileDifensore*, semplicemente cancello il contenuto della casella di partenza
             }
-            stampaComponente(arrivo);
-        } else {
+            stampaComponente(arrivo); // Stampo il contenuto della casella di arrivo
+        } else { // Se invece la casella di arrivo non è vuota, ci sarà una collisione...
             switch (mappa[partenza.y][partenza.x]->getTipo()) {
                 case TipoComponente::DIFENSORE: { // Collisione Difensore - ???
                     switch (mappa[arrivo.y][arrivo.x]->getTipo()) {
@@ -228,18 +229,18 @@ namespace skydda {
         }
     }
     void Mappa::muoviProiettili() {
-        std::vector<Proiettile*>::iterator it = proiettili.begin();
-        Proiettile* proiettile = nullptr;
-        Coordinate partenza, arrivo;
-        for (; it < proiettili.end(); it++) {
-            proiettile = *it;
-            partenza = proiettile->getCoordinate();
+        std::vector<Proiettile*>::iterator it = proiettili.begin(); // Iteratore per il vettore dei proiettili (parte dall'inizio)
+        Proiettile* proiettile = nullptr; // inizializzo un puntatore a Proiettile
+        Coordinate partenza, arrivo; // Coordinate di partenza e arrivo del proiettile
+        for (; it < proiettili.end(); it++) { // Itero su tutti i proiettili (con gli iteratori, fino a proiettili.end())
+            proiettile = *it; // Assegno il puntatore al proiettile corrente
+            partenza = proiettile->getCoordinate(); // Ottengo le coordinate del proiettile corrente
             try {
                 partenza.valida(altezza, larghezza);
             } catch (std::runtime_error& e) {
                 // Il proiettile è uscito dalla mappa, quindi viene eliminato
                 proiettili.erase(it);
-                delete proiettile;
+                delete proiettile; // Deallocazione della memoria (dall'heap https://cdn.discordapp.com/attachments/874752056626389033/1069290702871203950/image.png) del proiettile
                 continue;
             }
             arrivo = proiettile->calcolaProssimaPosizione();

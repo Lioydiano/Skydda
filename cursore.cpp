@@ -28,12 +28,12 @@ namespace skydda {
         coordinate.x = x_ + 2;
         // https://stackoverflow.com/questions/69597466/move-cursor-escape-sequence
         // https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html
-        std::cout << CSI << coordinate.y << ";" << coordinate.x << "H"; // Se tu vuoi spostare il cursore in (5, 10), allora il codice ANSI sarà "\x1b5;100H"
+        std::cout << CSI << coordinate.y << ";" << coordinate.x << "H"; // Se tu vuoi spostare il cursore in (5, 10), allora il codice ANSI sarà "\x1b5;10H"
     }
     void Cursore::posiziona(const Coordinate& coordinate_) {
         coordinate = coordinate_;
         coordinate.y += 2;
         coordinate.x += 2;
-        std::cout << CSI << coordinate.y << ";" << coordinate.x << "H"; // Se tu vuoi spostare il cursore in (5, 10), allora il codice ANSI sarà "\x1b5;100H"
+        std::cout << CSI << coordinate.y << ";" << coordinate.x << "H"; // Se tu vuoi spostare il cursore in (5, 10), allora il codice ANSI sarà "\x1b5;10H"
     }
 };
