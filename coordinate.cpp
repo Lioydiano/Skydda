@@ -12,7 +12,7 @@ namespace skydda {
     Coordinate Coordinate::operator+(const Coordinate& coordinate) const {
         return Coordinate(this->y + coordinate.y, this->x + coordinate.x);
     }
-    Coordinate Coordinate::operator*(int n) const { //cosa serve ?
+    Coordinate Coordinate::operator*(int n) const {
         return Coordinate(this->y * n, this->x * n);
     }
     bool Coordinate::operator==(const Coordinate& coordinate) const {

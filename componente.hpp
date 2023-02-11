@@ -1,11 +1,12 @@
 #ifndef COMPONENTE_hpp
 	#define COMPONENTE_hpp
-	#include <queue> // std::queue
+	#include <queue> // std::queue [per la BFS]
 	#include <vector> // std::vector, std::find, std::erase
 	#include <unordered_map> // std::unordered_map
 	#include "cursore.hpp"
 	
 	namespace skydda {
+		// TipoComponente serve a distinguere i vari tipi di componenti, in modo da poterli trattare in modo diverso, senza dover fare un controllo sul tipo di componente ogni volta
 	    enum TipoComponente {
 	        __IGNOTO__,
 	        DIFENSORE,
@@ -13,20 +14,23 @@
 	        PROIETTILE_NEMICO,
 	        TERRENO
 	    };
-	    enum Direzione { NORD, EST, SUD, OVEST };
-	    enum TipoProiettile { P_DIFENSORE, P_NEMICO };
-	    std::unordered_map<Direzione, Coordinate> direzioni = { // Mappa che associa ogni direzione ad una coppia di coordinate, che indicano lo spostamento da effettuare
+	    enum Direzione { NORD, EST, SUD, OVEST }; // Serve a distinguere le varie direzioni, in modo da non dover ogni volta ricordare che 0 = NORD, 1 = EST, 2 = SUD, 3 = OVEST
+	    enum TipoProiettile { P_DIFENSORE, P_NEMICO }; // Serve a distinguere i vari tipi di proiettile, in modo da poterli trattare in modo diverso, senza dover fare un controllo sul tipo di proiettile ogni volta
+		// Mappa che associa ogni direzione ad una coppia di coordinate, che indicano lo spostamento da effettuare
+	    std::unordered_map<Direzione, Coordinate> direzioni = { 
 	        {NORD, Coordinate(-1, 0)},
 	        {EST, Coordinate(0, 1)},
 	        {SUD, Coordinate(1, 0)},
 	        {OVEST, Coordinate(0, -1)}
 	    };
-	    std::unordered_map<Direzione, char> direzioneCarattere = { // Mappa che associa ogni direzione ad un aspetto del proiettile, che indica la direzione di spostamento
+		// Mappa che associa ogni direzione ad un aspetto del proiettile, che indica la direzione di spostamento
+	    std::unordered_map<Direzione, char> direzioneCarattere = { 
 	        {NORD, '^'},
 	        {EST, '>'},
 	        {SUD, 'v'},
 	        {OVEST, '<'}
 	    };
+		/* Elenco degli stili per i vari tipi di componente */
 	    ANSI::Stile stileProiettileDifensore(ANSI::ColoreTesto::MAGENTA, ANSI::ColoreSfondo::S_ROSSO, ANSI::Attributo::LUMINOSO);
 	    ANSI::Stile stileProiettileNemico(ANSI::ColoreTesto::CIANO, ANSI::ColoreSfondo::S_NERO, ANSI::Attributo::LUMINOSO);
 	    ANSI::Stile stileNemico(ANSI::ColoreTesto::BLU, ANSI::ColoreSfondo::S_NERO, ANSI::Attributo::LUMINOSO);
@@ -35,7 +39,8 @@
 	    ANSI::Stile stileTerreno(ANSI::ColoreTesto::ROSSO, ANSI::ColoreSfondo::S_ROSSO, ANSI::Attributo::FLEBILE);
 	    ANSI::Stile stileBordo(ANSI::ColoreTesto::BIANCO, ANSI::ColoreSfondo::S_GIALLO, ANSI::Attributo::LUMINOSO);
 	    ANSI::Stile stileDestinazione(ANSI::ColoreTesto::ROSSO, ANSI::ColoreSfondo::S_NERO, ANSI::Attributo::LAMPEGGIA);
-	    std::unordered_map<TipoProiettile, ANSI::Stile> stiliProiettile = {
+		// Mappa che associa ogni tipo di proiettile ad uno stile, che indica il colore e l'aspetto del proiettile, per evitare di dover fare un controllo ogni volta
+		std::unordered_map<TipoProiettile, ANSI::Stile> stiliProiettile = {
 	        {TipoProiettile::P_DIFENSORE, stileProiettileDifensore},
 	        {TipoProiettile::P_NEMICO, stileProiettileNemico}
 	    };
@@ -47,9 +52,9 @@
 	    class ProiettileNemico;
 	    class Terreno;
 	    class Mappa;
-	
-	    // https://www.ibm.com/docs/en/zos/2.4.0?topic=only-abstract-classes-c (Classi astratte pure)
-	    class Componente { // Classe astratta di base dalla quale ereditano tutti gli altri componenti
+
+		// Classe base dalla quale ereditano tutti gli altri componenti del gioco
+	    class Componente {
 	    protected:
 	        TipoComponente tipo; // Differenziare il tipo di componente
 	        char carattere;

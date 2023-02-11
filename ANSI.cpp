@@ -2,13 +2,13 @@
 
 namespace ANSI {
     void impostaColoreTesto(ColoreTesto colore) {
-        std::cout << CSI << colore << "m"; // Se il colore è 30 (ColoreTesto::NERO), allora il codice ANSI sarà "\x1b[30m"
+        std::cout << CSI << colore << "m"; // [ESEMPIO] Se il colore è 30 (ColoreTesto::NERO), allora il codice ANSI per impostarlo sarà "\x1b[30m"
     }
     void impostaColoreSfondo(ColoreSfondo colore) {
-        std::cout << CSI << colore << "m"; // Se il colore è 40 (ColoreSfondo::NERO), allora il codice ANSI sarà "\x1b[40m"
+        std::cout << CSI << colore << "m"; // [ESEMPIO] Se il colore è 40 (ColoreSfondo::NERO), allora il codice ANSI per impostarlo sarà "\x1b[40m"
     }
     void impostaAttributo(Attributo attributo) {
-        std::cout << CSI << attributo << "m"; // Se l'attributo è 0 (Attributo::RIPRISTINO), allora il codice ANSI sarà "\x1b[0m"
+        std::cout << CSI << attributo << "m"; // [ESEMPIO] Se l'attributo è 0 (Attributo::RIPRISTINO), allora il codice ANSI per impostarlo sarà "\x1b[0m"
     }
     void reimposta() { // Ripristina lo stile di default (ColoreTesto::BIANCO, ColoreSfondo::NERO, Attributo::RIPRISTINO) nel terminale
         impostaColoreTesto(ColoreTesto::BIANCO);
@@ -27,8 +27,8 @@ namespace ANSI {
         attributo = attributo_;
     }
     void Stile::applica() {
-        impostaColoreTesto(coloreTesto);
-        impostaColoreSfondo(coloreSfondo);
-        impostaAttributo(attributo);
+        impostaColoreTesto(this->coloreTesto);
+        impostaColoreSfondo(this->coloreSfondo);
+        impostaAttributo(this->attributo);
     }
 };

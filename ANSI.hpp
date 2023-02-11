@@ -1,14 +1,15 @@
 // #pragma once // Include guard (fa in modo che il file venga incluso una sola volta, anche se viene incluso più volte in un progetto)
 #ifndef ANSI_hpp
-	#define ANSI_hpp
+	#define ANSI_hpp // https://en.wikipedia.org/wiki/ANSI_escape_code
 	#include <iostream> // std::cout
 	
-	#define CSI "\x1b[" // Control Sequence Introducer
-	#define CLS "\x1b[2J" // Clear Screen
-	#define SSB "\x1b[3J" // Scroll Screen Buffer
-	#define NASCONDI_CURSORE "\x1b[?25l" // Hide cursor
-	#define MOSTRA_CURSORE "\x1b[?25h" // Show cursor
-	#define TL "\x1b[H" // Top Left (0,0)
+	// https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
+	#define CSI "\x1b[" // Control Sequence Introducer (sequenza ANSI che introduce tutti i comandi)
+	#define CLS "\x1b[2J" // Clear Screen (pulisci schermo)
+	#define SSB "\x1b[3J" // Scroll Screen Buffer (cancella la "memoria" del terminale)
+	#define NASCONDI_CURSORE "\x1b[?25l" // Hide cursor (nascondi il cursore)
+	#define MOSTRA_CURSORE "\x1b[?25h" // Show cursor (mostra il cursore)
+	#define TL "\x1b[H" // Top Left (0,0) (porta il cursore in alto a sinistra {0, 0})
 	
 	
 	// https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
@@ -50,7 +51,9 @@
 	    void impostaAttributo(Attributo);
 	    void reimposta();
 	
-	    struct Stile {
+		// https://stackoverflow.com/questions/2616906/how-do-i-output-coloured-text-to-a-linux-terminal
+	    // Un oggetto di tipo Stile rappresenta un insieme di colori e attributi da applicare al terminale
+		struct Stile {
 	        ColoreTesto coloreTesto;
 	        ColoreSfondo coloreSfondo;
 	        Attributo attributo;
