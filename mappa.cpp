@@ -3,6 +3,16 @@
 
 
 namespace skydda {
+    ANSI::Stile stileEffimera(ANSI::ColoreTesto::BIANCO, ANSI::ColoreSfondo::S_NERO, ANSI::Attributo::FLEBILE);
+	ANSI::Stile stileBordo(ANSI::ColoreTesto::BIANCO, ANSI::ColoreSfondo::S_GIALLO, ANSI::Attributo::LUMINOSO);
+    // Mappa che associa ogni direzione ad una coppia di coordinate, che indicano lo spostamento da effettuare
+    std::unordered_map<Direzione, Coordinate> direzioni = { 
+        {NORD, Coordinate(-1, 0)},
+        {EST, Coordinate(0, 1)},
+        {SUD, Coordinate(1, 0)},
+        {OVEST, Coordinate(0, -1)}
+    };
+
 	void stampaEffimera(Coordinate& coordinate) {
         std::cout << CSI << coordinate.y + 2 << ";" << coordinate.x + 2 << "H";
         stileEffimera.applica();

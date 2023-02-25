@@ -2,6 +2,27 @@
 
 
 namespace skydda {
+    // Mappa che associa ogni direzione ad un aspetto del proiettile, che indica la direzione di spostamento
+    std::unordered_map<Direzione, char> direzioneCarattere = { 
+        {NORD, '^'},
+        {EST, '>'},
+        {SUD, 'v'},
+        {OVEST, '<'}
+    };
+	// Mappa che associa ogni direzione ad una coppia di coordinate, che indicano lo spostamento da effettuare
+    std::unordered_map<Direzione, Coordinate> direzioni = { 
+        {NORD, Coordinate(-1, 0)},
+        {EST, Coordinate(0, 1)},
+        {SUD, Coordinate(1, 0)},
+        {OVEST, Coordinate(0, -1)}
+    };
+    ANSI::Stile stileProiettileDifensore(ANSI::ColoreTesto::MAGENTA, ANSI::ColoreSfondo::S_ROSSO, ANSI::Attributo::LUMINOSO);
+    ANSI::Stile stileProiettileNemico(ANSI::ColoreTesto::CIANO, ANSI::ColoreSfondo::S_NERO, ANSI::Attributo::LUMINOSO);
+    // Mappa che associa ogni tipo di proiettile ad uno stile, che indica il colore e l'aspetto del proiettile, per evitare di dover fare un controllo ogni volta
+	std::unordered_map<TipoProiettile, ANSI::Stile> stiliProiettile = {
+        {TipoProiettile::P_DIFENSORE, stileProiettileDifensore},
+        {TipoProiettile::P_NEMICO, stileProiettileNemico}
+    };
 	Proiettile::Proiettile() : Componente(direzioneCarattere[EST], Coordinate(0, 0), stileProiettileDifensore, TipoComponente::PROIETTILE_DIFENSORE), origine(TipoProiettile::P_DIFENSORE), direzione(EST), velocita(1) {}
     Proiettile::Proiettile(Coordinate coordinate_, TipoProiettile tipo_, Direzione direzione_, int velocita_) : Componente(direzioneCarattere[direzione_], coordinate_, stiliProiettile[tipo_], TipoComponente::PROIETTILE_DIFENSORE), origine(tipo_), direzione(direzione_), velocita(velocita_) {
         this->tipo = tipo_ == TipoProiettile::P_DIFENSORE ? TipoComponente::PROIETTILE_DIFENSORE : TipoComponente::PROIETTILE_NEMICO;

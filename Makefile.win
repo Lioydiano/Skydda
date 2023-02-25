@@ -4,14 +4,14 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = ANSI.o componente.o coordinate.o cursore.o difensore.o main.o mappa.o proiettile.o proiettiledifensore.o proiettilenemico.o terreno.o
-LINKOBJ  = ANSI.o componente.o coordinate.o cursore.o difensore.o main.o mappa.o proiettile.o proiettiledifensore.o proiettilenemico.o terreno.o
+OBJ      = main.o ANSI.o componente.o coordinate.o cursore.o difensore.o mappa.o proiettile.o proiettiledifensore.o proiettilenemico.o terreno.o
+LINKOBJ  = main.o ANSI.o componente.o coordinate.o cursore.o difensore.o mappa.o proiettile.o proiettiledifensore.o proiettilenemico.o terreno.o
 LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib32" -static-libgcc -m64
 INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
 CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
 BIN      = Skydda.exe
-CXXFLAGS = $(CXXINCS) -m64 -std=gnu++2a
-CFLAGS   = $(INCS) -m64 -std=gnu++2a
+CXXFLAGS = $(CXXINCS) -m64 -std=gnu++17
+CFLAGS   = $(INCS) -m64 -std=gnu++17
 DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
 
 .PHONY: all all-before all-after clean clean-custom
@@ -23,6 +23,9 @@ clean: clean-custom
 
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
 ANSI.o: ANSI.cpp
 	$(CPP) -c ANSI.cpp -o ANSI.o $(CXXFLAGS)
@@ -38,9 +41,6 @@ cursore.o: cursore.cpp
 
 difensore.o: difensore.cpp
 	$(CPP) -c difensore.cpp -o difensore.o $(CXXFLAGS)
-
-main.o: main.cpp
-	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
 mappa.o: mappa.cpp
 	$(CPP) -c mappa.cpp -o mappa.o $(CXXFLAGS)

@@ -17,6 +17,16 @@
 // g++ main.cpp -o skydda -std=c++17 -Wall -O3
 
 
+namespace skydda {
+    ANSI::Stile stileDestinazione(ANSI::ColoreTesto::ROSSO, ANSI::ColoreSfondo::S_NERO, ANSI::Attributo::LAMPEGGIA);
+    // Mappa che associa ogni direzione ad una coppia di coordinate, che indicano lo spostamento da effettuare
+    std::unordered_map<skydda::Direzione, skydda::Coordinate> direzioni = { 
+        {skydda::NORD, skydda::Coordinate(-1, 0)},
+        {skydda::EST, skydda::Coordinate(0, 1)},
+        {skydda::SUD, skydda::Coordinate(1, 0)},
+        {skydda::OVEST, skydda::Coordinate(0, -1)}
+    };
+}
 enum Mossa { // Associa una mossa ad un valore numerico per riconoscerla
     // Movimenti del difensore
     MossaSinistra,
