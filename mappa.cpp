@@ -304,7 +304,7 @@ namespace skydda {
     }
     void Mappa::stampa() const {
         pulisciSchermo();
-        ANSI::Stile stileBordo(ANSI::ColoreTesto::BIANCO, ANSI::ColoreSfondo::S_GIALLO, ANSI::Attributo::LUMINOSO);
+        ANSI::Stile stileBordo(ANSI::ColoreTesto::BIANCO, ANSI::ColoreSfondo::S_MAGENTA, ANSI::Attributo::LUMINOSO);
         stileBordo.applica();
         for (int i = 0; i < larghezza + 2; i++) { // Stampa la prima riga di bordo
             std::cout << '@';
