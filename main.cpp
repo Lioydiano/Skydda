@@ -146,12 +146,12 @@ void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione, skydda::D
 
 
 skydda::Cursore cursore; // Cursore ausiliario per stampare le indicazioni
-const skydda::Coordinate indicazioni_difensore(10, 70); // Coordinate del terminale dove stampare le indicazioni sul difensore
+const skydda::Coordinate indicazioni_difensore(10, 60); // Coordinate del terminale dove stampare le indicazioni sul difensore
 // Aggiorna le coordinate del difensore nella barra laterale di destra
 void aggiornaCoordinateDifensore(skydda::Difensore& difensore) {
     cursore.posiziona(indicazioni_difensore);
     ANSI::reimposta();
-    std::cout << "Difensore: (" << difensore.getCoordinate().y << ", " << difensore.getCoordinate().x << ")   ";
+    std::cout << "Defender: {" << difensore.getCoordinate().y << ", " << difensore.getCoordinate().x << "}   ";
 }
 
 // Genera le coordinate di un obiettivo casuale, controllando che non ci siano ostacoli
@@ -191,11 +191,11 @@ int main() {
     skydda::Coordinate obiettivo = generaCoordinate(mappa); // Coordinate obbiettivo
     stampaObiettivo(obiettivo);
 
-    const skydda::Coordinate indicazioni_destinazione(8, 70); // Coordinate del terminale dove stampare le indicazioni sulla destinazione
+    const skydda::Coordinate indicazioni_destinazione(8, 60); // Coordinate del terminale dove stampare le indicazioni sulla destinazione
     aggiornaCoordinateDifensore(difensore);
     cursore.posiziona(indicazioni_destinazione);
     ANSI::reimposta();
-    std::cout << "Obiettivo: (" << obiettivo.y << ", " << obiettivo.x << ")";
+    std::cout << "Goal:     {" << obiettivo.y << ", " << obiettivo.x << "}";
 
     while (true) {
         // Lancia asincronamente la funzione leggiMossa, che attende un input da tastiera, e aspetta che sia pronta
