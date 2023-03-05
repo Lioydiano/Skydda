@@ -1,4 +1,4 @@
-#include "proiettiledifensore.hpp"
+#include "proiettiledifensore.h"
 
 namespace skydda {
     ProiettileDifensore::ProiettileDifensore() : Proiettile() {}

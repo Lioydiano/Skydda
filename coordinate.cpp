@@ -1,4 +1,4 @@
-#include "coordinate.hpp"
+#include "coordinate.h"
 
 
 namespace skydda {

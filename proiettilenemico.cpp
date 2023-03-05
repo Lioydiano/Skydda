@@ -1,4 +1,4 @@
-#include "proiettilenemico.hpp"
+#include "proiettilenemico.h"
 
 namespace skydda {
     ProiettileNemico::ProiettileNemico() : Proiettile() {}

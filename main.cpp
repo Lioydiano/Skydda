@@ -4,16 +4,11 @@
 #include <random> // rand()
 #include <conio.h> // getch()
 
-#include "ANSI.hpp"
-#include "componente.hpp"
-#include "coordinate.hpp"
-#include "cursore.hpp"
-#include "difensore.hpp"
-#include "mappa.hpp"
-#include "proiettile.hpp"
-#include "proiettiledifensore.hpp"
-#include "proiettilenemico.hpp"
-#include "terreno.hpp"
+#include "ANSI.h"
+#include "cursore.h"
+#include "difensore.h"
+#include "mappa.h"
+#include "proiettilenemico.h"
 // g++ main.cpp -o skydda -std=c++17 -Wall -O3
 
 
@@ -132,7 +127,14 @@ void generaIsola(skydda::Mappa& mappa) {
 
 // Traduce la direzione della mossa dell'utente in un effettivo spostamento del difensore, controllando se le coordinate sono valide e se non ci sono ostacoli
 void muoviDifensore(skydda::Mappa& mappa, skydda::Direzione direzione, skydda::Difensore& difensore) {
-    skydda::Coordinate coordinate = difensore.getCoordinate() + skydda::direzioni[direzione]; // Calcola le coordinate di destinazione a seconda della direzione della mossa
+    // Mappa che associa ogni direzione ad una coppia di coordinate, che indicano lo spostamento da effettuare
+    std::unordered_map<skydda::Direzione, skydda::Coordinate> direzioni = { 
+        {skydda::NORD, skydda::Coordinate(-1, 0)},
+        {skydda::EST, skydda::Coordinate(0, 1)},
+        {skydda::SUD, skydda::Coordinate(1, 0)},
+        {skydda::OVEST, skydda::Coordinate(0, -1)}
+    };
+    skydda::Coordinate coordinate = difensore.getCoordinate() + direzioni[direzione]; // Calcola le coordinate di destinazione a seconda della direzione della mossa
     try {
         coordinate.valida(mappa.getAltezza(), mappa.getLarghezza());
     } catch (std::runtime_error& e) { // Il ramo di catch è eseguito se viene lanciata un'eccezione di tipo std::runtime_error
@@ -158,6 +160,8 @@ skydda::Coordinate generaCoordinate(skydda::Mappa& mappa) {
     while (true) {
         coordinate.x = rand() % mappa.getLarghezza();
         coordinate.y = rand() % mappa.getAltezza();
+        if (coordinate.y + coordinate.x > mappa.getLarghezza())
+        	continue;
         if (mappa.getComponente(coordinate) == nullptr) // Il componente alla posizione coordinate è nullptr, quindi non ci sono ostacoli
             break;
     }
@@ -166,8 +170,9 @@ skydda::Coordinate generaCoordinate(skydda::Mappa& mappa) {
 
 // Stampa l'obiettivo nel terminale con una X rossa
 void stampaObiettivo(skydda::Coordinate& obiettivo) {
+    ANSI::Stile stileDestinazione(ANSI::ColoreTesto::ROSSO, ANSI::ColoreSfondo::S_NERO, ANSI::Attributo::LAMPEGGIA);
     cursore.posiziona(obiettivo); // Posiziona il cursore alle coordinate dell'obiettivo
-    skydda::stileDestinazione.applica(); // Applica lo stile della X rossa (skydda::stileDestinazione è un oggetto di tipo skydda::Stile)
+    stileDestinazione.applica(); // Applica lo stile della X rossa (skydda::stileDestinazione è un oggetto di tipo skydda::Stile)
     std::cout << "X"; // Stampa la X rossa
     ANSI::reimposta(); // Ripristina lo stile di default (per evitare che il terminale rimanga con lo stile della X rossa)
 }
@@ -291,6 +296,13 @@ int main() {
                         coda.push(obiettivo); // Parto dall'obiettivo, e tento di raggiungere l'origine
                         skydda::Coordinate cima;
                         skydda::Coordinate coordinate_vicino;
+                        // Mappa che associa ogni direzione ad una coppia di coordinate, che indicano lo spostamento da effettuare
+                        std::unordered_map<skydda::Direzione, skydda::Coordinate> direzioni = { 
+                            {skydda::NORD, skydda::Coordinate(-1, 0)},
+                            {skydda::EST, skydda::Coordinate(0, 1)},
+                            {skydda::SUD, skydda::Coordinate(1, 0)},
+                            {skydda::OVEST, skydda::Coordinate(0, -1)}
+                        };
                         while (!coda.empty()) {
                             cima = coda.front(); // Prendi l'ultimo della coda
                             coda.pop(); // Elimina l'ultimo della coda
@@ -299,7 +311,7 @@ int main() {
                                 break;
 
                             for (int i=0; i<4; i++) { // Itero sulle possibili direzioni
-                                coordinate_vicino = cima + skydda::direzioni[(skydda::Direzione)i]; // Guardiamo il blocco in quella direzione
+                                coordinate_vicino = cima + direzioni[(skydda::Direzione)i]; // Guardiamo il blocco in quella direzione
                                 try {
                                     coordinate_vicino.valida(mappa.getAltezza(), mappa.getLarghezza());
                                     if (visitati[coordinate_vicino.y][coordinate_vicino.x]) // Se è già stato visitato, non lo considero

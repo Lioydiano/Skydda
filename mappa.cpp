@@ -1,8 +1,9 @@
-#include "mappa.hpp"
+#include "mappa.h"
 #include <algorithm>
 
 
 namespace skydda {
+    ANSI::Stile stileEffimera(ANSI::ColoreTesto::BIANCO, ANSI::ColoreSfondo::S_NERO, ANSI::Attributo::FLEBILE);
 	void stampaEffimera(Coordinate& coordinate) {
         std::cout << CSI << coordinate.y + 2 << ";" << coordinate.x + 2 << "H";
         stileEffimera.applica();
@@ -251,6 +252,13 @@ namespace skydda {
         }
     }
     void Mappa::generaProiettile(Coordinate& coordinate_, TipoProiettile tipoProiettile_, Direzione direzione_, int velocita_) {
+        // Mappa che associa ogni direzione ad una coppia di coordinate, che indicano lo spostamento da effettuare
+	    std::unordered_map<Direzione, Coordinate> direzioni = { 
+	        {NORD, Coordinate(-1, 0)},
+	        {EST, Coordinate(0, 1)},
+	        {SUD, Coordinate(1, 0)},
+	        {OVEST, Coordinate(0, -1)}
+	    };
         Coordinate coordinate = coordinate_ + direzioni[direzione_];
         try {
             coordinate.valida(altezza, larghezza);
@@ -296,6 +304,7 @@ namespace skydda {
     }
     void Mappa::stampa() const {
         pulisciSchermo();
+        ANSI::Stile stileBordo(ANSI::ColoreTesto::BIANCO, ANSI::ColoreSfondo::S_GIALLO, ANSI::Attributo::LUMINOSO);
         stileBordo.applica();
         for (int i = 0; i < larghezza + 2; i++) { // Stampa la prima riga di bordo
             std::cout << '@';

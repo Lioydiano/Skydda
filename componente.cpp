@@ -1,4 +1,4 @@
-#include "componente.hpp"
+#include "componente.h"
 
 namespace skydda {
     Componente::Componente() : carattere(), coordinate(), stile(), tipo(__IGNOTO__) {}
