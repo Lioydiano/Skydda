@@ -40,4 +40,5 @@ Or, alternatively, since ``v1.4.0``...
 - Run the ``forsiktig`` file
 
 ⚠️ - **WARNING**: The executable may not work on some Linux distributions, since it's compiled on ``Ubuntu 20.04``.
+
 ⚠️ - **WARNING**: The executables may sometimes not be both updated to the latest version since we're lazy and we compile them manually from only one of our machines.
