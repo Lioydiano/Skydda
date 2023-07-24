@@ -67,8 +67,8 @@ void stampaIntro() {
     std::cout << "\t\t\t- \033[035m 'x'\033[0m show the goal with an \033[031mX\033[0m\n";
     std::cout << "\t\t\t- \033[035m 'p' 'r'\033[0m to pause/resume\n";
     std::cout << "\t\t\t- \033[035m 'w' 'a' 's' 'd'\033[0m to play\n";
-        #if _WIN32
-        std::cout << "\t\t\t- '\x1b[35m↑\x1b[0m | \x1b[35m←\x1b[0m | \x1b[35m↓\x1b[0m | \x1b[35m→\x1b[0m' to shoot\n";
+    #if _WIN32
+        std::cout << "\t\t\t- '\x1b[35m^\x1b[0m | \x1b[35m<\x1b[0m | \x1b[35mv\x1b[0m | \x1b[35m>\x1b[0m' to shoot\n";
     #elif __linux__
         std::cout << "\t\t\t- '\x1b[35mi\x1b[0m | \x1b[35mj\x1b[0m | \x1b[35mk\x1b[0m | \x1b[35ml\x1b[0m' to shoot\n";
     #endif
