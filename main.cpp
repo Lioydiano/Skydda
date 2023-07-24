@@ -2,7 +2,34 @@
 #include <chrono> // std::chrono::milliseconds, std::chrono::seconds
 #include <future> // std::async, std::Future
 #include <random> // mt19937
-#include <conio.h> // getch()
+#ifdef _WIN32
+    #include <conio.h>
+#elif __linux__    
+    #include <unistd.h>
+    #include <termios.h>
+
+    char getch(void) {
+        char buf = 0;
+        struct termios old = {0};
+        fflush(stdout);
+        if(tcgetattr(0, &old) < 0)
+            perror("tcsetattr()");
+        old.c_lflag &= ~ICANON;
+        old.c_lflag &= ~ECHO;
+        old.c_cc[VMIN] = 1;
+        old.c_cc[VTIME] = 0;
+        if(tcsetattr(0, TCSANOW, &old) < 0)
+            perror("tcsetattr ICANON");
+        if(read(0, &buf, 1) < 0)
+            perror("read()");
+        old.c_lflag |= ICANON;
+        old.c_lflag |= ECHO;
+        if(tcsetattr(0, TCSADRAIN, &old) < 0)
+            perror("tcsetattr ~ICANON");
+        // printf("%c\n", buf);
+        return buf;
+    }
+#endif
 #include "include/skydda/skydda.cpp"
 // g++ main.cpp -o skydda -std=c++17 -Wall -O3
 
@@ -40,7 +67,11 @@ void stampaIntro() {
     std::cout << "\t\t\t- \033[035m 'x'\033[0m show the goal with an \033[031mX\033[0m\n";
     std::cout << "\t\t\t- \033[035m 'p' 'r'\033[0m to pause/resume\n";
     std::cout << "\t\t\t- \033[035m 'w' 'a' 's' 'd'\033[0m to play\n";
-    std::cout << "\t\t\t- \033[035m ^ > v <\033[0m (arrow keys) to shoot\n\n";
+        #if _WIN32
+        std::cout << "\t\t\t- '\x1b[35m↑\x1b[0m | \x1b[35m←\x1b[0m | \x1b[35m↓\x1b[0m | \x1b[35m→\x1b[0m' to shoot\n";
+    #elif __linux__
+        std::cout << "\t\t\t- '\x1b[35mi\x1b[0m | \x1b[35mj\x1b[0m | \x1b[35mk\x1b[0m | \x1b[35ml\x1b[0m' to shoot\n";
+    #endif
 
     std::cout << "\t\t\t\033[032m$\033[0m <---- this is you, the defender\n";
     std::cout << "\t\t\t\033[036m^\033[0m <---- this is an enemy bullet\n";
@@ -58,22 +89,35 @@ void stampaIntro() {
 // Legge la mossa dell'utente, restituisce il valore numerico associato
 Mossa leggiMossa() {
     char carattere = getch(); // Legge un carattere (invio di un tasto)
-    if (carattere == -32) { // Se il carattere è -32, allora è stato premuto un tasto freccia (Eludi la [ che segue \033)
-        // \033[ è il codice ASCII per il tasto freccia
-        carattere = getch();
-        switch (carattere) {
-            case 72: // '\033[A' (ovvero '\03372' perché '['+'A'=72) è il codice ASCII per il tasto freccia su
-                return SparaSu;
-            case 80: // '\033[B' è il codice ASCII per il tasto freccia giù
-                return SparaGiu;
-            case 75: // '\033[D' è il codice ASCII per il tasto freccia sinistra
-                return SparaSinistra;
-            case 77: // '\033[C' è il codice ASCII per il tasto freccia destra
-                return SparaDestra;
-            default:
-                break;
+    #if _WIN32
+        if (carattere == -32) { // Se il carattere è -32, allora è stato premuto un tasto freccia (Eludi la [ che segue \033)
+            // \033[ è il codice ASCII per il tasto freccia
+            carattere = getch();
+            switch (carattere) {
+                case 72: // '\033[A' (ovvero '\03372' perché '['+'A'=72) è il codice ASCII per il tasto freccia su
+                    return SparaSu;
+                case 80: // '\033[B' è il codice ASCII per il tasto freccia giù
+                    return SparaGiu;
+                case 75: // '\033[D' è il codice ASCII per il tasto freccia sinistra
+                    return SparaSinistra;
+                case 77: // '\033[C' è il codice ASCII per il tasto freccia destra
+                    return SparaDestra;
+                default:
+                    break;
+            }
         }
-    }
+    #elif __linux__
+        switch (carattere) {
+            case 'I': case 'i':
+                return SparaSu;
+            case 'L': case 'l':
+                return SparaDestra;
+            case 'K': case 'k':
+                return SparaGiu;
+            case 'J': case 'j':
+                return SparaSinistra;
+        }
+    #endif
     switch (carattere) { // Per Muoversi
         case 'w': case 'W':
             return MossaSu;
@@ -192,6 +236,9 @@ int main() {
                     skydda::Direzione::NORD, 1
                 ); // Genera un proiettile nemico in quella coordinata, con direzione NORD (infatti tutti i proiettili vanno verso l'alto) e velocità 1
             }
+            #if __linux__
+                std::cout << std::flush;
+            #endif
         } // Quando il Future mossa è pronto, esce dal ciclo e continua
         Mossa m = mossa.get(); // Ottiene il risultato del Future mossa, che ora è pronto, tramite il metodo .get()
         switch (m) { // Switch sul tipo di mossa
